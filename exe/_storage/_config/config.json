@@ -1,0 +1,45 @@
+{
+    "dev": { "devID": ["782164174821523467"], "errorChannel": "832164618956832799" },
+    "emojis": {
+        "warningButton": { "msg": "<:warningButton:855501466495090759>", "id": "855501466495090759" },
+        "warning": { "msg": "<:warning:855501467020034069>", "id": "855501467020034069" },
+        "user": { "msg": "<:user:855501466948861962>", "id": "855501466948861962" },
+        "unlock": { "msg": "<:unlock:855501466777550848>", "id": "855501466777550848" },
+        "lock": { "msg": "<:padlock:855501466789740584>", "id": "855501466789740584" },
+        "undo": { "msg": "<:undo:855476493840809994>", "id": "855476493840809994" },
+        "redo": { "msg": "<:redo:855476464757243925>", "id": "855476464757243925" },
+        "trash": { "msg": "<:trashcan:855501466780303380>", "id": "855501466780303380" },
+        "server": { "msg": "<:server:855501469352853505>", "id": "855501469352853505" },
+        "search": { "msg": "<:search:855476606223122432>", "id": "855476606223122432" },
+        "return": { "msg": "<:return:855476561511841822>", "id": "855476561511841822" },
+        "email": { "msg": "<:email:855501466852392980>", "id": "855501466852392980" },
+        "information": { "msg": "<:information:855501466944012318>", "id": "855501466944012318" },
+        "like": { "msg": "<:like:855501467095793674>", "id": "855501467095793674" },
+        "menu": { "msg": "<:menu:855476516274962442>", "id": "855476516274962442" },
+        "cancel": { "msg": "<:cancel:855476425980248114>", "id": "855476425980248114" },
+        "powerbutton": { "msg": "<:powerbutton:855501467166834718>", "id": "855501467166834718" },
+        "reload": { "msg": "<:reload:855476582188843059>", "id": "855476582188843059" },
+        "config": { "msg": "<:config:855476539045969970>", "id": "855476539045969970" },
+        "coding": { "msg": "<:coding:855501466772308009>", "id": "855501466772308009" },
+        "close": { "msg": "<:close:855501466625638430>", "id": "855501466625638430" },
+        "check": { "msg": "<:check:855501467033010196>", "id": "855501467033010196" },
+        "barchart": { "msg": "<:barchart:855501466387480587>", "id": "855501466387480587" },
+        "alert": { "msg": "<:alert:855501466692091944>", "id": "855501466692091944" }
+      },
+      "reload": false,
+      "maintenance": false,
+      "bdd": {
+        "users": {
+          "profile": { "bio": false, "marryID": false, "badges": [] },
+          "score": 0,
+          "lang": "fr"
+        },
+        "guilds": {
+          "_config": { "enable": false, "staffRoles": [], "ignoreChannel": [], "ignoreCategory": [], "ignoreCommand": [], "ignoreUser": [] },
+          "logs": { "join": false, "leave": false, "messageUpdate": false, "messageDelete": false, "sanctions": false, "raid": false },
+          "channels": { "join": false, "leave": false },
+          "xp": {},
+          "money": {}
+        }
+      }
+}
