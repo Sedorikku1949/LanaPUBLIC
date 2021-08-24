@@ -110,19 +110,12 @@ const charsLines = ({
 })
 const Discord = require("discord.js")
 
-module.exports = [
-    Discord.GuildMemberManager.prototype.selectMember = function (args, options = { fetch: false, bot: false }) {
-            if (!args || typeof args !== "string" || typeof options !== "object" || Array.isArray(options)) throw new Error("Invalids arguments was provided, i can't search a member with that.")
-            if (options.fetch) return this.cache.find(user => (options.bot ? true : !user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().includes(args.toLowerCase()) || user.displayName.toLowerCase().includes(args.toLowerCase()) ) ) || client.users.fetch(args).catch(() => undefined)
-            else return this.cache.find(user => (options.bot ? true : !user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().includes(args.toLowerCase()) || user.displayName.toLowerCase().includes(args.toLowerCase()) ) )
-    },
+function chunk(arr, n) { return (arr.length ? [arr.slice(0, n), ...chunk(arr.slice(n), n)] : []); };
 
+module.exports = [
     Array.prototype.splitArray = function(n) {
         if (typeof this !== "object" || typeof n !== "number") throw new Error(typeof this !== "object" ? "This prototype is only for Array" : "The arguments for separation must be a number") 
-        const arr = this
-        const chunk = (arr, n) => arr.length ? [arr.slice(0, n), ...chunk(arr.slice(n), n)] : [] ; 
-        if (this.length <= n) { var b = this } else { var b = chunk(arr,n) }
-        return b
+        return (this.length <= n ? this : chunk(this, n))
     },
     String.prototype.toASCII = function() {
         const res = ['', '', '', '', '', ''],
@@ -134,37 +127,26 @@ module.exports = [
         const tab = ['y', 'z', 'e', 'p', 't', 'g', 'm', 'k']
         for (let i = 24, y = 0; i > 0; i -= 3, y++) if (this >= 10 ** i) return (this / 10 ** i).toFixed((this / 10 ** i).toFixed(1).toString().includes('.0') ? 0 : 1) + tab[y].toUpperCase()
         return this
-      },
-      Array.prototype.align = function align(...data){
-        var re = `\\${data[0]}([^${data[1]}]+)\\)(?!.*[()])`
-        var ne = new RegExp(re, "gm")
-        var max = this.sort((a,b)=> b.length - a.length)[0]
-        var tt = max.match(ne) === null ? undefined : max.match(ne)[0]
-    
-        if(tt === undefined) throw Error("no match in longer value with " + data)
-    
-        if(data[2] === 2) return this.map(t=>{
-            var y = t.match(ne) === null ? undefined : t.match(ne)[0]
-            t = t.replace(y, "")
-            max = max.replace(tt, "");
-            if(t.length >= max.length) return t +y 
-            
-            var toadd = max.length - t.length
-            if(y === undefined) return t
-            t = t.replace(ne, "")
-            t= t+" ".repeat(toadd)
-            return t+y
-        })
-        return this.map(t=>{
-            var y = t.match(ne) === null ? undefined : t.match(ne)[0]
-            if(t.length >= max.length) return t
-            
-            var toadd = max.length - t.length
-            if(y === undefined) return t
-            t = t.replace(ne, "")
-            t= t+" ".repeat(toadd)
-            return t+y
-        })
-    
-    }
+    },
+    Discord.RoleManager.prototype.selectRole = function(args, options = { fetch: false }){
+        if (!args || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.RoleManager) ) throw new Error("Invalids arguments was provided !");
+        if (options.fetch) return this.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) ) || ( client.guilds.cache.some(g => g.roles.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) )) ? client.guilds.cache.find(g => g.roles.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) )).roles.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) ) : undefined );
+        else return this.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) );
+    },
+    Discord.GuildMemberManager.prototype.selectMember = function (args, options = { fetch: false, bot: false }) {
+        if (!args || typeof args !== "string" || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.GuildMemberManager) ) throw new Error("Invalids arguments was provided !");
+        if (options.fetch) return (this.cache.find(user => (options.bot ? true : user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().match(args.toLowerCase()) || user.displayName.toLowerCase().match(args.toLowerCase()) ) )) || client.users.fetch(args).catch(() => null);
+        else return this.cache.find(user => (options.bot ? true : !user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().match(args.toLowerCase()) || user.displayName.toLowerCase().match(args.toLowerCase()) ) );
+    },
+    Discord.GuildChannelManager.prototype.selectChannel = function(args, options = { type: "GUILD_TEXT", fetch: false }){
+        if (!args || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.GuildChannelManager) ) throw new Error("Invalids arguments was provided !");
+        if (options.fetch) return this.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args || e.position == args || e.rawPosition == args) || client.channels.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args || e.position == args || e.rawPosition == args);
+        else return this.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args || e.position == args || e.rawPosition == args);
+    },
+    Discord.Message.prototype.selectMessage = async function(args, options = { channel: false }){
+        if (!args || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.Message) ) throw new Error("Invalids arguments was provided !");
+        const chl = options.channel ? client.channels.cache.get(options.channel) : null;
+        if (options.channel) return ( await this.channel.messages.fetch(args).catch(() => false)) || (chl ? await chl.messages.fetch(args).catch(() => null) : null);
+        else return this.channel.messages.fetch(args).catch(() => null);
+    },
 ]

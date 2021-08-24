@@ -1,5 +1,39 @@
 const list = [
-    "eMange une glace sur sa terasse"
+    // printemps
+    "pS'il n'y avait pas d'hiver, le printemps ne serait pas si agréable : si nous ne goûtions pas à l'adversité, la réussite ne serait pas tant appréciée.",
+    "pMarche dans une prairie fleuri 🌾",
+    "pLa saison des amours ❤, vient passez du temps avec nous, seul ou a deux :D",
+    "pObserve une rose 🥀",
+    "pPleure du retour des controles à l'école",
+    "pNettoie les salons, pour le nettoyage de printemps",
+    "pIl n'est pas d'hiver sans neige, de printemps sans soleil, et de joie sans être partagée",
+
+    // été
+    "eEst partie en randonnée 🚶🏻‍♂️",
+    "eMange une glace sur la plage 🏖️",
+    "eS'ennuie",
+    "eTeste de nouvelles pp pour être belle sur la plage",
+    "eSaison chaude et du maillot, viens faire une baignade avec moi ;D",
+    "eJe me fais mater par Kuri à la plage",
+    "eMange une glace sur sa terrasse.",
+    "eConcours de T-shirt mouillé !",
+
+    // automne
+    "aRamasse les feuilles mortes dans les serveurs.",
+    "aLes feuilles tombent, les arbres rougeoient, je suis nostalgique, pas toi ?",
+    "aAttend la neige avec impatience",
+    "aEnfile une veste chaude pour aller voir ses amis",
+
+    // hiver
+    "hMange une bûche avec ses parents.",
+    "hFait une bataille de boule de neige avec {user} ❄️",
+    "hEssaye de marcher sur du verglas",
+    "hFait de la luge avec {user} 🛷",
+    "hDiscute autour du feu avec {randomUser}",
+    "hDéneige devant la porte du serveur",
+    "h🎶L'hiver s'installe doucement dans la nuit, la neige est reine à son tour 🎶",
+    "hBrrrr... fait froid, viens prendre un chocolat avec moi :D",
+    "hJe voudrais un bonhomme de neige...",
 ]
 
 function getSaison() {

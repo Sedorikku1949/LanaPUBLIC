@@ -1,0 +1,20 @@
+{
+  "join": { "name": "join", "path": "./logs/join" },
+  "leave": { "name": "leave", "path": "./logs/leave" },
+  "messageUpdate": { "name": "messageUpdate", "path": "./logs/messageUpdate" },
+  "messageDelete": { "name": "messageDelete", "path": "./logs/messageDelete" },
+  "sanctions": { "name": "sanctions", "path": "./logs/sanctions" },
+  "raid": { "name": "raid", "path": "./logs/raid" },
+  "banAdd": { "name": "banAdd", "path": "./logs/banAdd" },
+  "banRemove": { "name": "banRemove", "path": "./logs/banRemove" },
+  "inviteCreate": { "name": "inviteCreate", "path": "./logs/inviteCreate" },
+  "inviteDelete": { "name": "inviteDelete", "path": "./logs/inviteDelete" },
+  "messageReactionRemoveAll": { "name": "messageReactionRemoveAll", "path": "./logs/messageReactionRemoveAll" },
+  "roleCreate": { "name": "roleCreate", "path": "./logs/roleCreate" },
+  "roleDelete": { "name": "roleDelete", "path": "./logs/roleDelete" },
+  "roleUpdate": { "name": "roleUpdate", "path": "./logs/roleUpdate" },
+  "voiceStateUpdate": { "name": "voiceStateUpdate", "path": "./logs/voiceStateUpdate" },
+  "channelCreate": { "name": "channelCreate", "path": "./logs/channelCreate" },
+  "channelDelete": { "name": "channelDelete", "path": "./logs/channelDelete" },
+  "channelUpdate":{ "name": "channelUpdate", "path": "./logs/channelUpdate" }
+}

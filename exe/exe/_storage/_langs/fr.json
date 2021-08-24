@@ -1,7 +1,0 @@
-{
-    "handler": {
-        "noStaff": { "embed": { "color": "#ED4245", "description": "⛔ **Tu n'es pas un(e) modérateur/trice, tu n'as pas accès à cette commande !**" } },
-        "noDev": { "embed": { "color": "#ED4245", "description": "⛔ **Tu ne fait pas parti(e) de l'équipe de développement, tu ne peux pas accéder à cette commande !**" } },
-        "error": { "embed": { "color": "#ED4245", "description": "❌ **Une erreur est survenue !**\n\n> L'équipe de développement as été avertie et va corriger ce problème dans les plus brefs délais."} }
-    }
-}

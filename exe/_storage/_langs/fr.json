@@ -1,7 +1,393 @@
 {
+  "languageName": "Français",
+  "languageIndicator": "FR-fr",
+  "systemLanguageName": "fr",
+  "misc": {
+    "category": { "dev": "Développement", "info": "Information", "config": "Configuration", "utility": "Utility" },
+    "ranks": { "1": "1er", "2": "2e", "3": "3e" },
     "handler": {
-        "noStaff": { "embed": { "color": "#ED4245", "description": "⛔ **Tu n'es pas un(e) modérateur/trice, tu n'as pas accès à cette commande !**" } },
-        "noDev": { "embed": { "color": "#ED4245", "description": "⛔ **Tu ne fait pas parti(e) de l'équipe de développement, tu ne peux pas accéder à cette commande !**" } },
-        "error": { "embed": { "color": "#ED4245", "description": "❌ **Une erreur est survenue !**\n\n> L'équipe de développement as été avertie et va corriger ce problème dans les plus brefs délais."} }
+      "noStaff": "⛔ **Tu n'es pas un(e) modérateur/trice, tu n'as pas accès à cette commande !**",
+      "noDev": "⛔ **Tu ne fait pas parti(e) de l'équipe de développement, tu ne peux pas accéder à cette commande !**",
+      "error": "❌ **Une erreur est survenue !**\n\n> L'équipe de développement as été avertie et va corriger ce problème dans les plus brefs délais."
+    },
+    "servCommands": {
+      "noAFKChannel": "```\nAucun salon AFK n'est configuré.```",
+      "noBoost": "```\nAucun boost.```",
+      "noSystemChannel": "Aucun.",
+      "noRuleChannel": "Aucun."
+    },
+    "guildCreate": { "embeds": [{
+        "color": "#5865F2",
+        "thumbnail": { "url": "{url}" },
+        "author": { "name": "{name}", "icon_url": "{url}" },
+        "description": "> Merci de m'avoir ajouté sur votre serveur \"{guildName}\" !\n\n**Dès que vous m'aurez activée, vous aurez accès à un palmarès de fonctionnalités ! En voici une liste :**\n```md\n- Logs\n- Jeux\n- Informations\n```\n<:error:869237657480343572>  **Malheureusement, je suis encore en développement, tu ne trouveras donc pas toutes mes fonctionnalités !**\n\n*pour être au courant des nouveautés et de l'avancement, tu peux rejoindre le serveur support.*\n\n> **Bonne journée !**",
+        "footer": { "text": "Pour m'activer, écrivez \"{prefix}enable\" !"}
+      }],
+      "components": [
+        {
+          "components": [
+            {
+              "disabled": false, "emoji": null, "label": "Invite moi !", "style": 5, "type": 2,
+              "url": "https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot"
+            },
+            {
+              "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
+              "url": "https://discord.gg/RYrJDNgF9m"
+            }
+          ],
+          "type": 1
+        }
+      ]
+    },
+    "commandsList": { "embeds": [{
+        "color":"#5865F2",
+        "description": "```\n{position}```\n```\n➯ {commands}```",
+        "footer": { "text": "© Lana - 2021" },
+        "author": { "name": "Liste des commandes.", "icon_url": "{url}"},
+        "thumbnail": { "url": "{url}" }
+      }]
+    },
+    "defaultXpMessage": "** **\n> **Félicitation `{userTag}`, tu passe au niveau `{lvl}` !**\n** **"
+  },
+  "commands": {
+    "logs" : {
+      "desc": "Permet de gérer les salons de logs.",
+      "use": "{prefix}logs <channel>",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "2f3136", "description": "> **Quel salon de logs veux-tu modifier ?**" }] },
+        "noLogsFound": { "embeds": [{ "color": "2f3136", "description": "> **Ton argument est invalide ! réessaie avec un de ces arguments :\n" }] }
+      }
+    },
+    "eval": {
+      "desc": "Une commande ✨magique✨",
+      "use": "{prefix}eval <code>",
+      "assets": {}
+    },
+    "pp": {
+      "desc": "Une commande magique pour afficher la photo de profile de quelqu'un :D",
+      "use": "{prefix}pp\n{prefix}pp <user>",
+      "assets": {
+        "noUserFound": { "embeds": [{ "color": "#FF2A51", "description": "> **Je n'ai pas trouvé cette personne !**" }] },
+        "msg": {
+          "embeds": [{
+            "color": "2f3136",
+            "author": { "name": "Avatar de {user}" },
+            "description": "**[ [ Lien de l'avatar ] ]({url})**",
+            "image": { "url": "{url}" }
+          }]
+        }
+      }
+    },
+    "ping": {
+      "desc": "Cette commande permet d'obtenir des informations sur la latence de Lana et du bot.",
+      "use": "Aucun argument requis.",
+      "assets": {
+        "embeds": [{
+          "color": "#5865F2",
+          "footer": { "text": "©️ Lana - 2021" },
+          "thumbnail": { "url": "{url}" },
+          "fields": [
+           { "name": "Discord :", "value": "```\n{i}ms, c'est {ICheckPing}```", "inline": true },
+           { "name": "Lana :", "value": "```\n{ping}ms, c'est {PingCheckPing}```" }
+          ]
+        }]
+      }
+    },
+    "invite": {
+      "desc": "Une commande pour m'ajouter à ton serveur pardi !",
+      "use": "Aucun argument requis.",
+      "assets": {
+        "embeds": [{
+         "color": "#5865F2",
+         "footer": { "text": "©️ Lana - 2021" },
+         "thumbnail": { "url": "https://cdn.discordapp.com/avatars/858766319506554899/5a33a31391217fc72e9d4bf8ef180b91.png?size=2048" },
+         "title": "Invite moi dès maintenant avec le lien de ton choix !",
+         "description": ">>> **Permissions personnalisables : [clique ici](https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=-1&scope=applications.commands%20bot)**\n**Permissions administrateurs : [clique ici](https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot)**\n**Aucune permission : [clique ici](https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=0&scope=applications.commands%20bot)**"
+        }]
+      }
+    },
+    "serv": {
+      "desc": "Une commande pour avoir des infos sur ce serveur.",
+      "use": "Aucun argument requis.",
+      "assets": {
+        "embeds": [{
+          "color": "2f3136",
+          "title": "Informations sur {guildName} :",
+          "footer": { "text": "© Lana - 2021" }, "thumbnail": { "url": "{url" },
+          "fields": [
+            { "name": "Propriétaire :", "value": "** <@{ownerMention}> / {ownerTag}**", "inline": false },
+            { "name": "Date de création :", "value": "```\n{creationDate}\nIl y a {creationDuration}```", "inline": false },
+            { "name": "AFK :", "value": "```\nSalon AFK : {afkChannel}\nTemps avant AFK : {afkTime}```", "inline": false },
+            { "name": "Boost :", "value": "```\nNombre de boost : {boostNumber}\nNiveau de boost : {boostLevel}```", "inline": true },
+            { "name": "Communautée :", "value": "```\n➤ Humains : {human}\n➤ Bots : {bot}\n➤ Total : {total}\n```", "inline": true },
+            { "name": "Salons :", "value": "<:category:861216210921848883> **Catégories :** {category}\n<:textuel:861216210887770134> **Salons textuels :** {textuel}\n<:vocal:861216210879119360> **Salons vocaux :** {vocal}\n<:annonce:861216210851332118> **Salons d'annonces :** {news}\n**\u200b​**", "inline": false },
+            { "name": "Autre :", "value": "**Salon d'annonce :** {systemChannel}\n**Filtre explicite :** {explicitFilter}\n**Niveau de verification :** {verificationLevel}\n**Salon des règles :** {rules}", "inline": false }
+          ]
+        }]
+      }
+    },
+    "help": {
+      "desc": "Tu utilise cette commande !",
+      "use": "{prefix}help\n{prefix}help <command>",
+      "misc": {
+        "commandsList": { "embeds": [{
+          "color":"#5865F2",
+          "description": "```\n{position}```\n```\n➯ {commands}```",
+          "footer": { "text": "© Lana - 2021" },
+          "author": { "name": "Liste des commandes.", "icon_url": "{url}"},
+          "thumbnail": { "url": "{url}" }
+        }],
+        "components": [
+          {
+          "components": [
+              {
+                "disabled": false, "emoji": null, "label": "Invite moi !", "style": 5, "type": 2,
+                "url": "https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot"
+              },
+              {
+                "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
+                "url": "https://discord.gg/RYrJDNgF9m"
+              },
+              {
+                "disabled": false, "emoji": null, "label": "Mon dashboard", "style": 5, "type": 2,
+                "url": "http://localhost:3000/home"
+              }
+            ], "type": 1
+          }
+        ]
+      },
+        "noAliase": "Aucun aliase.",
+        "interactionField": { "name": "• {category} :", "value": "```\n{list}```", "inline": false }
+      },
+      "assets": {
+        "noCommandsFound": { "embeds": [{ "color":"#5865F2", "description": "> {search} **Je n'ai pas trouvée la commande !**" }] },
+        "specificCommand": { "embeds": [{
+            "color":"#5865F2",
+            "title": "Page d'aide de la commande \"{name}\" :",
+            "footer": { "text":"© Lana - 2021" },
+            "thumbnail": { "url": "{url}" },
+            "fields": [
+              { "name": "Catégorie :", "value": "```\n{category}```", "inline": true }, { "name": "Aliase(s) :", "value": "```\n{aliase}```", "inline": true },
+              { "name": "Description :", "value": "```\n{desc}```", "inline": false }, { "name": "Utilisation :", "value": "```\n{use}```", "inline": false }
+            ]
+          }]
+        },
+        "searchCommand": { "embeds": [{ "color":"#5865F2", "description": "> **Quel commande veux-tu chercher ?**" }], "components": [] },
+        "interaction": {
+          "embeds": [{ "color": "#5865F2", "description": "> Pour voir la version optimale, effectuer \"=help\" dans ce salon.", "title": "Liste de mes commandes :", "footer": { "text":"© Lana - 2021" }, "fields": [], "thumbnail": { "url": "{url}" } }],
+          "components": [
+            {
+            "components": [
+              {
+                "disabled": false, "emoji": null, "label": "Invite moi !", "style": 5, "type": 2,
+                "url": "https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot"
+              },
+              {
+                "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
+                "url": "https://discord.gg/RYrJDNgF9m"
+              }
+              ], "type": 1
+            }
+          ]
+        }
+      }
+    },
+    "userinfo": {
+      "desc": "Cette commande te permet d'avoir des infos sur quelqu'un !",
+      "use": "{prefix}userinfo\n{prefix}userinfo <user>",
+      "assets": {
+        "noUserFound": { "embeds": [{ "color": "#FF2A51", "description": "> **Je n'ai pas trouvé cette personne !**" }] },
+        "user": { "embeds": [{
+            "color":"2f3136",
+            "author": { "name": "{name}", "icon_url": "{url}" },
+            "description": "> **• Pseudonyme:** `{tag}`\n> **• Identifiant:** `{id}`\n\n> **{calender} • Création du compte :** Le {creationDate} ( <t:{userDuration}:R> )\n\n **>> [Avatar]({avatar})**",
+            "footer": { "text": "© Lana - 2021" }
+          }]
+        },
+        "member": { "embeds": [{
+            "color":"2f3136",
+            "author": { "name": "{name}", "icon_url": "{url}" },
+            "description": "> **• Pseudonyme:** `{tag}`\n> **• Identifiant:** `{id}`\n\n> **{calender} • Création du compte :** Le {creationDate} ( <t:{userDuration}:R> )\n> **{emojisPlus} • Membre depuis :** Le {memberDate} ( <t:{memberDuration}:R> )\n\n **>> [Avatar]({avatar})**",
+            "footer": { "text": "© Lana - 2021" }
+          }]
+        }
+      }
+    },
+    "youtube": {
+      "desc": "Cette commande te permet de regarder youtube avec tes amis !",
+      "use": "{prefix}youtube <vocal>",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "#5865F2", "description": "> **Tu dois spécifier un salon vocal !**" }] },
+        "noChannel": { "embeds": [{ "color": "#5865F2", "description": "> **Je n'ai pas trouvée le salon vocal !**" }] },
+        "invite": { "embeds": [{ "color": "#5865F2", "description": "> [Clique ici]({url}) **pour lancer l'activité.**" }] }
+      }
+    },
+    "fishing": {
+      "desc": "Cette commande te permet de pêcher avec tes amis !",
+      "use": "{prefix}fishing <vocal>",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "#5865F2", "description": "> **Tu dois spécifier un salon vocal !**" }] },
+        "noChannel": { "embeds": [{ "color": "#5865F2", "description": "> **Je n'ai pas trouvée le salon vocal !**" }] },
+        "invite": { "embeds": [{ "color": "#5865F2", "description": "> [Clique ici]({url}) **pour lancer l'activité.**" }] }
+      }
+    },
+    "poker": {
+      "desc": "Cette commande te permet de jouer au poker avec tes amis !",
+      "use": "{prefix}poker <vocal>",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "#5865F2", "description": "> **Tu dois spécifier un salon vocal !**" }] },
+        "noChannel": { "embeds": [{ "color": "#5865F2", "description": "> **Je n'ai pas trouvée le salon vocal !**" }] },
+        "invite": { "embeds": [{ "color": "#5865F2", "description": "> [Clique ici]({url}) **pour lancer l'activité.**" }] }
+      }
+    },
+    "chess": {
+      "desc": "Cette commande te permet de jouer aux échecs avec tes amis !",
+      "use": "{prefix}chess <vocal>",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "#5865F2", "description": "> **Tu dois spécifier un salon vocal !**" }] },
+        "noChannel": { "embeds": [{ "color": "#5865F2", "description": "> **Je n'ai pas trouvée le salon vocal !**" }] },
+        "invite": { "embeds": [{ "color": "#5865F2", "description": "> [Clique ici]({url}) **pour lancer l'activité.**" }] }
+      }
+    },
+    "betrayal": {
+      "desc": "Cette commande te permet de jouer au jeux des trahisons avec tes amis !",
+      "use": "{prefix}betrayal <vocal>",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "#5865F2", "description": "> **Tu dois spécifier un salon vocal !**" }] },
+        "noChannel": { "embeds": [{ "color": "#5865F2", "description": "> **Je n'ai pas trouvée le salon vocal !**" }] },
+        "invite": { "embeds": [{ "color": "#5865F2", "description": "> [Clique ici]({url}) **pour lancer l'activité.**" }] }
+      }
+    },
+    "bot": {
+      "desc": "Cette commande donne des infos sur Lana :D",
+      "use": "Aucun argument requis.",
+      "assets": { "embeds": [{
+        "color": "2f3136",
+        "author": { "name": "{name}", "icon_url": "{url}" },
+        "fields": [
+          { "name": "Développeurs :", "value": "{dev}\n** **", "inline": true },
+          { "name": "Hébergeur :", "value": "Little Evil Thing !", "inline": true },
+          { "name": "Quelques statistiques :", "value": "** **\n{server} serveurs.\n{users} utilisateurs.\n\n**En ligne depuis le** {uptime} ( <t:{uptimeDuration}:R> ).\n**Créer le** {date} ( <t:{dateDuration}:R> ).\n\n** **", "inline": false },
+          { "name": "Librairies :", "value": "** **\n**Node JS :** `{node}`\n**Discord.js :** `{djs}`\n** \u200b**", "inline": true },
+          { "name": "Base de donnée :", "value": "** **\n**Librairie :** [ravenDB](https://ravendb.net)\n**Surcouche :** [MiaDB](https://github.com/Sedorikku1949/MiaDB)\n\n> La surcouche a entièrement été créée par les développeurs !\n** **", "inline": false}
+        ]
+      }]}
+    },
+    "prefix": {
+      "desc": "Une commande qui permet de changer mon préfix, simplement.",
+      "use": "{prefix}prefix <nouveau prefix>",
+      "assets": {
+        "databaseError": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> ** Une erreur est survenue en chargeant la base de donnée.**" }] },
+        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Tu n'as spécifié(e) aucun nouveau préfix !**" }] },
+        "notAdmin": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Seul les personnes avec des permissions administrateurs peuvent executer cette commande !**" }] },
+        "invalidArgs": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Mon nouveau préfix ne peut pas contenir de chiffres !**" }] },
+        "question": { "embeds": [{ "color": "#57F287", "description": "**Veux-tu que mon nouveau préfix sur ce serveur soit \"{prefix}\" ?**" }] },
+        "cancel": { "embeds": [{ "color": "#57F287", "description": "<:cancel:855476425980248114> **Annulation de l'action.**" }] },
+        "res": { "embeds": [{ "color": "#57F287", "description": "<:like:855501467095793674> **Mon nouveau préfix est désormais :** {prefix}" }] }
+      }
+    },
+    "enable": {
+      "desc": "Une commande pour m'activée.",
+      "use": "Aucun argument requis.",
+      "assets": {
+        "databaseError": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> ** Une erreur est survenue en chargeant la base de donnée.**" }] },
+        "notAdmin": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Seul les personnes avec des permissions administrateurs peuvent executer cette commande !**" }] },
+        "enable": { "embeds": [{ "color": "#57F287", "description": "<:like:855501467095793674> ** J'ai été activée avec succès !**" }] },
+        "alreadyEnable": { "embeds": [{ "color":  "#ED4245", "description": "<:error:869237657480343572> ** Je suis déjà activée sur ce serveur.**" }] },
+        "noGoodPermission": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Je te recommande de m'attribuer les permission administrateurs pour que je puisse fonctionner à mon potentielle maximale.**" }] }
+      }
+    },
+    "disable": {
+      "desc": "Une commande pour me désactivée.",
+      "use": "Aucun argument requis.",
+      "assets": {
+        "databaseError": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> ** Une erreur est survenue en chargeant la base de donnée.**" }] },
+        "notAdmin": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Seul les personnes avec des permissions administrateurs peuvent executer cette commande !**" }] },
+        "disable": { "embeds": [{ "color": "#57F287", "description": "<:like:855501467095793674> ** J'ai été désactivée avec succès !**", "footer": { "text": "Pour m'activer, écrivez \"{prefix}enable\" !" } }] },
+        "alreadyDisable": { "embeds": [{ "color":  "#ED4245", "description": "<:error:869237657480343572> ** Je suis déjà désactivée sur ce serveur.**" }] }
+      }
+    },
+    "data": {
+      "desc": "Cette commande permet de gérer la base de donnée du serveur !",
+      "use": "Aucun argument requis.",
+      "assets": {
+        "notAdmin": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Seul les personnes avec des permissions administrateurs peuvent executer cette commande !**" }] },
+        "actionType": { "embeds": [{ "color": "#5865F2", "description": "**Quel action veux-tu effectuer sur la base de donnée ?**\n```\nsee\nreset\ncancel```" }] },
+        "seeData": "> **Données stockées sur le serveur :**\n```js\n{code}\n```",
+        "ownerOnly": { "embeds": [{ "color": "#ED4245", "description": "**Seul le/la fondateur/trice peut reset la base de donnée du serveur.**" }] },
+        "cancel": { "embeds": [{ "color": "#57F287", "description": "**Cancel.**" }] },
+        "dataReset": { "embeds": [{ "color": "#57F287", "description": "**La base de donnée du serveur a été réinitialisée avec succès !**", "footer": { "text": "J'ai automatiquement été désactivée, écrivez \"{prefix}enable\" pour me réactiver." } }] },
+        "resetConfirmation": { "embeds": [{ "color": "#57F287", "description": "**Est-tu sûr de réinitialiser ma base de donnée ?** Cette action n'est pas réversible." }] },
+        "timeout": { "embeds": [{ "color": "#57F287", "description": "**Le temps impartie est écoulé, l'action est annulée.**" }] }
+      }
+    },
+    "support": {
+      "desc": "Cette commande te donne le lien d'invitation vers mon serveur !",
+      "use": "Aucun argument requis.",
+      "assets": {
+        "content": "> **Clique sur le bouton pour accéder à mon serveur support :**",
+        "components": [{
+          "components": [
+              {
+                "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
+                "url": "https://discord.gg/RYrJDNgF9m"
+              }
+            ], "type": 1
+          }
+        ]
+      }
+    },
+    "8ball": {
+      "desc": "hehe :)",
+      "use": "{prefix}8ball <question>",
+      "assets": {
+        "response": "> 🎱 **{response}**",
+        "noArgs": "> **Je ne sais pas à quoi répondre !**"
+      },
+      "miscs": ["Je pense que oui.", "Peut-être.", "Pourquoi pas ?", "Ma source m'a dit que non.", "Hors de question !", "Les signes indiquent que oui.", "Très douteux.", "C'est décidément le cas"]
+    },
+    "roleinfo": {
+      "desc": "Cette commande te permet d'avoir des infos sur un role !",
+      "use": "{prefix}roleinfo <role>",
+      "assets": {
+        "noArgs": { "embeds": [{"color":"#ED4245", "description": "> **Je ne sais pas quel rôle recherchée !**"}]},
+        "noRole": { "embeds": [{ "color": "#ED4245", "description": "> **Oups, il semblerait que je n'ai pas trouvée de rôle !**" }] },
+        "response": {
+          "embeds": [{
+            "color": "2f3136",
+            "title": "Informations sur {roleName} :",
+            "fields": [
+              { "name": "Nom :", "value": "{roleName}", "inline": true },
+              { "name": "ID :", "value": "{roleID}", "inline": true },
+              { "name": "Date de création :", "value": "{roleCreation} ( <t:{creationDuration}:R> )", "inline": false },
+              { "name": "Membres avec ce rôle :", "value": "{memberWithRole}", "inline": false},
+              { "name": "Permissions :", "value": "```js\n{permission}```", "inline": false},
+              { "name": "Autre infos :", "value": "** **\n>>> **Hoist :** {hoist}\n**Mentionnable :** {mention}\n**Couleur :** {color}", "inline": false}
+            ]
+          }]
+        },
+        "miscs": {
+          "noPermission": "Aucune permission."
+        }
+      }
+    },
+    "calculator": {
+      "desc": "Cette commande simule une calculatrice, sympa non ?",
+      "use": "{prefix}calculator <calc>",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "**Je ne sais pas quoi calculer !**" }] },
+        "response": "**Résultat :**\n```js\n{calc}```"
+      }
+    },
+    "profile": {
+      "desc": "Cette commande te permet d'avoir des infos sur ton profile !",
+      "use": "{prefix}profile\n{prefix}profile <user>",
+      "assets": {
+        "noUser": { "embeds": [{"color":"#ED4245", "description": "> **Je n'ai trouvé personne !**"}]}
+      },
+      "misc": {
+        "progressMSG": "**Profile en cours de chargement...**\n```\n{bar}```"
+      }
     }
+  }
 }

@@ -1,0 +1,27 @@
+{
+  "name": "lana-public",
+  "version": "1.0.0",
+  "description": "Tu trouveras ici le code de la version publique de Lana !",
+  "main": "startProcess.js",
+  "dependencies": {
+    "better-sqlite3": "^7.4.3",
+    "brain.js": "^1.2.2",
+    "btoa": "^1.2.1",
+    "canvas": "^2.8.0",
+    "discord-together": "^1.1.51",
+    "discord.js": "^13.1.0",
+    "ejs": "^3.1.6",
+    "enmap": "^5.8.7",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "morgan": "^1.10.0",
+    "node-canvas": "^2.7.0",
+    "node-fetch": "^2.6.1",
+    "ravendb": "^5.0.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
