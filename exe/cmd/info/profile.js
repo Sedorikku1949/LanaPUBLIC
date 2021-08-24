@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const Canvas = require("canvas");
 
-Canvas.registerFont(config.pathToProfileCardFont, { family: "roboto" })
+//Canvas.registerFont(config.pathToProfileCardFont, { family: "Roboto Black" })
 
 module.exports = {
 exe: async function(message, prefix, command, args, lang){
@@ -26,18 +26,22 @@ exe: async function(message, prefix, command, args, lang){
   // template
   const template = await Canvas.loadImage(config.profileCardTemplate);
   ctx.drawImage(template, 0, 0, canvas.width - 10, canvas.height - 10)
-
   progress.update(1); await msg.edit(lang.misc.progressMSG.replace(/{bar}/g, progress.draw()));
+
+  
+
+  // pseudo
+  ctx.font = "bold 40px 'Arial'";
+  ctx.fillStyle = '#000000';
+  ctx.stroke();
+  ctx.fillText(user.user.tag, 375, 170, 650 );
+
 
   // pp
   const pp = await Canvas.loadImage(user.user.displayAvatarURL({ size: 512, format: "png", dynamic: false }));
-  ctx.save();
-  ctx.beginPath();
-  ctx.arc(536, 378, 150, 0, 2 * Math.PI, false);
-  ctx.clip();
-  ctx.drawImage(pp, 536, 378);
-  ctx.restore();
+  ctx.circleImage(pp, 177, 154, 155);
 
+  // send
   msg.delete().catch(()=>false)
   await message.channel.send({ files: [{name:"profile.png", attachment: canvas.toBuffer()}]})
 },

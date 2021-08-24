@@ -3,7 +3,7 @@
       "reload": false,
       "maintenance": false,
       "defaultProfileCardBackgroundPath": "exe/_storage/img/profileCardDefaultBackground.jpg",
-      "pathToProfileCardFont": "exe/_storage/font/Roboto-Black.ttf",
+      "pathToProfileCardFont": "exe/_storage/font/roboto.ttf",
       "profileCardTemplate": "exe/_storage/img/profile_card.png",
       "bdd": {
         "users": {

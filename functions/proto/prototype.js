@@ -108,7 +108,8 @@ const charsLines = ({
     "²": [" ___ ", "|_  )", " / / ", "/___|", "     ", "     "],
     "€": ["    ___", "   / __|", " _| |__ ", " _| |__ ", "  | |__ ", "   \___|"]
 })
-const Discord = require("discord.js")
+const Discord = require("discord.js");
+const Canvas = require("canvas");
 
 function chunk(arr, n) { return (arr.length ? [arr.slice(0, n), ...chunk(arr.slice(n), n)] : []); };
 
@@ -149,4 +150,12 @@ module.exports = [
         if (options.channel) return ( await this.channel.messages.fetch(args).catch(() => false)) || (chl ? await chl.messages.fetch(args).catch(() => null) : null);
         else return this.channel.messages.fetch(args).catch(() => null);
     },
+    Canvas.CanvasRenderingContext2D.prototype.circleImage = function(image, x, y, radius, startAngle = 0, endAngle = 2 * Math.PI) {
+        this.beginPath();
+        this.arc(x, y, radius, startAngle, endAngle);
+        this.closePath();
+        this.fill();
+        this.clip();
+        this.drawImage(image, x - radius, y - radius, radius * 2, radius * 2);
+      }
 ]
