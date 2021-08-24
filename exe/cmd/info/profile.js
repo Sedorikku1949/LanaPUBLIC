@@ -25,6 +25,7 @@ exe: async function(message, prefix, command, args, lang){
 
   msg.delete().catch(()=>false)
   await message.channel.send({ files: [{name:"profile.png", attachment: canvas.toBuffer()}]})
+  
 },
 config: { name: "profile", aliases: ["p", "rank"], category: "info", system: { perms: ["SEND_MESSAGES", "MANAGE_MESSAGES", "EMBED_LINKS"], delInvoke: false, inProgress: false, staffCommand: false, devCommand: false } },
 path: null
