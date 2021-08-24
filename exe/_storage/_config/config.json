@@ -4,6 +4,7 @@
       "maintenance": false,
       "defaultProfileCardBackgroundPath": "exe/_storage/img/profileCardDefaultBackground.jpg",
       "pathToProfileCardFont": "exe/_storage/font/Roboto-Black.ttf",
+      "profileCardTemplate": "exe/_storage/img/profile_card.png",
       "bdd": {
         "users": {
           "profile": { "bio": null, "marryID": null, "badges": [], "banner": null },
