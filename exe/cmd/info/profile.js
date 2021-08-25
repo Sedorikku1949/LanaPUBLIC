@@ -73,6 +73,12 @@ module.exports = {
     ctx.roundRect(canvas.width/2, canvas.height/2, 100, 20, 10).fill();
     ctx.restore();
 
+    // badges
+    const badges = (await database.db.get("user/"+message.author.id, "profile.badges"))
+    if (badges.length > 0){
+      //
+    }
+
     // pp
     const pp = await Canvas.loadImage(user.user.displayAvatarURL({ size: 512, format: "png", dynamic: false }));
     ctx.circleImage(pp, 177, 154, 157);
