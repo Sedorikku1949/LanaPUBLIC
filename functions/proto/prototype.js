@@ -114,48 +114,48 @@ const Canvas = require("canvas");
 function chunk(arr, n) { return (arr.length ? [arr.slice(0, n), ...chunk(arr.slice(n), n)] : []); };
 
 module.exports = [
-    Array.prototype.splitArray = function(n) {
-        if (typeof this !== "object" || typeof n !== "number") throw new Error(typeof this !== "object" ? "This prototype is only for Array" : "The arguments for separation must be a number") 
-        return (this.length <= n ? this : chunk(this, n))
-    },
-    String.prototype.toASCII = function() {
-        const res = ['', '', '', '', '', ''],
-        copy = this.split('').filter(c => charsLines[c])
-        for (let e = 0; e < copy.length; e++) charsLines[copy[e]].forEach((l, i) => res[i] = res[i].slice(0, res[i].length - ([" ", "_"].some(char => res[i].endsWith(char)) && !l.startsWith(" ") ? 1 : 0)) + l.slice([" ", "_"].some(char => res[i].endsWith(char)) && !l.startsWith(" ") || e == 0 ? 0 : 1))
-        return res
-    }, 
-    Number.prototype.shortNumber = function() {
-        const tab = ['y', 'z', 'e', 'p', 't', 'g', 'm', 'k']
-        for (let i = 24, y = 0; i > 0; i -= 3, y++) if (this >= 10 ** i) return (this / 10 ** i).toFixed((this / 10 ** i).toFixed(1).toString().includes('.0') ? 0 : 1) + tab[y].toUpperCase()
-        return this
-    },
-    Discord.RoleManager.prototype.selectRole = function(args, options = { fetch: false }){
-        if (!args || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.RoleManager) ) throw new Error("Invalids arguments was provided !");
-        if (options.fetch) return this.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) ) || ( client.guilds.cache.some(g => g.roles.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) )) ? client.guilds.cache.find(g => g.roles.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) )).roles.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) ) : undefined );
-        else return this.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) );
-    },
-    Discord.GuildMemberManager.prototype.selectMember = function (args, options = { fetch: false, bot: false }) {
-        if (!args || typeof args !== "string" || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.GuildMemberManager) ) throw new Error("Invalids arguments was provided !");
-        if (options.fetch) return (this.cache.find(user => (options.bot ? true : user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().match(args.toLowerCase()) || user.displayName.toLowerCase().match(args.toLowerCase()) ) )) || client.users.fetch(args).catch(() => null);
-        else return this.cache.find(user => (options.bot ? true : !user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().match(args.toLowerCase()) || user.displayName.toLowerCase().match(args.toLowerCase()) ) );
-    },
-    Discord.GuildChannelManager.prototype.selectChannel = function(args, options = { type: "GUILD_TEXT", fetch: false }){
-        if (!args || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.GuildChannelManager) ) throw new Error("Invalids arguments was provided !");
-        if (options.fetch) return this.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args || e.position == args || e.rawPosition == args) || client.channels.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args || e.position == args || e.rawPosition == args);
-        else return this.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args || e.position == args || e.rawPosition == args);
-    },
-    Discord.Message.prototype.selectMessage = async function(args, options = { channel: false }){
-        if (!args || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.Message) ) throw new Error("Invalids arguments was provided !");
-        const chl = options.channel ? client.channels.cache.get(options.channel) : null;
-        if (options.channel) return ( await this.channel.messages.fetch(args).catch(() => false)) || (chl ? await chl.messages.fetch(args).catch(() => null) : null);
-        else return this.channel.messages.fetch(args).catch(() => null);
-    },
-    Canvas.CanvasRenderingContext2D.prototype.circleImage = function(image, x, y, radius, startAngle = 0, endAngle = 2 * Math.PI) {
-        this.beginPath();
-        this.arc(x, y, radius, startAngle, endAngle);
-        this.closePath();
-        this.fill();
-        this.clip();
-        this.drawImage(image, x - radius, y - radius, radius * 2, radius * 2);
-      }
+  Array.prototype.splitArray = function(n) {
+    if (typeof this !== "object" || typeof n !== "number") throw new Error(typeof this !== "object" ? "This prototype is only for Array" : "The arguments for separation must be a number") 
+    return (this.length <= n ? this : chunk(this, n))
+  },
+  String.prototype.toASCII = function() {
+    const res = ['', '', '', '', '', ''],
+    copy = this.split('').filter(c => charsLines[c])
+    for (let e = 0; e < copy.length; e++) charsLines[copy[e]].forEach((l, i) => res[i] = res[i].slice(0, res[i].length - ([" ", "_"].some(char => res[i].endsWith(char)) && !l.startsWith(" ") ? 1 : 0)) + l.slice([" ", "_"].some(char => res[i].endsWith(char)) && !l.startsWith(" ") || e == 0 ? 0 : 1))
+    return res
+  }, 
+  Number.prototype.shortNumber = function() {
+    const tab = ['y', 'z', 'e', 'p', 't', 'g', 'm', 'k']
+    for (let i = 24, y = 0; i > 0; i -= 3, y++) if (this >= 10 ** i) return (this / 10 ** i).toFixed((this / 10 ** i).toFixed(1).toString().includes('.0') ? 0 : 1) + tab[y].toUpperCase()
+    return this
+  },
+  Discord.RoleManager.prototype.selectRole = function(args, options = { fetch: false }){
+    if (!args || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.RoleManager) ) throw new Error("Invalids arguments was provided !");
+    if (options.fetch) return this.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) ) || ( client.guilds.cache.some(g => g.roles.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) )) ? client.guilds.cache.find(g => g.roles.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) )).roles.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) ) : undefined );
+    else return this.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) );
+  },
+  Discord.GuildMemberManager.prototype.selectMember = function (args, options = { fetch: false, bot: false }) {
+    if (!args || typeof args !== "string" || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.GuildMemberManager) ) throw new Error("Invalids arguments was provided !");
+    if (options.fetch) return (this.cache.find(user => (options.bot ? true : user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().match(args.toLowerCase()) || user.displayName.toLowerCase().match(args.toLowerCase()) ) )) || client.users.fetch(args).catch(() => null);
+    else return this.cache.find(user => (options.bot ? true : !user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().match(args.toLowerCase()) || user.displayName.toLowerCase().match(args.toLowerCase()) ) );
+  },
+  Discord.GuildChannelManager.prototype.selectChannel = function(args, options = { type: "GUILD_TEXT", fetch: false }){
+    if (!args || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.GuildChannelManager) ) throw new Error("Invalids arguments was provided !");
+    if (options.fetch) return this.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args || e.position == args || e.rawPosition == args) || client.channels.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args || e.position == args || e.rawPosition == args);
+    else return this.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args || e.position == args || e.rawPosition == args);
+  },
+  Discord.Message.prototype.selectMessage = async function(args, options = { channel: false }){
+    if (!args || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.Message) ) throw new Error("Invalids arguments was provided !");
+    const chl = options.channel ? client.channels.cache.get(options.channel) : null;
+    if (options.channel) return ( await this.channel.messages.fetch(args).catch(() => false)) || (chl ? await chl.messages.fetch(args).catch(() => null) : null);
+    else return this.channel.messages.fetch(args).catch(() => null);
+  },
+  Canvas.CanvasRenderingContext2D.prototype.circleImage = function(image, x, y, radius, startAngle = 0, endAngle = 2 * Math.PI) {
+    this.beginPath();
+    this.arc(x, y, radius, startAngle, endAngle);
+    this.closePath();
+    this.fill();
+    this.clip();
+    this.drawImage(image, x - radius, y - radius, radius * 2, radius * 2);
+  }
 ]

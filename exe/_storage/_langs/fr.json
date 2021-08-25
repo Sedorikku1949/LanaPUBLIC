@@ -386,7 +386,8 @@
         "noUser": { "embeds": [{"color":"#ED4245", "description": "> **Je n'ai trouvé personne !**"}]}
       },
       "misc": {
-        "progressMSG": "**Profile en cours de chargement...**\n```\n{bar}```"
+        "progressMSG": "**Profile en cours de chargement...**\n```\n{bar}```",
+        "noBio": "Aucune biographie."
       }
     }
   }
