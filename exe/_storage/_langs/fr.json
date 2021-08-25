@@ -267,6 +267,7 @@
         "fields": [
           { "name": "Développeurs :", "value": "{dev}\n** **", "inline": true },
           { "name": "Hébergeur :", "value": "Little Evil Thing !", "inline": true },
+          { "name": "Graphiste :", "value": "- ̗̀  ʍ ị Ḽ ɨ ӽ  ̖́- [FR]", "inline": true },
           { "name": "Quelques statistiques :", "value": "** **\n{server} serveurs.\n{users} utilisateurs.\n\n**En ligne depuis le** {uptime} ( <t:{uptimeDuration}:R> ).\n**Créer le** {date} ( <t:{dateDuration}:R> ).\n\n** **", "inline": false },
           { "name": "Librairies :", "value": "** **\n**Node JS :** `{node}`\n**Discord.js :** `{djs}`\n** \u200b**", "inline": true },
           { "name": "Base de donnée :", "value": "** **\n**Librairie :** [ravenDB](https://ravendb.net)\n**Surcouche :** [MiaDB](https://github.com/Sedorikku1949/MiaDB)\n\n> La surcouche a entièrement été créée par les développeurs !\n** **", "inline": false}
@@ -387,7 +388,10 @@
       },
       "misc": {
         "progressMSG": "**Profile en cours de chargement...**\n```\n{bar}```",
-        "noBio": "Aucune biographie."
+        "noBio": "Aucune biographie.",
+        "marryLine": "Marrié(e) avec : {marryTag}",
+        "scoreLine": "Score : {score}",
+        "noMarry": "Personne."
       }
     }
   }

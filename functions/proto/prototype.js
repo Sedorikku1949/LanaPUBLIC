@@ -157,5 +157,30 @@ module.exports = [
     this.fill();
     this.clip();
     this.drawImage(image, x - radius, y - radius, radius * 2, radius * 2);
+  },
+  Canvas.CanvasRenderingContext2D.prototype.fillTextMultiline = function(text, maxWidth, limitLine, x, y, y1, y2 = 0, p = 0) {
+    const splitedtext = text.split(/\s+/);
+    const res = [];
+    let line = 0;
+    let i = 0;
+    while (i < splitedtext.length || res.length != 0) {
+      if (this.measureText(res.join(' ')).width + this.measureText(splitedtext[i]).width <= maxWidth) res.push(splitedtext[i++]);
+      else {
+        this.fillText(res.join(' '), x, y + line * y1 + p * y2) || (res.length = 0);
+        if (++line >= limitLine) break;
+      }
+    }
+  },
+  Canvas.CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+    if (w < 2 * r) r = w / 2;
+    if (h < 2 * r) r = h / 2;
+    this.beginPath();
+    this.moveTo(x+r, y);
+    this.arcTo(x+w, y,   x+w, y+h, r);
+    this.arcTo(x+w, y+h, x,   y+h, r);
+    this.arcTo(x,   y+h, x,   y,   r);
+    this.arcTo(x,   y,   x+w, y,   r);
+    this.closePath();
+    return this;
   }
 ]
