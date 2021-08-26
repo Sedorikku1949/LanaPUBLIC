@@ -48,7 +48,8 @@
       }]
     },
     "defaultXpMessage": "** **\n> **Félicitation `{userTag}`, tu passe au niveau `{lvl}` !**\n** **",
-    "blacklistedUser": { "embeds": [{"color":"#ED4245", "description": "> **Tu es blacklist, tu ne peux pas utiliser mes commandes !**"}]}
+    "blacklistedUser": { "embeds": [{"color":"#ED4245", "description": "> **Tu es blacklist, tu ne peux pas utiliser mes commandes !**"}]},
+    "automod": {}
   },
   "commands": {
     "logs" : {
@@ -357,7 +358,7 @@
         "response": {
           "embeds": [{
             "color": "2f3136",
-            "title": "Informations sur {roleName} :",
+            "title": "Informations sur \"{roleName}\" :",
             "fields": [
               { "name": "Nom :", "value": "{roleName}", "inline": true },
               { "name": "ID :", "value": "{roleID}", "inline": true },
@@ -397,18 +398,27 @@
     },
     "blacklist": {
       "desc": "Il faut bien gérer la blacklist :)",
-      "use": "{prefix}blacklist add <user> <reason ?>\n{prefix}blacklist remove <user> <reason ?>\n{prefix}blacklist list\n{prefix}blacklist clear",
+      "use": "{prefix}blacklist add <user> <reason ?>\n{prefix}blacklist see <user>\n{prefix}blacklist remove <user>\n{prefix}blacklist clear\n{prefix}blacklist list",
       "assets": {
-        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Un argument est requis !**\n```md\n- add\n- remove\n- list\n- clear\n```"}] },
-        "invalidArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois donner un de ces arguments !**\n```md\n- add\n- remove\n- list\n- clear\n```"}] },
+        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Un argument est requis !**\n```md\n- add\n- remove\n- list\n- clear\n- see\n```"}] },
+        "invalidArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois donner un de ces arguments !**\n```md\n- add\n- remove\n- list\n- clear\n- see\n```"}] },
         "add": { "embeds": [{ "color": "#57F287", "description": "> **`{user}` as été ajouté(e) à la blacklist avec succès !**" }] },
         "remove": { "embeds": [{ "color": "#57F287", "description": "> **`{user}` as été retiré(e) de la blacklist avec succès !**" }] },
-        "noArgsRemove": { "embeds": [{ "color": "#57F287", "description": "> **Je ne sais pas qui retiré de la blacklist**" }] },
-        "noArgsAdd": { "embeds": [{ "color": "#57F287", "description": "> **Je ne sais pas qui ajouté à la blacklist**" }] },
-        "invalidUser": { "embeds": [{ "color": "#57F287", "description": "> **Je n'ai pas trouvé cette personne.**" }] },
-        "clearMessageAttempt": { "embeds": [{ "color": "2f3136", "description": "**Nettoyage de la blacklist...**" }]},
-        "clearMessageConfirmation": { "embeds": [{ "color": "2f3136", "description": "**Nettoyage de la blacklist terminé !**" }]}
+        "alreadyAdd": { "embeds": [{ "color": "#ED4245", "description": "> **Cette personne est déjà dans la blacklist !**" }] },
+        "notInBlacklist": { "embeds": [{ "color": "#ED4245", "description": "> **Cette personne n'est pas dans la blacklist !**" }] },
+        "noArgsRemove": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas qui retiré de la blacklist**" }] },
+        "noArgsAdd": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas qui ajouté à la blacklist et avec quelle raison**" }] },
+        "invalidUser": { "embeds": [{ "color": "#ED4245", "description": "> **Je n'ai pas trouvé cette personne.**" }] },
+        "clearMessageAttempt": { "embeds": [{ "color": "2f3136", "description": "> **Nettoyage de la blacklist...**" }]},
+        "clearMessageConfirmation": { "embeds": [{ "color": "2f3136", "description": "> **Nettoyage de la blacklist terminé !**" }]},
+        "indexFail": { "embeds": [{ "color": "#ED4245", "description": "> **L'index de l'utilisateur dans la base n'est pas valide !**" }] },
+        "noSeeArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas qui rechercher dans la base de donnée.**" }] },
+        "seeResponse": { "embeds": [{ "color": "#57F287", "title": "{user}", "description": "```\n{desc}```", "footer": { "text": "{id}" } }] }
       }
+    },
+    "xp": {
+      "desc": "Cette commande te permet de gérer le système d'expérience !",
+      "use": "{prefix}xp message [-chl <channel>] <message de level up>\n{prefix}xp on\n{prefix}xp add <user> <xp>\n{prefix}xp remove <user> <xp>\n{prefix}xp reset <user>"
     }
   }
 }

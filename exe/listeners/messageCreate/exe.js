@@ -21,6 +21,9 @@ module.exports = async function(message){
   require("../../managers/commandsManager").execute(message);
   deleteCache(require.resolve("../../managers/commandsManager"));
 
+  require("../../managers/automod.js")(message);
+  deleteCache(require.resolve("../../managers/automod.js"));
+
   let data = clone(config.bdd.users);
   data.id = message.author.id;
   database.db.ensure("user/"+message.author.id, data);

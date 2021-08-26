@@ -1,7 +1,12 @@
 const Discord = require("discord.js");
 const Canvas = require("canvas");
 
-//Canvas.registerFont(config.pathToProfileCardFont, { family: "Roboto Black" })
+function filterBadges(userBadges){
+  let res = [];
+  if (userBadges.includes("HAVE_INVITED_CLIENT")) res.push("INVITATION");
+  if (userBadges.includes("IS_IN_SUPPORT_GUILD")) res.push("SUPPORT");
+  return res;
+}
 
 module.exports = {
   exe: async function(message, prefix, command, args, lang){
@@ -33,7 +38,7 @@ module.exports = {
     ctx.font = "bold 40px 'Arial'";
     ctx.fillStyle = '#000000';
     ctx.stroke();
-    ctx.fillText(user.user.tag, 375, 170, 650 );
+    ctx.fillText(user.user.tag, 200, 200, 650 );
 
     // lvl
     const lvl = String((await database.db.get("guild/"+message.guild.id, `xp["${message.author.id}"].lvl`)) || 0);
@@ -74,14 +79,24 @@ module.exports = {
     ctx.restore();
 
     // badges
-    const badges = (await database.db.get("user/"+message.author.id, "profile.badges"))
+    const badges = (await database.db.get("user/"+message.author.id, "profile.badges")) ?? []
     if (badges.length > 0){
-      //
-    }
+      let dim = 100;
+      const availableBadges = filterBadges(badges);
+      let [x,y] = [200, 200];
+      availableBadges.slice(0,4).forEach(async function(bdg){
+        try {
+          console.log(y)
+          const bdgIMG = await Canvas.loadImage(config.badgesIMG[bdg]);
+          ctx.drawImage(bdgIMG, x, y, dim, dim);
+          y += dim+20;
+        } catch(err) {};
+      });
+    };
 
     // pp
     const pp = await Canvas.loadImage(user.user.displayAvatarURL({ size: 512, format: "png", dynamic: false }));
-    ctx.circleImage(pp, 177, 154, 157);
+    ctx.circleImage(pp, 197.56, 169.5, 157.5);
 
     // send
     msg.delete().catch(()=>false);

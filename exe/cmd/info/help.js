@@ -1,10 +1,14 @@
 function getCategoryBar(list){ return list.map((e) => { return list.map(l => { if (l == e) { return `[ ${l} ]`; } else { return l; } }).join(" / "); }); };
 function findAllCategories(list){ let res = []; list.forEach(cmd => { if (!res.includes(cmd.config.category)) { res.push(cmd.config.category) } else return; }); return res; }
+function specificGrade(cmd, title){
+  if (cmd.config.system.devCommand) return `${emojis.dev.msg}** ** ** **${title}`;
+  else return title
+}
 
 async function sendSpecificCommandHelp(msg, cmd, message, lang){
     const l = clone(await database.db.get("user/"+message.author.id) ? (database.language[await database.db.get("user/"+message.author.id).lang] || database.language.fr) : database.language.fr );
     const embed = JSON.parse(JSON.stringify(lang.assets.specificCommand));
-    embed.embeds[0].title = embed.embeds[0].title.replace(/{name}/, cmd.config.name)
+    embed.embeds[0].title = specificGrade(cmd, embed.embeds[0].title.replace(/{name}/, cmd.config.name))
     embed.embeds[0].thumbnail.url = client.user.displayAvatarURL({ size: 2048, format: "png" });
     embed.embeds[0].fields[0].value = embed.embeds[0].fields[0].value.replace(/{category}/, (l.misc.category[cmd.config.category] || cmd.config.category) )
     embed.embeds[0].fields[1].value = embed.embeds[0].fields[1].value.replace(/{aliase}/, (cmd.config.aliases.length > 0 ? cmd.config.aliases.join(" / ") : lang.misc.noAliase) )

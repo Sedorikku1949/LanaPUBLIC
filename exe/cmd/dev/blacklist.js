@@ -3,15 +3,25 @@ module.exports = {
     if (!args[0]) return message.reply(lang.assets.noArgs).catch(()=>false);
     switch(args[0]) {
       case "add": {
-        if (!args[1]) return message.reply(lang.assets.noArgsAdd);
-        const user = message.guild.members.selectMember(args[0], { fetch: true, user: true, bot: true });
+        if (!args[2]) return message.reply(lang.assets.noArgsAdd);
+        const user = await message.guild.members.selectMember(args[1], { fetch: true, user: true, bot: true });
         if (!user || user?.id == message.author.id) return message.reply(lang.assets.invalidUser);
-        await database.db.push("blacklist", { id: user.id, reason: message.content.slice(prefix.length+command.length+args[0]+2) } );
+        if ((await database.db.get("blacklist")).some(e => e.id == user.id)) return message.reply(lang.assets.alreadyAdd);
+        await database.db.push("blacklist", { id: user.id, reason: message.content.slice(prefix.length+command.length+args[0].length+args[1].length+3) } );
         lang.assets.add.embeds[0].description = lang.assets.add.embeds[0].description.replace(/{user}/g, user.tag);
         message.reply(lang.assets.add);
         break;
       };
       case "remove": {
+        if (!args[1]) return message.reply(lang.assets.noArgsAdd);
+        const user = await message.guild.members.selectMember(args[1], { fetch: true, user: true, bot: true });
+        if (!user || user?.id == message.author.id) return message.reply(lang.assets.invalidUser);
+        if (!(await database.db.get("blacklist")).some(e => e.id == user.id)) return message.reply(lang.assets.notInBlacklist);
+        const index = (await database.db.get("blacklist")).findIndex(e => e.id == user.id);
+        if (index < 0) return message.reply(lang.assets.indexFail);
+        await database.db.remove("blacklist", null, index);
+        lang.assets.remove.embeds[0].description = lang.assets.remove.embeds[0].description.replace(/{user}/g, user.tag);
+        message.reply(lang.assets.remove);
         break;
       };
       case "list": {
@@ -53,6 +63,19 @@ module.exports = {
         const msg = await message.channel.send(lang.assets.clearMessageAttempt).catch(()=>false);
         await database.db.set("blacklist", []);
         msg.edit(lang.assets.clearMessageConfirmation).catch(()=>false)
+        break;
+      };
+      case "see": {
+        if (!args[1]) return message.reply(lang.assets.noSeeArgs)
+        let blacklist = await database.db.get("blacklist");
+        const user = await message.guild.members.selectMember(args[1], { fetch: true, user: true, bot: true });
+        if (!user) return message.reply(lang.assets.invalidUser);
+        const bl = blacklist.find(e => e.id == user.id);
+        if (!bl) return message.reply(lang.assets.notInBlacklist);
+        lang.assets.seeResponse.embeds[0].title = lang.assets.seeResponse.embeds[0].title.replace(/{user}/g, user.tag);
+        lang.assets.seeResponse.embeds[0].description = lang.assets.seeResponse.embeds[0].description.replace(/{desc}/g, bl.reason.slice(0,1985));
+        lang.assets.seeResponse.embeds[0].footer.text = lang.assets.seeResponse.embeds[0].footer.text.replace(/{id}/g, user.id);
+        message.reply(lang.assets.seeResponse);
         break;
       };
       default: return message.reply(lang.assets.invalidArgs)
