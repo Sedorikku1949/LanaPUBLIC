@@ -1,5 +1,5 @@
 module.exports = {
-  exe: async function(message, prefix, command, args, text){
+  exe: async function(message, prefix, command, args, lang){
     const msg = await message.channel.send({ embeds: [{ color: "#5865F2", description: `${emojis.warningButton.msg}   **Veux-tu réellement me rechargée ?**` }] })
     await Promise.all([emojis.check.id, emojis.close.id].map((e) => msg.react(e)))
     const collector = msg.createReactionCollector({ time: "30000", filter: (react, user) => react.emoji.id && [emojis.check.id, emojis.close.id].includes(react.emoji.id) && user.id == message.author.id })

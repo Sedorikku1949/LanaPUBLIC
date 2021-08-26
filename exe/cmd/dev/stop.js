@@ -1,5 +1,5 @@
 module.exports = {
-  exe: async function(message, prefix, command, args, text){
+  exe: async function(message, prefix, command, args, lang){
     await message.channel.send({ embeds: [{ color: "2f3136", description: `${emojis.error.msg} **Arrêt du bot...**` }] });
     global["client"].destroy();
     process.exit(0);

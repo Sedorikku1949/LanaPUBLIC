@@ -1,0 +1,1 @@
+module.exports = function increase(x, embed) { return x >= embed.length - 1 ? 0 : x + 1 }

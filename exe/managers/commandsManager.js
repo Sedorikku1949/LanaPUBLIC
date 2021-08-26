@@ -58,8 +58,9 @@ module.exports = {
     const cmd = database.commands.find((cmd) => cmd.config.name == command || (cmd.config.aliases.length > 0 && cmd.config.aliases.includes(command)));
     if (!cmd) return;
 
-    if (cmd.config.system.staffCommand && await isStaff(message)) return message.channel.send(lang.misc.handler.noStaff);
-    if (cmd.config.system.devCommand && !config.dev.devID.includes(message.author.id)) return message.channel.send(lang.misc.handler.noDev);
+    if ((await database.db.get("blacklist")).some(e => e.id == message.author.id)) return message.reply(lang.misc.blacklistedUser);
+    if (cmd.config.system.staffCommand && await isStaff(message)) return message.reply(lang.misc.handler.noStaff);
+    if (cmd.config.system.devCommand && !config.dev.devID.includes(message.author.id)) return message.reply(lang.misc.handler.noDev);
     if ((await database.db.get("guild/"+message.guild.id)) && (await database.db.get("guild/"+message.guild.id))?.config?.ignoreChannel && (await database.db.get("guild/"+message.guild.id))["_config"].ignoreChannel.includes(message.channel.id)) return;
     if ((await database.db.get("guild/"+message.guild.id)) && (await database.db.get("guild/"+message.guild.id))?.config?.ignoreCategory && (await database.db.get("guild/"+message.guild.id))["_config"].ignoreCategory.includes(message.channel.id)) return;
     if ((await database.db.get("guild/"+message.guild.id)) && (await database.db.get("guild/"+message.guild.id))?.config?.ignoreCommand && (await database.db.get("guild/"+message.guild.id))["_config"].ignoreCommand.includes(message.channel.id)) return;
@@ -67,7 +68,7 @@ module.exports = {
 
     try { cmd.exe(message, prefix, command, args, lang.commands[cmd.config.name] ); console.log(`{ COMMAND EXECUTOR } {yellow}< ${getDate(Date.now(), `[DD]/[MM]/[YYYY] à [hh]:[mm] et [ss]:[ms]`)} | ${Date.now()} >{stop} command "${cmd.config.name}" executed by {cyan}${message.author.tag} / ${message.author.id}{stop} in {blue}( #${message.channel.name} | ${message.channel.id} ){stop}`); await database.db.inc("user/"+message.author.id, "score") }
       catch(err) {
-        message.channel.send(lang.misc.handler.error)
+        message.reply(lang.misc.handler.error)
         client.channels.cache.get(config.dev.errorChannel).send({ embed: { color: "#ED4245", fields: [{name: "Path :", value: "```\n"+cmd.path+"```"}, {name: "Executor :", value: "```\n"+message.author.tag+" / "+message.author.id+"```"}, {name: "Guild :", value: "```\n"+message.guild.name+" / "+message.guild.id+"```"}], title: "Une erreur est survenue !", description: "```js\n"+require("util").inspect(err).slice(0,1900).replace("`", "`\u200b")+"```" } })
       }
   }

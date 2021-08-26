@@ -32,7 +32,7 @@ module.exports = class eventManager {
       global["database"] = {
         db: new (require("../../database/src"))({ url: "http://127.0.0.1:8080", name: "lanaPUBLIC"}),
         language: {},
-        blacklist: {},
+        config: global["config"],
       }
       global["database"].commands = require("./commandsManager").init();
       resolve(true)

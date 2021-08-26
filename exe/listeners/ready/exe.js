@@ -3,15 +3,18 @@ let lastSave = null;
 async function interval(ms) {
   global["interval"].push(setInterval(async function(){
     // database save
-    if (getDate(Date.now(), "[hh]:[mm]") == "00:07" && getDate(Date.now(), "[DD]/[MM]/[YYYY]") !== lastSave) {
-      lastSave = getDate(Date.now(), "[DD]/[MM]/[YYYY]");
+    if (getDate(Date.now(), "[hh]:[mm]") == "00:00" && getDate(Date.now(), "[DD]_[MM]_[YYYY]") !== lastSave) {
+      lastSave = getDate(Date.now(), "[DD]_[MM]_[YYYY]");
       const session = database.db.store.openSession();
       const data = await session.query("from @all_docs").all();
-      hastebin.saveDatabase([{ name: "database", data: data}]).then((codes) => {
-        client.channels.cache.get("870602854350585866")?.send({ embeds: [{ color: "2f3136", footer: { text: `sauvegarde du ${lastSave}` }, description: `**Sauvegardes :**\n${codes.map(e => `\`${e.name}\` >> ${e.url}` ).join("\n")}` }] })
+      await session.saveChanges();
+      const res = Buffer.from(JSON.stringify(data, null, 2));
+      client.channels.cache.get("870602854350585866")?.send({
+        content: `**Sauvegarde du ${lastSave} :**`,
+        files: [{ name: `database_${lastSave}.json`, attachment: res }],
       })
     }
-  }, 30000))
+  }, ms))
 }
 
 module.exports = async() => {
@@ -20,5 +23,6 @@ module.exports = async() => {
     console.log(`{cyan}The application "${client.user.tag}" has been started successfully in ${Date.now() - start}ms !`);
     slashCommands.loadAll()
     statut();
-    interval()
+    // save + system
+    interval(30000)
 };

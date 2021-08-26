@@ -134,9 +134,12 @@ module.exports = [
     if (options.fetch) return this.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) ) || ( client.guilds.cache.some(g => g.roles.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) )) ? client.guilds.cache.find(g => g.roles.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) )).roles.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) ) : undefined );
     else return this.cache.find(e => e.id == args || e.name.toLowerCase().match(new RegExp(args, "g")) );
   },
-  Discord.GuildMemberManager.prototype.selectMember = function (args, options = { fetch: false, bot: false }) {
+  Discord.GuildMemberManager.prototype.selectMember = function (args, options = { fetch: false, bot: false, user: false  }) {
     if (!args || typeof args !== "string" || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.GuildMemberManager) ) throw new Error("Invalids arguments was provided !");
-    if (options.fetch) return (this.cache.find(user => (options.bot ? true : user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().match(args.toLowerCase()) || user.displayName.toLowerCase().match(args.toLowerCase()) ) )) || client.users.fetch(args).catch(() => null);
+    if (options.fetch && !options.user) return ((this.cache.find(user => (options.bot ? true : !user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().match(args.toLowerCase()) || user.displayName.toLowerCase().match(args.toLowerCase()) ) )) || client.users.fetch(args).catch(() => null));
+    if (options.fetch && options.user) return ((this.cache.find(user => (options.bot ? true : !user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().match(args.toLowerCase()) || user.displayName.toLowerCase().match(args.toLowerCase()) ) ))?.user || client.users.fetch(args).catch(() => null));
+    console.log("user")
+    if (options.user) return (this.cache.find(user => (options.bot ? true : !user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().match(args.toLowerCase()) || user.displayName.toLowerCase().match(args.toLowerCase()) ) ))?.user;
     else return this.cache.find(user => (options.bot ? true : !user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().match(args.toLowerCase()) || user.displayName.toLowerCase().match(args.toLowerCase()) ) );
   },
   Discord.GuildChannelManager.prototype.selectChannel = function(args, options = { type: "GUILD_TEXT", fetch: false }){

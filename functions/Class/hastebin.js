@@ -30,11 +30,6 @@ module.exports = class hastebin {
      *  */
     static async saveDatabase(arr){
         if (!arr || !Array.isArray(arr)) throw new Error("I can use only an Array at the entries");
-        const create = this.create
-        return new Promise(async function(resolve, _){
-            let res = [];
-            await Promise.all(arr.map( async(e) => { const url = await create(JSON.stringify(e.data, null, 2)); res.push({ name: e.name, url: url }) } ));
-            resolve(res);
-        })
+        return await this.create(JSON.stringify(arr, null, 2));
     }
 }

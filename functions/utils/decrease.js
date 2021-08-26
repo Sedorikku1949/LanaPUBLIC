@@ -1,0 +1,1 @@
+module.exports = function decrease(x, embed) { return x <= 0 ? x = embed.length - 1 : x - 1 }

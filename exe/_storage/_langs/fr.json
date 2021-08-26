@@ -47,7 +47,8 @@
         "thumbnail": { "url": "{url}" }
       }]
     },
-    "defaultXpMessage": "** **\n> **Félicitation `{userTag}`, tu passe au niveau `{lvl}` !**\n** **"
+    "defaultXpMessage": "** **\n> **Félicitation `{userTag}`, tu passe au niveau `{lvl}` !**\n** **",
+    "blacklistedUser": { "embeds": [{"color":"#ED4245", "description": "> **Tu es blacklist, tu ne peux pas utiliser mes commandes !**"}]}
   },
   "commands": {
     "logs" : {
@@ -392,6 +393,21 @@
         "marryLine": "Marrié(e) avec : {marryTag}",
         "scoreLine": "Score : {score}",
         "noMarry": "Personne."
+      }
+    },
+    "blacklist": {
+      "desc": "Il faut bien gérer la blacklist :)",
+      "use": "{prefix}blacklist add <user> <reason ?>\n{prefix}blacklist remove <user> <reason ?>\n{prefix}blacklist list\n{prefix}blacklist clear",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Un argument est requis !**\n```md\n- add\n- remove\n- list\n- clear\n```"}] },
+        "invalidArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois donner un de ces arguments !**\n```md\n- add\n- remove\n- list\n- clear\n```"}] },
+        "add": { "embeds": [{ "color": "#57F287", "description": "> **`{user}` as été ajouté(e) à la blacklist avec succès !**" }] },
+        "remove": { "embeds": [{ "color": "#57F287", "description": "> **`{user}` as été retiré(e) de la blacklist avec succès !**" }] },
+        "noArgsRemove": { "embeds": [{ "color": "#57F287", "description": "> **Je ne sais pas qui retiré de la blacklist**" }] },
+        "noArgsAdd": { "embeds": [{ "color": "#57F287", "description": "> **Je ne sais pas qui ajouté à la blacklist**" }] },
+        "invalidUser": { "embeds": [{ "color": "#57F287", "description": "> **Je n'ai pas trouvé cette personne.**" }] },
+        "clearMessageAttempt": { "embeds": [{ "color": "2f3136", "description": "**Nettoyage de la blacklist...**" }]},
+        "clearMessageConfirmation": { "embeds": [{ "color": "2f3136", "description": "**Nettoyage de la blacklist terminé !**" }]}
       }
     }
   }

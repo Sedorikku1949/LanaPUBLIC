@@ -17,6 +17,7 @@ function replaceBalise(str, message, data){
 
 module.exports = async function(message){
   if (["DM", "GROUP_DM"].includes(message.channel.type)  || message.author.bot || !message.content) return;
+  await database.db.ensure("blacklist", []);
   require("../../managers/commandsManager").execute(message);
   deleteCache(require.resolve("../../managers/commandsManager"));
 

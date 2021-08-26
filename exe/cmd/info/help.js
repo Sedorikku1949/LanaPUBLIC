@@ -1,8 +1,5 @@
 function getCategoryBar(list){ return list.map((e) => { return list.map(l => { if (l == e) { return `[ ${l} ]`; } else { return l; } }).join(" / "); }); };
 function findAllCategories(list){ let res = []; list.forEach(cmd => { if (!res.includes(cmd.config.category)) { res.push(cmd.config.category) } else return; }); return res; }
-function increase(x, embed) { return x >= embed.length - 1 ? 0 : x + 1 }
-function decrease(x, embed) { return x <= 0 ? x = embed.length - 1 : x - 1 }
-
 
 async function sendSpecificCommandHelp(msg, cmd, message, lang){
     const l = clone(await database.db.get("user/"+message.author.id) ? (database.language[await database.db.get("user/"+message.author.id).lang] || database.language.fr) : database.language.fr );
