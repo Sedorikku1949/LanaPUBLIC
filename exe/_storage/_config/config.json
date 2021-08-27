@@ -20,7 +20,21 @@
         },
         "guilds": {
           "_config": {
-            "enable": false, "staffRoles": [], "ignoreChannel": [], "ignoreCategory": [], "ignoreCommand": [], "ignoreUser": [], "commandException": [], "xp": false, "money": false, "invite": false
+            "enable": false,
+            "staffRoles": [],
+            "ignoreChannel": [],
+            "ignoreCategory": [],
+            "ignoreCommand": [],
+            "ignoreUser": [],
+            "commandException": [],
+            "xp": false,
+            "xpConfig": {
+              "noChannel": [],
+              "noRole": [],
+              "noUser": []
+            },
+            "money": false,
+            "invite": false
           },
           "logs": { 
             "join": null,  "leave": null,  "messageUpdate": null,  "messageDelete": null,  "sanctions": null,  "raid": null,  "banAdd": null,  "banRemove": null,  "inviteCreate": null,  "inviteDelete": null,  "messageReactionRemoveAll": null,  "roleCreate": null,  "roleDelete": null,  "roleUpdate": null,  "voiceStateUpdate": null, "channelCreate": null, "channelDelete": null, "channelUpdate": null

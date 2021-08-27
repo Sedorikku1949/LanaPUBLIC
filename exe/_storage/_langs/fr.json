@@ -49,7 +49,12 @@
     },
     "defaultXpMessage": "** **\n> **Félicitation `{userTag}`, tu passe au niveau `{lvl}` !**\n** **",
     "blacklistedUser": { "embeds": [{"color":"#ED4245", "description": "> **Tu es blacklist, tu ne peux pas utiliser mes commandes !**"}]},
-    "automod": {}
+    "automod": {
+      "badwords": { "embeds": [{ "color": "#c40808", "description": "Tu es prié d'utiliser un vocabulaire correct !" }] },
+      "link": { "embeds": [{ "color": "#c40808", "description": "Il est interdit d'envoyer des liens." }] },
+      "mentions": { "embeds": [{ "color": "#c40808", "description": "Il est interdit de mentionner trop d'utilisateurs dans un message." }] },
+      "antispam": { "embeds": [{ "color": "#c40808", "description": "Tu parles trop vite! Ralentis un peu.."}] }
+    }
   },
   "commands": {
     "logs" : {
@@ -167,7 +172,7 @@
             "color":"#5865F2",
             "title": "Page d'aide de la commande \"{name}\" :",
             "footer": { "text":"© Lana - 2021" },
-            "thumbnail": { "url": "{url}" },
+            "author": { "icon_url": "{url}", "name": "" },
             "fields": [
               { "name": "Catégorie :", "value": "```\n{category}```", "inline": true }, { "name": "Aliase(s) :", "value": "```\n{aliase}```", "inline": true },
               { "name": "Description :", "value": "```\n{desc}```", "inline": false }, { "name": "Utilisation :", "value": "```\n{use}```", "inline": false }
@@ -418,7 +423,15 @@
     },
     "xp": {
       "desc": "Cette commande te permet de gérer le système d'expérience !",
-      "use": "{prefix}xp message [-chl <channel>] <message de level up>\n{prefix}xp on\n{prefix}xp add <user> <xp>\n{prefix}xp remove <user> <xp>\n{prefix}xp reset <user>"
+      "use": "{prefix}xp msg add [-chl <channel>] [-m <message de level up>]\n{prefix}xp msg remove <data_id | channel | \"all\">\n{prefix}xp msg list\n{prefix}xp add <user> <xp>\n{prefix}xp remove <user> <xp>\n{prefix}xp reset <user>\n{prefix}xp on\n{prefix}xp test\n{prefix}xp nochannel add <channel>\n{prefix}xp nochannel remove <channel>\n{prefix}xp nochannel list\n{prefix}xp norole add <role>\n{prefix}xp norole remove <role>\n{prefix}xp norole list\n{prefix}xp nouser add <user>\n{prefix}xp nouser remove <user>\n{prefix}xp nouser list",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quoi faire, veuillez donner un de ces arguments :**\n```md\n- msg\n- add\n- remove\n- on\n- test\n- nochannel\n- norole\n- nouser```" }] },
+        "invalidArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quoi faire, veuillez donner un de ces arguments :**\n```md\n- msg\n- add\n- remove\n- on\n- test\n- nochannel\n- norole\n- nouser```" }] },
+        "on": {
+          "active": { "embeds": [{ "color": "#57F287", "description": "> **Le système d'xp est désormais activé !**" }] },
+          "disable": { "embeds": [{ "color": "#57F287", "description": "> **Le système d'xp est désormais désactivé !**" }] }
+        }
+      }
     }
   }
 }

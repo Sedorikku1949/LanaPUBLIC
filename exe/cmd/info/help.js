@@ -8,8 +8,8 @@ function specificGrade(cmd, title){
 async function sendSpecificCommandHelp(msg, cmd, message, lang){
     const l = clone(await database.db.get("user/"+message.author.id) ? (database.language[await database.db.get("user/"+message.author.id).lang] || database.language.fr) : database.language.fr );
     const embed = JSON.parse(JSON.stringify(lang.assets.specificCommand));
-    embed.embeds[0].title = specificGrade(cmd, embed.embeds[0].title.replace(/{name}/, cmd.config.name))
-    embed.embeds[0].thumbnail.url = client.user.displayAvatarURL({ size: 2048, format: "png" });
+    embed.embeds[0].title = specificGrade(cmd, embed.embeds[0].title.replace(/{name}/, cmd.config.name));
+    embed.embeds[0].author = { name: client.user.tag, icon_url: client.user.displayAvatarURL({ size: 2048, format: "png" }) };
     embed.embeds[0].fields[0].value = embed.embeds[0].fields[0].value.replace(/{category}/, (l.misc.category[cmd.config.category] || cmd.config.category) )
     embed.embeds[0].fields[1].value = embed.embeds[0].fields[1].value.replace(/{aliase}/, (cmd.config.aliases.length > 0 ? cmd.config.aliases.join(" / ") : lang.misc.noAliase) )
     embed.embeds[0].fields[2].value = embed.embeds[0].fields[2].value.replace(/{desc}/, (Object.entries(l.commands).find(e => e[0] == cmd.config.name) ? Object.entries(l.commands).find(e => e[0] == cmd.config.name)[1].desc : undefined || "...") )
