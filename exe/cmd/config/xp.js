@@ -40,8 +40,15 @@ module.exports = {
             lang.assets.msg.removeResponse.embeds[0].fields[0].value = lang.assets.msg.removeResponse.embeds[0].fields[0].value.replace(/{channel}/, !messageToDelete.channel ? "locale" : `<#${messageToDelete.channel}>`);
             lang.assets.msg.removeResponse.embeds[0].fields[1].value = lang.assets.msg.removeResponse.embeds[0].fields[1].value.replace(/{id}/, messageToDelete.id );
             lang.assets.msg.removeResponse.embeds[0].fields[2].value = lang.assets.msg.removeResponse.embeds[0].fields[2].value.replace(/{msg}/, messageToDelete.content.slice(0,1990) );
-            message.reply(lang.assets.msg.removeResponse);
-            await Promise.all([emojis.check.id, emojis.close.id])
+            const msg = await message.reply(lang.assets.msg.removeResponse);
+            await Promise.all([emojis.check.id, emojis.close.id].map(e => msg.react(e).catch(() => false)))
+            const collector = msg.createReactionCollector({ time: 30000, filter: (react, user) => user.id == message.author.id && [emojis.check.id, emojis.close.id].includes(react.emoji.id)});
+            let res = false;
+            collector.on("collect", (react) => {
+              res = true;
+              collector.stop()
+            });
+            collector.on("end", () => { if (!res) return msg.edit(lang.assets.msg.noResponse); else msg.edit(lang.assets.msg.cancel); msg.reactions.removeAll().catch(() => false) })
             break;
           };
           case "list": {

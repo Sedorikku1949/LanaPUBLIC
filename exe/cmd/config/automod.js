@@ -30,7 +30,9 @@ const SPAMLEVEL = {
 };
 
 module.exports = {
-    exe: async function(message, prefix, command, args, lang) {},
-    config: { name: "automod", aliases: [], category: "config", system: { perms: ["SEND_MESSAGES", "EMBED_LINKS", "ADD_REACTIONS", "MANAGE_MESSAGES"], delInvoke: false, inProgress: false, staffCommand: true, devCommand: false } },
+    exe: async function(message, prefix, command, args, lang) {
+      if (!config.dev.devID.includes(message.author.id)) return message.react("❌").catch(() => false); // commande encore en dev donc pas d'accès aux non devs
+    },
+    config: { name: "automod", aliases: [], category: "config", system: { perms: ["SEND_MESSAGES", "EMBED_LINKS", "ADD_REACTIONS", "MANAGE_MESSAGES"], delInvoke: false, inProgress: true, staffCommand: true, devCommand: false } },
     path: null
 };

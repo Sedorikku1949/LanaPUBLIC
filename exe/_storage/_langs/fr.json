@@ -450,11 +450,13 @@
           "noDataList": { "embeds": [{ "color": "#ED4245", "description": ">>> **Oups, je n'ai pas réussi à charger la base de donnée du serveur.**\nJe vous recommande de vérifier la base de donnée avec la commande \"data\"." }] },
           "noRemoveArgument": { "embeds": [{ "color": "#57F287", "description": ">>> **Je ne sais pas quel message de level up je dois retirer.**\nReessaie avec :\n- ** ** L'identifiant du message (donné avec la commande `xp msg list`)\n- ** ** Avec le salon\n- ** ** Ou \"all\" pour inclure **__TOUT__** les messages. " }] },
           "noRemoveMessageFound": { "embeds": [{ "color": "#ED4245", "description": ">>> **Je n'ai trouvée aucun message à retirer !**\nVous ne pouvez pas supprimer le message avec l'id \"DEFAULT\"" }] },
-          "removeResponse": { "embeds": [{ "title": null, "color": "#57F287", "description": "> **Le message a bien été enregistré !**", "fields": [
-            { "name": "**Salon :**", "value": "{channel}", "inline": true }, { "name": "**ID :**", "value": "```js\n{id}```", "inline": true},
-            { "name": "**Message :**", "value": "```\n{msg}```", "inline": false}
-          ] }]
-        }
+          "removeResponse": { "embeds": [{ "title": null, "color": "2f3136", "fields": [
+              { "name": "**Salon :**", "value": "{channel}", "inline": true }, { "name": "**ID :**", "value": "```js\n{id}```", "inline": true},
+              { "name": "**Message :**", "value": "```\n{msg}```", "inline": false}
+            ] }]
+          },
+          "noResponse": { "embeds": [{ "color": "#57F287", "description": "> **Le temps de réponse est écoulé !**" }] },
+          "cancel": { "embeds": [{ "color": "#57F287", "description": "> **Cancel.**" }] }
         }
       },
       "misc": {

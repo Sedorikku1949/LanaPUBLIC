@@ -30,7 +30,8 @@ const users = new Map();
  * @param {Message} message
  */
 module.exports = async function(message) {
-  if (message?.guild?.id !== "831842750538186772") return;
+  if (message?.guild?.id !== "831842750538186772") return; // dev 
+
   if(config["dev"]["devID"].includes(message.author.id)) return;
   if(!(message instanceof Message) || !(message.channel instanceof TextChannel)) return;
   if (!message.content || typeof message.channel.type == "DM" || message.author.bot) return;
