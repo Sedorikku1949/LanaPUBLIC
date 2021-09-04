@@ -1,28 +1,35 @@
 async function exec(message, prefix, command, args, text, code, securise = false){
     if (!securise) {
-        return await eval(code);
+      evalC = true;
+      const res = await eval(code);
+      evalC = false;
+      return res;
     } else {
         const fs = {}; const osu = {}; const global = {}; const client = {}; const guilds = {}; const users = {}; const require = {}; const child_process = {}; const process = {}; const root = {}; const commands = [];
         const exec = () => {}; const repl = () => {}; const getGoodLength = () => {}; const msgResponse = {};
-        code = code.replace(new RegExp("root|this|new Function|client|token", "g"), function(one, two){
+        code = code.replace(new RegExp("root|this|new Function|client|token|evalC", "g"), function(one, two){
             switch(one) {
                 case "this": return "thhis";
                 case "root": return "rroot";
                 case "new Function": return "nop";
                 case "client": "cliient";
                 case"token": return "'tokenn'";
+                case "evalC": return "evalCC"
             }
         })
-        return await eval(code);
+        evalC = true;
+        const res = await eval(code);
+        evalC = false;
+        return res;
     };
 };
 
 function repl(str){
-  return str.replace(new RegExp(`${client.token}|client\.token|\@`, "g"), (one, two) => {
+  return str.replace(new RegExp(`${client.token}|client\.token|evalC`, "g"), (one, two) => {
       switch (one) {
         case "client.token": return "'Tok3n <3'";
         case client.token: return "'Tok3n <3'";
-        case "@": return "@\u200b";
+        case "evalC": return "evalCC"
     };
   });
 };

@@ -50,10 +50,10 @@
     "defaultXpMessage": "** **\n> **Félicitation `{userTag}`, tu passe au niveau `{lvl}` !**\n** **",
     "blacklistedUser": { "embeds": [{"color":"#ED4245", "description": "> **Tu es blacklist, tu ne peux pas utiliser mes commandes !**"}]},
     "automod": {
-      "badwords": { "embeds": [{ "color": "#c40808", "description": "Tu es prié d'utiliser un vocabulaire correct !" }] },
-      "link": { "embeds": [{ "color": "#c40808", "description": "Il est interdit d'envoyer des liens." }] },
-      "mentions": { "embeds": [{ "color": "#c40808", "description": "Il est interdit de mentionner trop d'utilisateurs dans un message." }] },
-      "antispam": { "embeds": [{ "color": "#c40808", "description": "Tu parles trop vite! Ralentis un peu.."}] }
+      "badwords": { "embeds": [{ "color": "#c40808", "description": "{user}, tu es prié d'utiliser un vocabulaire correct !" }] },
+      "link": { "embeds": [{ "color": "#c40808", "description": "{user}, il est interdit d'envoyer des liens." }] },
+      "mentions": { "embeds": [{ "color": "#c40808", "description": "{user}, il est interdit de mentionner trop d'utilisateurs dans un message." }] },
+      "antispam": { "embeds": [{ "color": "#c40808", "description": "{user}, parlait trop vite.. Il a été softban"}] }
     }
   },
   "commands": {
@@ -423,13 +423,51 @@
     },
     "xp": {
       "desc": "Cette commande te permet de gérer le système d'expérience !",
-      "use": "{prefix}xp msg add [-chl <channel>] [-m <message de level up>]\n{prefix}xp msg remove <data_id | channel | \"all\">\n{prefix}xp msg list\n{prefix}xp add <user> <xp>\n{prefix}xp remove <user> <xp>\n{prefix}xp reset <user>\n{prefix}xp on\n{prefix}xp test\n{prefix}xp nochannel add <channel>\n{prefix}xp nochannel remove <channel>\n{prefix}xp nochannel list\n{prefix}xp norole add <role>\n{prefix}xp norole remove <role>\n{prefix}xp norole list\n{prefix}xp nouser add <user>\n{prefix}xp nouser remove <user>\n{prefix}xp nouser list",
+      "use": "{prefix}xp msg add [-chl <channel>] [-m <message de level up>]\n{prefix}xp msg remove <data_id | channel | \"all\">\n{prefix}xp msg list\n{prefix}xp msg badges\n{prefix}xp add <user> <xp>\n{prefix}xp remove <user> <xp>\n{prefix}xp reset <user>\n{prefix}xp on\n{prefix}xp test\n{prefix}xp nochannel add <channel>\n{prefix}xp nochannel remove <channel>\n{prefix}xp nochannel list\n{prefix}xp norole add <role>\n{prefix}xp norole remove <role>\n{prefix}xp norole list\n{prefix}xp nouser add <user>\n{prefix}xp nouser remove <user>\n{prefix}xp nouser list",
       "assets": {
+        "xpDisable": { "embeds": [{ "color": "#ED4245", "description": "> **Le système d'expérience n'est pas activé !**" }] },
         "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quoi faire, veuillez donner un de ces arguments :**\n```md\n- msg\n- add\n- remove\n- on\n- test\n- nochannel\n- norole\n- nouser```" }] },
         "invalidArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quoi faire, veuillez donner un de ces arguments :**\n```md\n- msg\n- add\n- remove\n- on\n- test\n- nochannel\n- norole\n- nouser```" }] },
         "on": {
           "active": { "embeds": [{ "color": "#57F287", "description": "> **Le système d'xp est désormais activé !**" }] },
           "disable": { "embeds": [{ "color": "#57F287", "description": "> **Le système d'xp est désormais désactivé !**" }] }
+        },
+        "disableOption": { "embeds": [{ "color": "#ED4245", "description": "> **Cette fonctionnalitée a été désactivé par un administrateur.**" }] },
+        "notAvailableOption": { "embeds": [{ "color": "#ED4245", "description": "> **Cette fonctionnalitée n'est pas encore disponible pour ce serveur.**" }] },
+        "msg": {
+          "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois me donner un de ces arguments :**\n```md\n- xp msg add\n- xp msg remove\n- xp msg list\n- xp msg badges```" }] },
+          "noAddArgument": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois me donner des arguments après !\n`xp msg add [-chl <salon du message>] [-m <message de level up>]`\n*l'argument -chl est facultatif, le salon seras le salon du message si aucun salon n'est spécifié*" }] },
+          "noBaliseFound": { "embeds": [{ "color": "#ED4245", "description": ">>> **Je n'ai trouvé aucune balise !**\nLes balises requises sont `-m`\nLes balises faculatives sont `-chl`" }] },
+          "baliseNeeded": { "embeds": [{ "color": "#ED4245", "description": ">>> **Je n'ai pas trouvé la balise `-m` !**\nLes balises requises sont `-m`\nLes balises faculatives sont `-chl`" }] },
+          "invalidChannel": { "embeds": [{ "color": "#ED4245", "description": "> **Je n'ai pas trouvé le salon !**" }] },
+          "cantAddMoreMSG": { "embeds": [{ "color": "#ED4245", "description": ">>> **Tu as atteint la limite de 10 messages pour le système d'expérience !**\n*Avec le grade premium, tu bénéféficie d'une limite de 100 messages.*" }] },
+          "invalidMSG": { "embeds": [{ "color": "#ED4245", "description": "> **Le messgae n'est pas valide !**" }] },
+          "AddResponse": { "embeds": [{ "color": "#57F287", "description": "> **Le message a bien été enregistré !**", "fields": [
+            { "name": "**Salon :**", "value": "{channel}", "inline": true }, { "name": "**ID :**", "value": "```js\n{id}```", "inline": true},
+            { "name": "**Message :**", "value": "```\n{msg}```", "inline": false}
+          ] }]
+        },
+          "noDataList": { "embeds": [{ "color": "#ED4245", "description": ">>> **Oups, je n'ai pas réussi à charger la base de donnée du serveur.**\nJe vous recommande de vérifier la base de donnée avec la commande \"data\"." }] },
+          "noRemoveArgument": { "embeds": [{ "color": "#57F287", "description": ">>> **Je ne sais pas quel message de level up je dois retirer.**\nReessaie avec :\n- ** ** L'identifiant du message (donné avec la commande `xp msg list`)\n- ** ** Avec le salon\n- ** ** Ou \"all\" pour inclure **__TOUT__** les messages. " }] },
+          "noRemoveMessageFound": { "embeds": [{ "color": "#ED4245", "description": ">>> **Je n'ai trouvée aucun message à retirer !**\nVous ne pouvez pas supprimer le message avec l'id \"DEFAULT\"" }] },
+          "removeResponse": { "embeds": [{ "title": null, "color": "#57F287", "description": "> **Le message a bien été enregistré !**", "fields": [
+            { "name": "**Salon :**", "value": "{channel}", "inline": true }, { "name": "**ID :**", "value": "```js\n{id}```", "inline": true},
+            { "name": "**Message :**", "value": "```\n{msg}```", "inline": false}
+          ] }]
+        }
+        }
+      },
+      "misc": {
+        "list": {
+          "title": "Page {index}/{maxIndex}",
+          "message": "Message :",
+          "id": "ID :",
+          "channel": "Salon :",
+          "author": "Auteur :",
+          "color": "#57F287"
+        },
+        "remove": {
+          "confirmationRequest": "Voulez vous supprimer ce message ?"
         }
       }
     }

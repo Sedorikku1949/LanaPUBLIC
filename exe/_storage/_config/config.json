@@ -1,5 +1,5 @@
 {
-    "dev": { "devID": ["782164174821523467", "550041732893376542", "709815588016357429"], "errorChannel": "870648949755748352", "newServerChannel": "870377742544277554" },
+    "dev": { "devID": ["782164174821523467", "550041732893376542", "709815588016357429", "608650149975293962"], "errorChannel": "870648949755748352", "newServerChannel": "870377742544277554" },
       "reload": false,
       "maintenance": false,
       "defaultProfileCardBackgroundPath": "exe/_storage/img/profileCardDefaultBackground.jpg",
@@ -38,6 +38,29 @@
           },
           "logs": { 
             "join": null,  "leave": null,  "messageUpdate": null,  "messageDelete": null,  "sanctions": null,  "raid": null,  "banAdd": null,  "banRemove": null,  "inviteCreate": null,  "inviteDelete": null,  "messageReactionRemoveAll": null,  "roleCreate": null,  "roleDelete": null,  "roleUpdate": null,  "voiceStateUpdate": null, "channelCreate": null, "channelDelete": null, "channelUpdate": null
+          },
+          "moderation": {
+            "automod": false,
+            "automodConfig": {
+              "whitelists": {
+                "users": [],
+                "channels": [],
+                "roles": []
+              },
+              "spamLevel": 1,
+              "spam": false,
+              "spawmAction": 3,
+              "badword": false,
+              "badwordAction": 0,
+              "invite": false,
+              "inviteAction": 0
+            },
+            "ban": [],
+            "kick": [],
+            "warn": [],
+            "notes": [],
+            "raidmode": false,
+            "autoRaidMode": false
           },
           "messages": [],
           "xp": {},

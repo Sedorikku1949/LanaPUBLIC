@@ -38,10 +38,17 @@ class MiaDB {
       if (typeof options !== "object" || Array.isArray(options)) throw new Error("options must be an object", "options_type");
       if (typeof options.url !== "string") throw new Error("options.url must be a string", "option_url_type");
       if (typeof options.name !== "string") throw new Error("options.name must be a string", "option_name_type");
+      this.createdTimestamp = Date.now();
+      this.url = options.url;
+      this.databaseName = options.name;
+      this.node = "A-001_&@-json.ravendb"
+      this.initialize = false;
+      this.online = true;
       this.store = new raven.DocumentStore(options.url, options.name);
-      try { this.store.initialize() }
+      try { this.store.initialize(); this.initialize = true; }
         catch(err) {
           this.store = null;
+          
           throw new Error("The connextion has failed !\nTry to start the database or change the link and name in options")
         }
   };

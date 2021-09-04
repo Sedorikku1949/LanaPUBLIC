@@ -38,7 +38,11 @@ module.exports = {
         if (!dir.match(/\./g)) searchAllFiles(`${path}/${dir}`); // dossier
         if (dir.match(/\.json/g) || !dir.match(/\.js/g) || path.match(/sub/g) || !dir.endsWith(".js")) return; // other file
         if (dir.match(/\.js/g) && dir.endsWith(".js")) {
-          try { const c = require(`../../${path}/${dir}`); if (!c.exe || !c.config) throw new Error("exe or config Object/function is needed for the commande"); c.path = `${path}/${dir}`; c.lang = `this.commands["${c.config.name}"]` ; cmd.push(c); deleteCache(require.resolve(`../../${path}/${dir}`)); }
+          try {
+            const c = require(`../../${path}/${dir}`); if (!c.exe || !c.config) throw new Error("exe or config Object/function is needed for the commande");
+            c.path = `${path}/${dir}`; c.lang = `this.commands["${c.config.name}"]`;
+            cmd.push(c); deleteCache(require.resolve(`../../${path}/${dir}`));
+          }
             catch(err) { console.log(`{red}{ ERROR }  >>  An error as occured when loading the command "${dir}" at the path "${path}/${dir}"`); error.push({ error: err, path: `${path}/${dir}`, file: dir}); };
         }; // js file
       });
@@ -66,7 +70,7 @@ module.exports = {
     if ((await database.db.get("guild/"+message.guild.id)) && (await database.db.get("guild/"+message.guild.id))?.config?.ignoreCommand && (await database.db.get("guild/"+message.guild.id))["_config"].ignoreCommand.includes(message.channel.id)) return;
     if ((await database.db.get("guild/"+message.guild.id)) && (await database.db.get("guild/"+message.guild.id))?.config?.ignoreUser && (await database.db.get("guild/"+message.guild.id))["_config"].ignoreUser.includes(message.channel.id)) return;
 
-    try { cmd.exe(message, prefix, command, args, lang.commands[cmd.config.name] ); console.log(`{ COMMAND EXECUTOR } {yellow}< ${getDate(Date.now(), `[DD]/[MM]/[YYYY] à [hh]:[mm] et [ss]:[ms]`)} | ${Date.now()} >{stop} command "${cmd.config.name}" executed by {cyan}${message.author.tag} / ${message.author.id}{stop} in {blue}( #${message.channel.name} | ${message.channel.id} ){stop}`); await database.db.inc("user/"+message.author.id, "score") }
+    try { cmd.exe.bind({}, message, prefix, command, args, lang.commands[cmd.config.name])(); console.log(`{ COMMAND EXECUTOR } {yellow}< ${getDate(Date.now(), `[DD]/[MM]/[YYYY] à [hh]:[mm] et [ss]:[ms]`)} | ${Date.now()} >{stop} command "${cmd.config.name}" executed by {cyan}${message.author.tag} / ${message.author.id}{stop} in {blue}( #${message.channel.name} | ${message.channel.id} ){stop}`); await database.db.inc("user/"+message.author.id, "score") }
       catch(err) {
         message.reply(lang.misc.handler.error)
         client.channels.cache.get(config.dev.errorChannel).send({ embed: { color: "#ED4245", fields: [{name: "Path :", value: "```\n"+cmd.path+"```"}, {name: "Executor :", value: "```\n"+message.author.tag+" / "+message.author.id+"```"}, {name: "Guild :", value: "```\n"+message.guild.name+" / "+message.guild.id+"```"}], title: "Une erreur est survenue !", description: "```js\n"+require("util").inspect(err).slice(0,1900).replace("`", "`\u200b")+"```" } })

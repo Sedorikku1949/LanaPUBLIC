@@ -50,10 +50,10 @@ module.exports = {
           message.reply({ embeds: [{
             color: "#FEE75C",
               title: "Blacklist :",
-              fields: blacklist.length > 0 ? [...blacklist.map(bl => {
-                const user = message.guild.members.selectMember(bl.id, { fetch: true, user: true, bot: true });
+              fields: blacklist.length > 0 ? [... await Promise.all(blacklist.map(async(bl) => {
+                const user = await message.guild.members.selectMember(bl.id, { fetch: true, user: true, bot: true });
                 return ({ name: ((user.bot ? emojis.bot.msg+" `":"** ** ** ** ** ** ** **`")+((user?.tag).replace(/\`/g, "") || bl.id)+"`"), value: "```\n"+(bl.reason ?? "ERROR")+"```" })
-              })] : [{ name: "Personne n'est dans la blacklist !", value: "** \u200b**"}]
+              }))] : [{ name: "Personne n'est dans la blacklist !", value: "** \u200b**"}]
             }]
           })
         }

@@ -12,6 +12,7 @@ module.exports = {
           await msg.edit({ embeds: [{ color: "#5865F2", description: `${emojis.reload.msg} **Rechargement de LanaV3.0...**` }] })
           await deleteCache(require.resolve("../../managers/eventsManager.js"))
           await deleteCache(require.resolve("../../managers/commandsManager.js"))
+          await deleteCache(require.resolve("../../managers/automod.js"))
           await reloadAllCache()
           require("../../managers/eventsManager.js").reload()
           collector.stop()

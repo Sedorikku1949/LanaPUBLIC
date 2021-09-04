@@ -143,9 +143,9 @@ module.exports = [
     else return this.cache.find(user => (options.bot ? true : !user.user.bot) && ( user.id == args.replace(/\D+/g, '') || user.user.username.toLowerCase().match(args.toLowerCase()) || user.displayName.toLowerCase().match(args.toLowerCase()) ) );
   },
   Discord.GuildChannelManager.prototype.selectChannel = function(args, options = { type: "GUILD_TEXT", fetch: false }){
-    if (!args || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.GuildChannelManager) ) throw new Error("Invalids arguments was provided !");
-    if (options.fetch) return this.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args || e.position == args || e.rawPosition == args) || client.channels.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args || e.position == args || e.rawPosition == args);
-    else return this.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args || e.position == args || e.rawPosition == args);
+    if ( !args || typeof args !== "string" || !args || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.GuildChannelManager) ) return null;
+    if (options.fetch) return this.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args.replace(/\D+/g, '') || e.position == args.replace(/\D+/g, '') || e.rawPosition == args.replace(/\D+/g, '')) || client.channels.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args.replace(/\D+/g, '') || e.position == args.replace(/\D+/g, '') || e.rawPosition == args.replace(/\D+/g, ''));
+    else return this.cache.filter(e => e.type == options.type).find(e => e.name.toLowerCase().match(new RegExp(args, "g")) || e.id == args.replace(/\D+/g, '') || e.position == args.replace(/\D+/g, '') || e.rawPosition == args.replace(/\D+/g, ''));
   },
   Discord.Message.prototype.selectMessage = async function(args, options = { channel: false }){
     if (!args || typeof options !== "object" || Array.isArray(options) || !(this instanceof Discord.Message) ) throw new Error("Invalids arguments was provided !");

@@ -28,15 +28,14 @@ module.exports = class slashCommands {
         if (!availableCommands.includes(cmd.config.name)) return;
         const data = {
           name: cmd.config.name.toLowerCase(),
-          description: database.language.fr.commands[cmd.config.name]?.desc,
+          description: database.language.fr.commands[cmd.config.name]?.desc || "DESC_ERROR",
         };
         try {
           await guild.commands.create(data).catch(() => false);
-          resolve(true);
         } catch(err) {
-          resolve(false);
         };
       });
+      resolve(true);
     })
   };
   static deleteCommand = async function(guild, id){
