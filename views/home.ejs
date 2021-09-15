@@ -3,39 +3,276 @@
   <head>
     <meta charset="utf-8">
     <title><%= bot.username %></title>
-    <link rel="stylesheet" href="css/main.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- stylesheet -->
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/sticky.css" />
+    <link rel="stylesheet" href="css/home.css" />
   </head>
   <body>
-    <header></header>
-    <section class="why_Lana"></section>
-    <section class="presentation">
-      <h1>C'est quoi Lana en 5 points ?</h1>
-      <div id="1">
-        <h3>- Fun</h3></br>
-        <img src="img/home-no-img.jpg" alt=""></br>
-        <p>Pleins de jeux !</p></br>
-      </div></br>
-      <div id="2">
-        <h3>- Informations</h3></br>
-        <img src="img/home-no-img.jpg" alt=""></br>
-        <p>Des commandes très utiles au quotidien.</p></br>
-      </div></br>
-      <div id="3">
-        <h3>- Modération/anti-raid</h3>
-        <img src="img/home-no-img.jpg" alt="">
-        <p>Des fonctionnalités que tout le monde a besoin pour protéger son serveur.</p>
-      </div></br>
-      <div id="4">
-        <h3>- Economie</h3>
-        <img src="img/home-no-img.jpg" alt="">
-        <p>Devenez le plus riche de votre serveur et créer une économie unique !</p>
-      </div></br>
-      <div id="5">
-        <h3>- Récompensez vos membres</h3>
-        <img src="img/home-no-img.jpg" alt="">
-        <p>Avec son système d'xp et d'invitation, <%= bot.username %> vous offre la possibité de remercier vos membres de leur activitée.</p>
-      </div></br>
-    </section>
-    <footer class="footer"><h3>@ copyright <%= bot.username %></h3></footer>
+    <!-- container -->
+    <div class="container">
+      <section id="top">
+        <div class="box">
+          <div class="presentation">
+            <img src="<%= bot.displayAvatarURL({ size: 2048, format: "png" }) %>">
+            <h1><%= bot.tag %></h1>
+            <p>Le seul bot créer par des fondateurs pour les fondateurs.</p>
+          </div>
+        </div>
+      </section>
+      <section id="why" class="why">
+        <section class="box">
+          <h1>Pourquoi utiliser <%= bot.username %> ?</h1>
+          <!-- <object data="svg/game.svg" height="700" width="auto" class="svg"></object> -->
+          <ul>
+            <i class="bx bx-game"></i>
+            <li>Joue avec tes amis à des jeux depuis discord !</li>
+            <li>Organise des tournois et évènements basé sur des parties de pêches ou d'échecs.</li>
+            <ul>
+              <i class="bx bxs-bookmark-star"></i>
+              <li>Propose un système d'expérience sur ton serveur !</li>
+              <li>Ajoute jusqu'à 10 messages personnalisés.</li>
+              <li>Customise ce que tu veux quand tu veux.</li>
+              <li>Pas besoin de t'embeter avec une calculatrice, c'est le même calcul que Mee6 !</li>
+            </ul>
+            <i class="bx bx-info-circle"></i>
+            <li>Profite de la commande "roleinfo" lors des échanges de pubs pour gagner du temps et de l'efficacité.</li>
+            <li>Découvre-en plus sur tes membres et ton serveur grâce aux diverses commandes à disposition.</li>
+          </ul>
+          <h2>C'est tout ? Et non pas encore !</h2><br>
+          <i class="bx bxs-lock-alt"></i>
+          <p>Lana possède une base de donnée efficace est sécurisé, chaque donnée n'est accessible que aux développeurs.<br>
+            Peur que des données sensibles soient stockées ? Nous nous engageont a vous fournir un accès immédiat aux données de votre serveur avec la commande "data".
+          </p><br>
+          <i class="bx bx-support"></i>
+          <p>Un problème ou une question ? Notre équipe est prête a vous écouté, nous vous répondons dans les 24h !</p>
+          <i class="bx bxs-news"></i>
+          <p>Des mises à jours arrivent régulièrement !</p>
+        </section>
+      </section>
+      <section id="avantage" class="avantage">
+        <section class="box">
+          <h1>Quels sont les avantages de <%= bot.username %> ?</h1>
+          <i class="bx bx-slider-alt"></i><p>Configurable de A à Z, <%= bot.username %> as été concue pour subvenir aux besoins de chaque serveur.</p>
+          <i class="bx bxs-lock-alt"></i><p><%= bot.username %> est securisée, personne ne pourras nuir a votre serveur ou obtenir des informations sensibles.</p>
+          <i class="bx bx-award"></i><p>Faites vivre votre communautée comme jamais auparavant.</p>
+          <i class="bx bx-save"></i><p>La base de donnée est sauvegardée toutes les 24h, vous pouvez a tout moment demandés des restaurations auprès des développeurs.</p>
+          <i class="bx bx-star"></i><p>Sécurisez et modérer votre serveur grâce aux outils puissants offerts.</p>
+          <i class="bx bx-terminal"></i><p>Profitez de la puissance des intelligences artificielles gratuitement.</p>
+        </section>
+      </section>
+      <section id="star" class="starBack">
+        <section class="box">
+          <h1>Votre avis est important</h1>
+          <img src="img/soon.png">
+        </section>
+      </section>
+      <section id="partner" class="partner">
+        <section class="box">
+          <h1>Nos partenaires :</h1><br>
+          <center class="centerPartner">
+            <div class="partnerBox" class="server">
+              <img src="https://cdn.discordapp.com/attachments/832164618956832799/886690892663111770/5a4308eb99d201ae5c7db33a1ac635ee.png?size=2048"><br>
+              <a href="https://discord.gg/t9vN9Jd4ev">The Discord Kingdom</a>
+            </div>
+            <div class="partnerBox" class="server">
+              <img src="https://cdn.discordapp.com/icons/848657031694778378/a_44a930d10463270295b17c6ec1726a15.gif?size=2048"><br>
+              <a href="https://discord.gg/7FefWxH2g8">The Last Kingdom Of Eden</a>
+            </div>
+            <div class="partnerBox" class="server">
+              <img src="https://cdn.discordapp.com/attachments/832164618956832799/886699539308875836/a_28ba5ad20c13692ca1685db63537aaac.gif"><br>
+              <a href="https://discord.gg/fKVvb69y3T">An Evil In The Sea</a>
+            </div>
+            <div class="partnerBox" class="server">
+              <img src="https://cdn.discordapp.com/icons/879682859319853058/78ab05fa7a015fc1ef36664f7603ed0f.png?size=2048"><br>
+              <a href="https://discord.gg/gzKtrUPnPj">Le peuple publicitaire</a>
+            </div>
+          </center>
+          <p>Tu veux aussi devenir partenaire ? Alors contact dès maintenant les développeurs !</p>
+        </section>
+      </section>
+      <section id="who" class="who">
+        <section class="box">
+          <h1>Qui sommes-nous ?</h1>
+        </section>
+      </section>
+      <section id="faq">a</section>
+      <section id="contact">a</section>
+    </div>
+
+    <!-- Navigation bar -->
+    <div class="navbar">
+      <div class="side-bar collapse">
+        <div class="logo-name-wrapper">
+          <div class="logo-name">
+            <img
+              src="<%= bot.displayAvatarURL({format: "png"}) %>" 
+              class="logo"
+              alt="logo app"
+              srcset=""
+            />
+            <span class="logo-name__name"><%= bot.username %></span>
+          </div>
+          <div id="navBtu">
+            <button class="logo-name__button">
+              <i
+                class="bx bx-arrow-from-right logo-name__icon"
+                id="logo-name__icon"
+              ></i>
+            </button>
+          </div>
+          <!-- <i class='bx bx-arrow-from-left'></i> -->
+        </div>
+
+        <div class="message" id="connection">
+          <% if (is_logged) { %>
+            <i class="bx bxs-user-account features-item-icon"></i>
+          <% } else { %>
+            <i class="bx bx-log-in-circle features-item-icon"></i>
+          <% } %>
+          <a class="message-text" ><%= (is_logged ? `${user.username}#${user.discriminator}` : 'Se connecter') %></a>
+        </div>
+
+        <ul class="features-list">
+          <li class="features-item inbox active" id="whyBTU">
+            <i class="bx bx-help-circle features-item-icon"></i>
+            <span class="features-item-text">Pourquoi <%= bot.username %> ?</span>
+            <span class="tooltip">Pourquoi <%= bot.username %> ?</span>
+          </li>
+
+          <li class="features-item draft" id="avantageBTU">
+            <i class="bx bx-plus-circle features-item-icon"></i>
+            <span class="features-item-text">Ses avantages</span>
+            <span class="tooltip">Ses avantages</span>
+          </li>
+
+          <li class="features-item star" id="starBTU" onclick="onclick()">
+            <i class="bx bx-star features-item-icon"></i>
+            <span class="features-item-text">Vos avis</span>
+            <span class="tooltip">Vos avis</span>
+          </li>
+          <li class="features-item sent" id="partnerBTU">
+            <i class="bx bx-heart features-item-icon"></i>
+            <span class="features-item-text">Nos partenaires</span>
+            <span class="tooltip">Nos partenaires</span>
+          </li>
+          <li class="features-item trash" id="whoBTU">
+            <i class="bx bxl-dev-to features-item-icon"></i>
+            <span class="features-item-text">Qui nous sommes</span>
+            <span class="tooltip">Qui nous sommes</span>
+          </li>
+          <li class="features-item spam" id="faqBTU">
+            <i class="bx bx-question-mark features-item-icon"></i>
+            <span class="features-item-text">FAQ</span>
+            <span class="tooltip">FAQ</span>
+          </li>
+          <li class="features-item spam" id="contactBTU" onclick="onclick()">
+            <i class="bx bx-mail-send features-item-icon"></i>
+            <span class="features-item-text">Nous contacter</span>
+            <span class="tooltip">Nous contacter</span>
+          </li>
+        </ul>
+
+        <!-- If logged -->
+        <% if (is_logged) {%> 
+          <ul class="category-list">
+            <div class="category-header">Mon profile</div>
+              <li class="category-item" id="guild">
+                <span class="category-item-status" style="background: linear-gradient(to right, #f32170, #ff6b08 )"></span>
+                <span class="category-item-text">Mes serveurs</span>
+                <span class="category-item-number"><%= guilds.length %></span>
+                <span class="tooltip">Mes serveurs</span>
+              </li>
+              <li class="category-item" id="profile">
+                <span class="category-item-status" style="background: linear-gradient(to right, #ff6b08,#cf23cf)"></span
+                ><span class="category-item-text">Mon profile</span>
+                <span class="tooltip">Mon profile</span>
+              </li>
+              <li class="category-item" id="support">
+                <span class="category-item-status" style="background: linear-gradient(to right, #cf23cf, #eedd44)"></span>
+                <span class="category-item-text">Support</span>
+                <span class="tooltip" >Support</span>
+              </li>
+            </ul>
+            
+            <div class="message" id="logout">
+              <i class="bx bxs-log-out features-item-icon"></i>
+              <a class="message-text" >Se déconnecter</a>
+            </div>
+          <% } %>
+      </div>
+    </div>
+    <div class="container"><div style="margin:30px auto"><div id="carbon-block"></div>
+
+    <!-- SCROLL SCRIPT && Connection Button -->
+    <script type="text/javascript">
+    document.getElementById("whyBTU").onclick = function () {
+      document.getElementById("why").scrollIntoView({ behavior: "smooth" });
+    };
+    
+    document.getElementById("avantageBTU").onclick = function () {
+      document.getElementById("avantage").scrollIntoView({ behavior: "smooth" });
+    };
+    
+    document.getElementById("starBTU").onclick = function () {
+      document.getElementById("star").scrollIntoView({ behavior: "smooth" });
+    };
+    
+    document.getElementById("partnerBTU").onclick = function () {
+      document.getElementById("partner").scrollIntoView({ behavior: "smooth" });
+    };
+    
+    document.getElementById("whoBTU").onclick = function () {
+      document.getElementById("who").scrollIntoView({ behavior: "smooth" });
+    };
+    
+    document.getElementById("faqBTU").onclick = function () {
+      document.getElementById("faq").scrollIntoView({ behavior: "smooth" });
+    };
+
+    document.getElementById("contactBTU").onclick = function () {
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    };
+
+    // redirect
+    document.getElementById("connection").onclick = function () {
+      if (document.querySelector(".side-bar").classList.contains("collapse")) return;
+      document.location.href = "<%= is_logged ? '/profile': '/auth/login' %>";
+    }; // login auth
+
+    </script>
+    <!-- NAV BAR -->
+    <script type="text/javascript">
+      {
+        let btu = document.getElementById('navBtu');
+        let sideBar = document.querySelector('.side-bar');
+        let arrowCollapse = document.querySelector('#logo-name__icon');
+        btu.onclick = () => {
+          sideBar.classList.toggle('collapse');
+          arrowCollapse.classList.toggle('collapse');
+          if (arrowCollapse.classList.contains('collapse')) {
+            arrowCollapse.classList =
+              'bx bx-arrow-from-left logo-name__icon collapse';
+          } else {
+            arrowCollapse.classList = 'bx bx-arrow-from-right logo-name__icon';
+          }
+        };
+      }
+    </script>
+    <% if (is_logged) { %>
+      <script>
+        document.getElementById("logout").onclick = function(){
+          if(document.querySelector('.side-bar').classList.contains("collapse")) return;
+          document.location.href = "/auth/logout";
+        }; // logout auth
+        document.getElementById("support").onclick = function(){ window.location.href = "https://discord.gg/RYrJDNgF9m"; }; // support server
+        document.getElementById("guild").onclick = function(){ document.location.href = "/guild"; }; // guild choice
+        document.getElementById("profile").onclick = function(){ document.location.href = "/profile"; }; // profile page
+      </script>
+    <% } %>
   </body>
 </html>

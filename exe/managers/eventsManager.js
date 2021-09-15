@@ -5,9 +5,6 @@ async function wait(ms) {
     return new Promise((resolve, _) => { setTimeout(() => resolve(true), ms) });
 };
 
-
-// require("../_storage/_config/boot.json").databaseURL
-
 module.exports = class eventManager {
   static loadEvent = async function(){
     return new Promise(async function(resolve,_){
@@ -27,13 +24,14 @@ module.exports = class eventManager {
 
 
   // TEMPORARY
-  static bdd = async function(){
+  static bdd = async function(id){
     return new Promise(async function(resolve,_){
       global["database"] = {
-        db: new (require("../../database/src"))({ url: "http://127.0.0.1:8080", name: "lanaPUBLIC"}),
+        db: new (require("../../database/src"))({ url: "http://127.0.0.1:8080", name: id=="806438484159102996"?"sayoTest":"lanaPUBLIC"}),
         language: {},
         config: global["config"],
         xpCooldown: {},
+        musicManager: new music.musicManager()
       }
       global["database"].commands = require("./commandsManager").init();
       resolve(true)
@@ -72,7 +70,7 @@ module.exports = class eventManager {
   
     // lancement
     global["config"] = require("../_storage/_config/config.json"); global["emojis"] = require("../_storage/_config/emojis.json"); global["interval"] = [];
-    global["client"] = new Discord.Client({ intents: Object.keys(require("discord.js").Intents.FLAGS), fetchAllMembers: true, allowedMentions: { repliedUser: false, } })
+    global["client"] = new Discord.Client({ intents: 32767, partials: ["CHANNEL"], fetchAllMembers: true, allowedMentions: { repliedUser: false, } })
     const { DiscordTogether  } = require('discord-together');
     global["client"].discordTogether = new DiscordTogether(global["client"]);
     global["start"] = Date.now();
@@ -80,7 +78,7 @@ module.exports = class eventManager {
     
     // event loader
     await this.loadEvent()
-    await this.bdd()
+    await this.bdd(require("../_storage/_config/boot.json").id)
     await this.languages()
 
     // login

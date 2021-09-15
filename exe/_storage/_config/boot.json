@@ -1,17 +1,18 @@
 {
-    "token": "ODA2NDM4NDg0MTU5MTAyOTk2.YBpcXQ.U53Mr7kuZZ2Gg0yBh7GmMpmr_g0",
-    "prefix": "=",
-    "databaseURL": "http://127.0.0.1:8080/studio/index.html",
-    "bot": {
-		"id": "858766319506554899",
-		"prefix": "=",
-		"secret": "V0bZeTxVoX22bkxDQIHTToto3bFcaGkz",
-		"status": "online",
-		"token": "ODA2NDM4NDg0MTU5MTAyOTk2.YBpcXQ.U53Mr7kuZZ2Gg0yBh7GmMpmr_g0",
-		"url": "http://localhost",
-		"production": false
-	},
-	"app": {
-		"port": 3000
-	}
+  "token": "ODA2NDM4NDg0MTU5MTAyOTk2.YBpcXQ.mHpqBA9ye0-B4ScwcH_NdF8nyGE",
+  "prefix": ".",
+	"id": "806438484159102996",
+  "databaseURL": "http://127.0.0.1:8080/studio/index.html",
+  "bot": {
+    "id": "858766319506554899",
+    "prefix": ".",
+    "secret": "FaD2_q8iGY5dGG_VhhN5GGMB30GxZXcU",
+    "status": "online",
+    "token": "ODA2NDM4NDg0MTU5MTAyOTk2.YBpcXQ.mHpqBA9ye0-B4ScwcH_NdF8nyGE",
+    "url": "http://localhost",
+    "production": true
+  },
+  "app": {
+    "port": 3000
+  }
 }

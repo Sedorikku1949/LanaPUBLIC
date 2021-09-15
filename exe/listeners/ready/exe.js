@@ -21,8 +21,9 @@ module.exports = async() => {
     await Promise.all(client.guilds.cache.map(e => e.members.fetch()));
     await Promise.all(client.guilds.cache.map(guild => slashCommands.loadGuild(guild)));
     console.log(`{cyan}The application "${client.user.tag}" has been started successfully in ${Date.now() - start}ms !`);
-    slashCommands.loadAll()
+    slashCommands.loadAll();
+    await client.user.setStatus("dnd");
     statut();
     // save + system
-    interval(30000)
+    interval(30000);
 };

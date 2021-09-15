@@ -20,7 +20,7 @@
         "color": "#5865F2",
         "thumbnail": { "url": "{url}" },
         "author": { "name": "{name}", "icon_url": "{url}" },
-        "description": "> Merci de m'avoir ajouté sur votre serveur \"{guildName}\" !\n\n**Dès que vous m'aurez activée, vous aurez accès à un palmarès de fonctionnalités ! En voici une liste :**\n```md\n- Logs\n- Jeux\n- Informations\n```\n<:error:869237657480343572>  **Malheureusement, je suis encore en développement, tu ne trouveras donc pas toutes mes fonctionnalités !**\n\n*pour être au courant des nouveautés et de l'avancement, tu peux rejoindre le serveur support.*\n\n> **Bonne journée !**",
+        "description": "**Merci de m'avoir ajoutée à votre serveur !**\n\n> Le dashboard arrive prochainement ainsi que un tas de nouvelles fonctionnalités !\n\n**Suivez mon actualitée sur le serveur support :wink:**",
         "footer": { "text": "Pour m'activer, écrivez \"{prefix}enable\" !"}
       }],
       "components": [
@@ -290,8 +290,8 @@
         "notAdmin": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Seul les personnes avec des permissions administrateurs peuvent executer cette commande !**" }] },
         "invalidArgs": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Mon nouveau préfix ne peut pas contenir de chiffres !**" }] },
         "question": { "embeds": [{ "color": "#57F287", "description": "**Veux-tu que mon nouveau préfix sur ce serveur soit \"{prefix}\" ?**" }] },
-        "cancel": { "embeds": [{ "color": "#57F287", "description": "<:cancel:855476425980248114> **Annulation de l'action.**" }] },
-        "res": { "embeds": [{ "color": "#57F287", "description": "<:like:855501467095793674> **Mon nouveau préfix est désormais :** {prefix}" }] }
+        "cancel": { "embeds": [{ "color": "#57F287", "description": "<:cancel:885157955186597899> **Annulation de l'action.**" }] },
+        "res": { "embeds": [{ "color": "#57F287", "description": "<:like:885157955287261224> **Mon nouveau préfix est désormais :** {prefix}" }] }
       }
     },
     "enable": {
@@ -300,7 +300,7 @@
       "assets": {
         "databaseError": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> ** Une erreur est survenue en chargeant la base de donnée.**" }] },
         "notAdmin": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Seul les personnes avec des permissions administrateurs peuvent executer cette commande !**" }] },
-        "enable": { "embeds": [{ "color": "#57F287", "description": "<:like:855501467095793674> ** J'ai été activée avec succès !**" }] },
+        "enable": { "embeds": [{ "color": "#57F287", "description": "<:like:885157955287261224> ** J'ai été activée avec succès !**" }] },
         "alreadyEnable": { "embeds": [{ "color":  "#ED4245", "description": "<:error:869237657480343572> ** Je suis déjà activée sur ce serveur.**" }] },
         "noGoodPermission": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Je te recommande de m'attribuer les permission administrateurs pour que je puisse fonctionner à mon potentielle maximale.**" }] }
       }
@@ -320,13 +320,23 @@
       "use": "Aucun argument requis.",
       "assets": {
         "notAdmin": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Seul les personnes avec des permissions administrateurs peuvent executer cette commande !**" }] },
-        "actionType": { "embeds": [{ "color": "#5865F2", "description": "**Quel action veux-tu effectuer sur la base de donnée ?**\n```\nsee\nreset\ncancel```" }] },
-        "seeData": "> **Données stockées sur le serveur :**\n```js\n{code}\n```",
+        "actionType": { "embeds": [{ "color": "#5865F2", "description": "**Quel action veux-tu effectuer sur la base de donnée ?**\n```\nsee\nsave\nrepair\nreset\ncancel```" }] },
+        "seeData": { "content": "> **Données stockées sur le serveur :**" },
         "ownerOnly": { "embeds": [{ "color": "#ED4245", "description": "**Seul le/la fondateur/trice peut reset la base de donnée du serveur.**" }] },
+        "ownerOnlySave": { "embeds": [{ "color": "#ED4245", "description": "**Seul le/la fondateur/trice peut enregistrer toutes les données de la base de donnée du serveur.**" }] },
         "cancel": { "embeds": [{ "color": "#57F287", "description": "**Cancel.**" }] },
         "dataReset": { "embeds": [{ "color": "#57F287", "description": "**La base de donnée du serveur a été réinitialisée avec succès !**", "footer": { "text": "J'ai automatiquement été désactivée, écrivez \"{prefix}enable\" pour me réactiver." } }] },
         "resetConfirmation": { "embeds": [{ "color": "#57F287", "description": "**Est-tu sûr de réinitialiser ma base de donnée ?** Cette action n'est pas réversible." }] },
-        "timeout": { "embeds": [{ "color": "#57F287", "description": "**Le temps impartie est écoulé, l'action est annulée.**" }] }
+        "timeout": { "embeds": [{ "color": "#57F287", "description": "**Le temps impartie est écoulé, l'action est annulée.**" }] },
+        "save": { "content": "**Voici le fichier originel :**\n>>> Veillez à ne pas partager ce fichier, il pourrait mettre à jour des failles de votre configuration !" },
+        "analyseInProgress": "{load} ** ** **Analyse en cours !**",
+        "repairAnalyseNegative": { "embeds": [{ "color": "#57F287", "description": "> **Je n'ai reperée aucun problème particulier !**" }] },
+        "repairAnalysePositive": { "embeds": [{ "color": "#ED4245", "description": ">>> **J'ai reperée des problèmes !**\n{nb} erreurs {a} été trouvée(s).\n\n__**Voulez-vous corriger ces problèmes ?**__" }] },
+        "repairRes": { "embeds": [{ "color": "#57F287", "description": "> **Tout a été corrigé !**" }] }
+      },
+      "misc": {
+        "plurial": "ont",
+        "singular": "a"
       }
     },
     "support": {
@@ -423,7 +433,7 @@
     },
     "xp": {
       "desc": "Cette commande te permet de gérer le système d'expérience !",
-      "use": "{prefix}xp msg add [-chl <channel>] [-m <message de level up>]\n{prefix}xp msg remove <data_id | channel | \"all\">\n{prefix}xp msg list\n{prefix}xp msg badges\n{prefix}xp add <user> <xp>\n{prefix}xp remove <user> <xp>\n{prefix}xp reset <user>\n{prefix}xp on\n{prefix}xp test\n{prefix}xp nochannel add <channel>\n{prefix}xp nochannel remove <channel>\n{prefix}xp nochannel list\n{prefix}xp norole add <role>\n{prefix}xp norole remove <role>\n{prefix}xp norole list\n{prefix}xp nouser add <user>\n{prefix}xp nouser remove <user>\n{prefix}xp nouser list",
+      "use": "{prefix}xp msg add [-chl <channel>] [-m <message de level up>]\n{prefix}xp msg remove <data_id | channel | \"all\">\n{prefix}xp msg list\n{prefix}xp msg badges\n{prefix}xp add <lvl | xp> <number> <user>\n{prefix}xp remove <lvl | xp | all> <number> <user>\n{prefix}xp reset <user>\n{prefix}xp on\n{prefix}xp test\n{prefix}xp nochannel add <channel>\n{prefix}xp nochannel remove <channel>\n{prefix}xp nochannel list\n{prefix}xp norole add <role>\n{prefix}xp norole remove <role>\n{prefix}xp norole list\n{prefix}xp nouser add <user>\n{prefix}xp nouser remove <user>\n{prefix}xp nouser list",
       "assets": {
         "xpDisable": { "embeds": [{ "color": "#ED4245", "description": "> **Le système d'expérience n'est pas activé !**" }] },
         "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quoi faire, veuillez donner un de ces arguments :**\n```md\n- msg\n- add\n- remove\n- on\n- test\n- nochannel\n- norole\n- nouser```" }] },
@@ -436,7 +446,7 @@
         "notAvailableOption": { "embeds": [{ "color": "#ED4245", "description": "> **Cette fonctionnalitée n'est pas encore disponible pour ce serveur.**" }] },
         "msg": {
           "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois me donner un de ces arguments :**\n```md\n- xp msg add\n- xp msg remove\n- xp msg list\n- xp msg badges```" }] },
-          "noAddArgument": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois me donner des arguments après !\n`xp msg add [-chl <salon du message>] [-m <message de level up>]`\n*l'argument -chl est facultatif, le salon seras le salon du message si aucun salon n'est spécifié*" }] },
+          "noAddArgument": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois me donner des arguments après !**\n`xp msg add [-chl <salon du message>] [-m <message de level up>]`\n*l'argument -chl est facultatif, le salon seras le salon du message si aucun salon n'est spécifié*" }] },
           "noBaliseFound": { "embeds": [{ "color": "#ED4245", "description": ">>> **Je n'ai trouvé aucune balise !**\nLes balises requises sont `-m`\nLes balises faculatives sont `-chl`" }] },
           "baliseNeeded": { "embeds": [{ "color": "#ED4245", "description": ">>> **Je n'ai pas trouvé la balise `-m` !**\nLes balises requises sont `-m`\nLes balises faculatives sont `-chl`" }] },
           "invalidChannel": { "embeds": [{ "color": "#ED4245", "description": "> **Je n'ai pas trouvé le salon !**" }] },
@@ -456,7 +466,28 @@
             ] }]
           },
           "noResponse": { "embeds": [{ "color": "#57F287", "description": "> **Le temps de réponse est écoulé !**" }] },
-          "cancel": { "embeds": [{ "color": "#57F287", "description": "> **Cancel.**" }] }
+          "cancel": { "embeds": [{ "color": "#57F287", "description": "> **Cancel.**" }] },
+          "indexError": { "embeds": [{ "color": "#57F287", "description": "> **Une erreur est survenue.**" }] },
+          "removeConfirm": { "embeds": [{ "color": "#57F287", "description": "> **Le message a bien été supprimé.**" }] },
+          "badges": { "embeds": [{ 
+            "color": "2f3136",
+            "title": "Liste des badges :",
+            "description": "{userTag} >> **Donne le tag de la personne.**\n{username} >> **Donne le nom de la personne.**\n{mention} >> **Mentionne l'utilisateur.**\n{channelName} >> **Donne le nom du salon où le level up a eu lieu.**\n{channelMention} >> **Donne le salon où le level up a eu lieu.**\n{lvl} >> **Donne le niveau de la personne.**\n{xp} >> **Donne la quantitée d'xp de la personne.**"
+           }] }
+        },
+        "add": {
+          "noArgs": { "embeds": [{ "color": "#ED4245", "description": ">>> **Hola ! Tu n'utilise pas correctement cette fonctionnalité !**\n Essaie avec cette forme :\n`xp add <lvl | xp> <number> <user>`" }] },
+          "invalidType": { "embeds": [{ "color": "#ED4245", "description": ">>> **Aïe, tu n'as pas donné un type de valeurs valide !**\nEssaie de donner \"xp\" ou \"lvl\" en premier arguments après \"add\"." }] },
+          "invalidNumber": { "embeds": [{ "color": "#ED4245", "description": ">>> **Aïe, tu n'as pas donné un nombre valide !**\nEssaie de donner un nombre positif." }] },
+          "invalidUser": { "embeds": [{ "color": "#ED4245", "description": ">>> **Aïe, je n'ai pas trouvée cette personne !**" }] },
+          "res": { "embeds": [{ "color": "#57F287", "description": ">>> **Les données ont bien été changées avec succès !**" }] }
+        },
+        "remove": {
+          "noArgs": { "embeds": [{ "color": "#ED4245", "description": ">>> **Hola ! Tu n'utilise pas correctement cette fonctionnalité !**\n Essaie avec cette forme :\n`xp remove <lvl | xp> <number> <user>`" }] },
+          "invalidType": { "embeds": [{ "color": "#ED4245", "description": ">>> **Aïe, tu n'as pas donné un type de valeurs valide !**\nEssaie de donner \"xp\" ou \"lvl\" en premier arguments après \"add\"." }] },
+          "invalidNumber": { "embeds": [{ "color": "#ED4245", "description": ">>> **Aïe, tu n'as pas donné un nombre valide !**\nEssaie de donner un nombre positif." }] },
+          "invalidUser": { "embeds": [{ "color": "#ED4245", "description": ">>> **Aïe, je n'ai pas trouvée cette personne !**" }] },
+          "res": { "embeds": [{ "color": "#57F287", "description": ">>> **Les données ont bien été changées avec succès !**" }] }
         }
       },
       "misc": {
@@ -471,6 +502,13 @@
         "remove": {
           "confirmationRequest": "Voulez vous supprimer ce message ?"
         }
+      }
+    },
+    "automod": {
+      "assets": {
+        "automodDisable": { "embeds": [{ "color": "#ED4245", "description": "> **Le système d'expérience n'est pas activé !**" }] },
+        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quoi faire, veuillez donner un de ces arguments :**\n```md\n- msg\n- add\n- remove\n- on\n- test\n- nochannel\n- norole\n- nouser```" }] },
+        "invalidArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quoi faire, veuillez donner un de ces arguments :**\n```md\n- msg\n- add\n- remove\n- on\n- test\n- nochannel\n- norole\n- nouser```" }] }
       }
     }
   }

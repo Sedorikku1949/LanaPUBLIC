@@ -32,6 +32,10 @@ const SPAMLEVEL = {
 module.exports = {
     exe: async function(message, prefix, command, args, lang) {
       if (!config.dev.devID.includes(message.author.id)) return message.react("❌").catch(() => false); // commande encore en dev donc pas d'accès aux non devs
+      const guildData = await database.get(`guild/${message.guild.id}"['_config'].automod`)
+    
+      if(!args[0]) return message.reply(lang["assets"]["noArgs"]);
+
     },
     config: { name: "automod", aliases: [], category: "config", system: { perms: ["SEND_MESSAGES", "EMBED_LINKS", "ADD_REACTIONS", "MANAGE_MESSAGES"], delInvoke: false, inProgress: true, staffCommand: true, devCommand: false } },
     path: null

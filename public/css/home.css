@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap');
+
+/* content */
+
+body {
+  scroll-behavior: smooth;
+  background: rgb(46, 48, 61);
+  margin: 0px;
+  padding: 0px;
+  color: #708090;
+  font-family: 'Poppins', sans-serif;
+}
+
+.highBar{
+  margin: 0px;
+  margin-top: 10px;
+  padding: 0px;
+  background-color: rgb(31, 33, 41);
+  width: 100%;
+  height: 100px;
+}
+
+.container{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* scrollbar */
+html::-webkit-scrollbar {
+  padding-left: 2px;
+  width: 8px; 
+}
+
+html::-webkit-scrollbar-track {
+  background-color: rgb(31, 33, 41);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgb(92, 92, 92);
+  border-radius: 25px;
+}
+
+/* BOX RULES */
+
+.box{
+  border-radius: 15px;
+  background-color: rgb(31, 33, 41);
+  padding: 15px;
+  color: #b5b5be;
+}
+
+/* top box */
+
+.presentation img {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  margin: 10px;
+}
+
+.presentation h1 {
+  font-size: 50px;
+}
+
+.presentation p {
+  margin: 5px
+}
+
+/* WHY SECTION */
+
+.why{
+  margin-top: 50px;
+}
+
+.why h1 {
+  font-size: 30px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.why h2 {
+  font-size: 27px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.why li {
+  margin-top: 5px;
+}
+
+.why i {
+  margin-top: 10px;
+}
+
+/* AVANTAGE SECTION */
+
+.avantage{
+  margin-top: 50px;
+}
+
+.avantage h1 {
+  font-size: 30px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.avantage h2 {
+  font-size: 27px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.avantage i {
+  margin-top: 10px;
+}
+
+/* STAR SECTION */
+
+.starBack{
+  margin-top: 50px;
+}
+
+.starBack h1 {
+  font-size: 30px;
+  margin: 20px;
+  padding: 20px;
+}
+
+
+/* PARTNER SECTION */
+
+.partner{
+  margin-top: 50px;
+}
+
+.partner h1 {
+  font-size: 30px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.partner img {
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+}
+
+.partnerBox{
+  background-color: rgb(17, 18, 22);
+  border-radius: 20px;
+  max-width: 120px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.partnerBox a {
+  text-decoration: none;
+  color: #b5b5be;
+}
+
+.partner .box {
+  margin: auto;
+  justify-content: initial;
+  align-items:initial;
+}
+
+.centerPartner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* WHO SECTION */
+
+.who{
+  margin-top: 50px;
+}
+
+.who h1 {
+  font-size: 30px;
+  margin: 20px;
+  padding: 20px;
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .box{
+    left: 50px;
+  }
+}

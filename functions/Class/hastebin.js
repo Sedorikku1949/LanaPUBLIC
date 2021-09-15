@@ -1,5 +1,5 @@
-const baseUrl = "https://hastebin.com"
-const fetch = require('node-fetch');
+const baseUrl = "https://hastebin.com";
+const fetch = import("node-fetch");
 
 async function createHastebin(url, options){
     return await fetch(`${url}/documents`, options);

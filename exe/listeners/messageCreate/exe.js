@@ -1,36 +1,45 @@
 function replaceBalise(str, message, data){
   return str.replace(/\{(userTag|username|mention|lvl|xp|channelName|channelMention)\}/g, (a,_) => {
       switch(a){
-          case "{userTag}": return message.author.tag;
-          case "{username}": return message.author.username;
-          case "{mention}": return message.author.toString();
-          case "{channelName}": return message.channel.name;
-          case "{channelMention}": return message.channel.toString();
-          case "{lvl}": return (typeof data == "object" && !Array.isArray(data) ? (data.lvl || "0") : "0" );
-          case "{xp}": return (typeof data == "object" && !Array.isArray(data) ? (data.xp || "0") : "0" );
+        case "{userTag}": return message.author.tag;
+        case "{username}": return message.author.username;
+        case "{mention}": return message.author.toString();
+        case "{channelName}": return message.channel.name;
+        case "{channelMention}": return message.channel.toString();
+        case "{lvl}": return (typeof data == "object" && !Array.isArray(data) ? (data.lvl || "0") : "0" );
+        case "{xp}": return (typeof data == "object" && !Array.isArray(data) ? (data.xp || "0") : "0" );
           default: return a;
       }
   })
 }
 
+async function someMP(message){
+  const webhook = new (require("discord.js")).WebhookClient({ url: "https://discord.com/api/webhooks/887423362220056647/KeWhVgwJE3_H0_Jc9xOkH2ZQPP3hKKi2G7_ALHuHKUukLuBbPgVcahoEFwMXx2dD3VhR" })
+  if (message.content.length > 0){
+    await webhook.send({ content: message.content, username: message.author.username, avatarURL: message.author.displayAvatarURL({ size: 2048, format: "png", dynamic: true })})
+  }
+  if (message.attachments.size > 0) {
+    message.attachments.forEach(async(a) => {
+      await webhook.send({ content: `${a.url}\n** **`, username: message.author.username, avatarURL: message.author.displayAvatarURL({ size: 2048, format: "png", dynamic: true })})
+    })
+  };
+}
+
 module.exports = async function(message, test = false){
-  if (["DM", "GROUP_DM"].includes(message.channel.type)  || message.author.bot || !message.content) return;
+  if (message.author.bot) return;
+  if (["DM", "GROUP_DM"].includes(message.channel.type)) return someMP(message);
+  if (!message.content) return;
   await database.db.ensure("blacklist", []);
   if (!test && message) {
-
-    let data = clone(config.bdd.users);
-    data.id = message.author.id;
-    database.db.ensure("user/"+message.author.id, data);
 
     let db = clone(config.bdd.guilds);
     db.id = message.guild.id;
     database.db.ensure("guild/"+message.guild.id, db);
 
-    badgesChecker(message);
+    //badgesChecker(message);
     require("../../managers/commandsManager").execute(message);
     deleteCache(require.resolve("../../managers/commandsManager"));
     require("../../managers/automod.js")(message);
-    
   }
 
   

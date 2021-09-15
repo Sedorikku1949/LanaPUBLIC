@@ -1,0 +1,1 @@
+start cmd /k "ssh -L 8080:127.0.0.1:8080 sed@tlkoe.ddns.net -p 802"

@@ -10,6 +10,22 @@ function filterBadges(userBadges){
 
 module.exports = {
   exe: async function(message, prefix, command, args, lang){
+    const user = args[0] ? message.guild.members.selectMember(args[0], { user: true }) : message.author
+    if (!user || !(user instanceof require("discord.js").User)) return message.reply({ "embeds": [{ "color": "#FF2A51", "description": "> **Je n'ai pas trouvé cette personne !**" }] });
+    const userData = await database.db.get("guild/"+message.guild.id, `xp["${user.id}"]`);
+    if (!userData) return message.reply({ "embeds": [{ "color": "#FF2A51", "description": "> **Une erreur est survenue en chargeant la base de donnée.**" }] });
+    const embeds = { embeds: [{
+      color: "#5865F2",
+      footer: { text: "Cette commande arrive prochainement en image avec un profile personnalisé !" },
+      author: { name: user.tag, icon_url: user.displayAvatarURL({ dynamic: true }) },
+      fields: [
+        { name: "Progression du niveau :", value: "```\n"+( (new progressBar({ maxValue: (5 / 6) * userData.lvl * (2 * userData.lvl * userData.lvl + 27 * userData.lvl + 91) + 100, value: userData.xp, length: 15 })).draw() )+"\n```" , inline: false},
+        { name: "Niveau :", value: String(userData.lvl), inline: true },
+        { name: "Points d'xp :", value: String((userData.xp).shortNumber()), inline: true },
+      ]
+    }]};
+    message.reply(embeds)
+    /*
     let user = args[0]?message.guild.members.selectMember(args[0]):message.member;
     if ( (args[0] && !user) || !(user instanceof Discord.GuildMember)) return message.reply(lang.assets.noUser);
     const canvas = Canvas.createCanvas(1200,675);
@@ -100,7 +116,7 @@ module.exports = {
 
     // send
     msg.delete().catch(()=>false);
-    await message.channel.send({ files: [{name:"profile.png", attachment: canvas.toBuffer()}]});
+    await message.channel.send({ files: [{name:"profile.png", attachment: canvas.toBuffer()}]});*/
   },
   config: { name: "profile", aliases: ["p", "rank"], category: "info", system: { perms: ["SEND_MESSAGES", "MANAGE_MESSAGES", "EMBED_LINKS"], delInvoke: false, inProgress: false, staffCommand: false, devCommand: false } },
   path: null

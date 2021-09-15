@@ -23,7 +23,7 @@ async function getPrefix(message){
     if (await database.db.has("guild/"+message.guild.id)){
       // guild exist in database
       const data = (await database.db.get("guild/"+message.guild.id))?.prefix
-      if (data) resolve(data);
+      if (data && data.length > 0) resolve(data);
       else resolve(client.prefix);
     } else resolve(client.prefix);
   })

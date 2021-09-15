@@ -21,32 +21,16 @@
         "guilds": {
           "_config": {
             "enable": false,
-            "staffRoles": [],
-            "ignoreChannel": [],
-            "ignoreCategory": [],
-            "ignoreCommand": [],
-            "ignoreUser": [],
+            "staffRoles": [], "ignoreChannel": [], "ignoreCategory": [], "ignoreCommand": [], "ignoreUser": [],
             "commandException": [],
-            "xp": false,
-            "xpConfig": {
-              "noChannel": [],
-              "noRole": [],
-              "noUser": []
-            },
-            "money": false,
-            "invite": false
+            "xp": false, "money": false, "invite": false,
+            "xpConfig": { "noChannel": [], "noRole": [], "noUser": [] }
           },
-          "logs": { 
-            "join": null,  "leave": null,  "messageUpdate": null,  "messageDelete": null,  "sanctions": null,  "raid": null,  "banAdd": null,  "banRemove": null,  "inviteCreate": null,  "inviteDelete": null,  "messageReactionRemoveAll": null,  "roleCreate": null,  "roleDelete": null,  "roleUpdate": null,  "voiceStateUpdate": null, "channelCreate": null, "channelDelete": null, "channelUpdate": null
-          },
+          "logs": [],
           "moderation": {
             "automod": false,
             "automodConfig": {
-              "whitelists": {
-                "users": [],
-                "channels": [],
-                "roles": []
-              },
+              "whitelists": { "users": [], "channels": [], "roles": [] },
               "spamLevel": 1,
               "spam": false,
               "spawmAction": 3,
@@ -55,19 +39,12 @@
               "invite": false,
               "inviteAction": 0
             },
-            "ban": [],
-            "kick": [],
-            "warn": [],
-            "notes": [],
-            "raidmode": false,
-            "autoRaidMode": false
+            "ban": [], "kick": [], "warn": [], "notes": [],
+            "raidmode": false, "autoRaidMode": false
           },
-          "messages": [],
-          "xp": {},
-          "money": {},
-          "ticket": {},
-          "invite": {},
-          "prefix": null
+          "messages": [], "xp": {}, "money": {}, "ticket": {}, "invite": {},
+          "prefix": "",
+          "id": ""
         }
       }
 }

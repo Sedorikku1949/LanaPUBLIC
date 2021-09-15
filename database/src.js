@@ -35,22 +35,21 @@ function calc(old, nb, opt){
 
 class MiaDB {
   constructor(options = {}){
-      if (typeof options !== "object" || Array.isArray(options)) throw new Error("options must be an object", "options_type");
-      if (typeof options.url !== "string") throw new Error("options.url must be a string", "option_url_type");
-      if (typeof options.name !== "string") throw new Error("options.name must be a string", "option_name_type");
-      this.createdTimestamp = Date.now();
-      this.url = options.url;
-      this.databaseName = options.name;
-      this.node = "A-001_&@-json.ravendb"
-      this.initialize = false;
-      this.online = true;
-      this.store = new raven.DocumentStore(options.url, options.name);
-      try { this.store.initialize(); this.initialize = true; }
-        catch(err) {
-          this.store = null;
-          
-          throw new Error("The connextion has failed !\nTry to start the database or change the link and name in options")
-        }
+    if (typeof options !== "object" || Array.isArray(options)) throw new Error("options must be an object", "options_type");
+    if (typeof options.url !== "string") throw new Error("options.url must be a string", "option_url_type");
+    if (typeof options.name !== "string") throw new Error("options.name must be a string", "option_name_type");
+    this.createdTimestamp = Date.now();
+    this.url = options.url;
+    this.databaseName = options.name;
+    this.node = "A-001_&@-json.ravendb"
+    this.initialize = false;
+    this.online = true;
+    this.store = new raven.DocumentStore(options.url, options.name);
+    try { this.store.initialize(); this.initialize = true; }
+      catch(err) {
+        this.store = null;
+        throw new Error("The connextion has failed !\nTry to start the database or change the link and name in options")
+      }
   };
 
   /**
@@ -66,8 +65,8 @@ class MiaDB {
     if (!this.store) throw new Error("An error as occured !");
     if (path && typeof path !== "string") throw new Error("invalid value was provided");
     let session = this.store.openSession();
-    if (await session.load(key)) { // already exist
-      let oldData = await session.load(key);
+    let oldData = await session.load(key)
+    if (oldData) { // already exist
       if (!path) { oldData.data = data; await session.saveChanges(); }
       else { // access to the good path
         try { oldData = updateObj(oldData, ["data", ...getGoodKeyPath(path)], data); session.store(oldData, key); await session.saveChanges(); }
@@ -90,13 +89,13 @@ class MiaDB {
     if (typeof key !== "string") throw new Error("key is not optionnal !");
     if (!this.store) throw new Error("An error as occured !");
     let session = this.store.openSession();
+    const load = await session.load(key);
     try { 
-      if (!path || (path && typeof path !== "string")) return (await session.load(key))?.data;
-      let obj = (await session.load(key))?.data;
+      if (!path || (path && typeof path !== "string")) return load?.data;
+      let obj = load?.data;
       try { getGoodKeyPath(path).forEach(elm => obj = obj[elm]); } catch(err) { return obj }
       return obj;
     } catch (err) {
-      console.error(err);
       return false;
     }
   };
@@ -259,12 +258,13 @@ class MiaDB {
     if (isNaN(data)) throw new Error("data must be a number");
     if (path && typeof path !== "string") throw new Error("path must be a string");
     const session = this.store.openSession();
-    if ( !(await session.load(key)) ) return null;
+    const load = await session.load(key)
+    if ( !(load) ) return null;
     // path or not
     if (path){
       // path 
-      let oldData = await session.load(key);
-      let nb = (await session.load(key))?.data;
+      let oldData = load;
+      let nb = load?.data;
       getGoodKeyPath(path).forEach(elm => nb = nb[elm]);
       if (isNaN(nb)) return null;
       nb = calc(nb, data, opt);
@@ -273,7 +273,7 @@ class MiaDB {
       return true
     } else {
       // no path
-      let oldData = await session.load(key);
+      let oldData = load;
       oldData.data = calc(oldData.data, data, opt)
       await session.saveChanges()
       return true

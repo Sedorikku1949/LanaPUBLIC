@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const CheckAuth = require('../middlewares/CheckAuth');
 const btoa = require('btoa');
-const fetch = require('node-fetch');
+const fetch = import("node-fetch");
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 module.exports.Router = class Auth extends Router {
@@ -18,7 +18,7 @@ module.exports.Router = class Auth extends Router {
 					method: 'POST',
 					body: params.toString(),
 					headers: {
-						Authorization: `Basic ${btoa(`${global["client"].user.id}:${req.config.bot.secret}`)}`,
+						Authorization: `Basic ${btoa(`${global["client"]?.user?.id ?? req.config}:${req.config.bot.secret}`)}`,
 						'Content-Type': 'application/x-www-form-urlencoded'
 					}
 				});
@@ -58,12 +58,12 @@ module.exports.Router = class Auth extends Router {
 				});
 				res.status(200).redirect('/profile');
 			} else {
-				res.redirect(`https://discordapp.com/api/oauth2/authorize?client_id=${global["client"].user.id}&scope=identify%20guilds&response_type=code&redirect_uri=${encodeURIComponent(req.config.callbackURL)}`);
+				res.redirect(`https://discord.com/api/oauth2/authorize?client_id=806438484159102996&permissions=0&response_type=code&scope=guilds%20bot%20applications.commands%20identify`);
 			}
 		});
 		this.get('/logout', [CheckAuth], function(req, res) {
 			req.session.destroy();
-			res.status(200).redirect('/');
+			res.status(200).redirect('/home');
 		});
 	}
 };

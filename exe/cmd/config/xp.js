@@ -1,3 +1,5 @@
+const { number } = require("mathjs");
+
 module.exports = {
   exe: async function(message, prefix, command, args, lang){
     if (!args[0]) return message.reply(lang.assets.noArgs);
@@ -43,12 +45,25 @@ module.exports = {
             const msg = await message.reply(lang.assets.msg.removeResponse);
             await Promise.all([emojis.check.id, emojis.close.id].map(e => msg.react(e).catch(() => false)))
             const collector = msg.createReactionCollector({ time: 30000, filter: (react, user) => user.id == message.author.id && [emojis.check.id, emojis.close.id].includes(react.emoji.id)});
-            let res = false;
-            collector.on("collect", (react) => {
-              res = true;
-              collector.stop()
+            let res = false; let cancel = false;
+            collector.on("collect", async(react) => {
+              switch(react.emoji.id){
+                case emojis.check.id: {
+                  res = true;
+                  const index = (await database.db.get("guild/"+message.guild.id, "messages"))?.findIndex(e => e.id === messageToDelete.id);
+                  if (typeof index !== "number" || index < 0) return message.reply(lang.assets.msg.indexError)
+                  await database.db.remove("guild/"+message.guild.id, "messages", index, 1);
+                  message.reply(lang.assets.msg.removeConfirm);
+                  collector.stop();
+                  break;
+                };
+                case emojis.close.id: {
+                  res = true; cancel = true;
+                  collector.stop();
+                }
+              }
             });
-            collector.on("end", () => { if (!res) return msg.edit(lang.assets.msg.noResponse); else msg.edit(lang.assets.msg.cancel); msg.reactions.removeAll().catch(() => false) })
+            collector.on("end", () => { if (!res && !cancel) msg.edit(lang.assets.msg.noResponse); else msg.edit(lang.assets.msg.cancel); msg.reactions.removeAll().catch(() => false) })
             break;
           };
           case "list": {
@@ -85,6 +100,7 @@ module.exports = {
             break;
           };
           case "badges": {
+            message.reply(lang.assets.msg.badges);
             break;
           };
           default: message.reply(lang.assets.msg.noArgs)
@@ -93,10 +109,65 @@ module.exports = {
       };
       case "add": {
         if (!await database.db.get("guild/"+message.guild.id, "['_config'].xp")) return message.reply(lang.assets.xpDisable);
+        if (!args[3]) return message.reply(lang.assets.add.noArgs);
+        const type = args[1];
+        if (typeof type !== "string" || !["xp", "lvl"].includes(type)) return message.reply(lang.assets.add.invalidType);
+        if (isNaN(args[2]) || Number(args[2]) < 1) return message.reply(lang.assets.add.invalidNumber)
+        const nb = Number(args[2])
+        const user = message.guild.members.selectMember(args[3], { user: true });
+        if (!user || !(user instanceof require("discord.js").User) ) return message.reply(lang.assets.add.invalidUser);
+        if (!((await database.db.get("guild/"+message.guild.id)).xp[user.id])) { await database.db.set("guild/"+message.guild.id, { xp: 0, lvl: 0, id: user.id }, `xp["${user.id}"]`) }
+        const data = (await database.db.get("guild/"+message.guild.id))?.xp[user.id];
+        if (type == "xp"){
+          // xp
+          await database.db.math("guild/"+message.guild.id, "+", nb, `xp["${user.id}"]["xp"]`);
+          let d = (await database.db.get("guild/"+message.guild.id))?.xp[user.id];
+          let lvl = Number(d.lvl)
+          while((5 / 6) * lvl * (2 * lvl * lvl + 27 * lvl + 91) + 100 <= d.xp) { lvl++ };
+          await database.db.set("guild/"+message.guild.id, lvl, `xp["${user.id}"].lvl`);
+        } else {
+          // lvl
+          let i = Number(data.lvl);
+          let newLvl = Number(data.lvl) + nb;
+          while(i < newLvl) i++;
+          const needed = ((5 / 6) * i * (2 * i * i + 27 * i + 91) + 100) - data.xp;
+          if (needed < 1) return;
+          await database.db.set("guild/"+message.guild.id, i, `xp["${user.id}"].lvl`);
+          await database.db.set("guild/"+message.guild.id, Number(needed.toFixed(0)), `xp["${user.id}"].xp`);
+        };
+        message.reply(lang.assets.add.res);
+        // =xp add <lvl | xp> <number> <user>
         break;
       };
       case "remove": {
         if (!await database.db.get("guild/"+message.guild.id, "['_config'].xp")) return message.reply(lang.assets.xpDisable);
+        if (!args[3]) return message.reply(lang.assets.remove.noArgs);
+        const type = args[1];
+        if (typeof type !== "string" || !["xp", "lvl"].includes(type)) return message.reply(lang.assets.remove.invalidType);
+        if (isNaN(args[2]) || Number(args[2]) < 1) return message.reply(lang.assets.remove.invalidNumber)
+        const nb = Number(args[2])
+        const user = message.guild.members.selectMember(args[3], { user: true });
+        if (!user || !(user instanceof require("discord.js").User) ) return message.reply(lang.assets.remove.invalidUser);
+        if (!((await database.db.get("guild/"+message.guild.id)).xp[user.id])) { await database.db.set("guild/"+message.guild.id, { xp: 0, lvl: 0, id: user.id }, `xp["${user.id}"]`) }
+        const data = (await database.db.get("guild/"+message.guild.id))?.xp[user.id];
+        if (type == "xp"){
+          // xp
+          await database.db.math("guild/"+message.guild.id, "-", nb, `xp["${user.id}"]["xp"]`);
+          let d = (await database.db.get("guild/"+message.guild.id))?.xp[user.id];
+          let lvl = 0;
+          while((5 / 6) * lvl * (2 * lvl * lvl + 27 * lvl + 91) + 100 <= d.xp) { lvl++ };
+          await database.db.set("guild/"+message.guild.id, lvl, `xp["${user.id}"].lvl`);
+        } else {
+          // lvl
+          let i = Number(data.lvl);
+          let newLvl = Number(data.lvl) - nb;
+          while(i > newLvl) i--;
+          const exceed = data.xp - ((5 / 6) * (i-1) * (2 * (i-1) * (i-1) + 27 * (i-1) + 91) + 100);
+          await database.db.set("guild/"+message.guild.id, i, `xp["${user.id}"].lvl`);
+          await database.db.math("guild/"+message.guild.id, "-", Number(exceed.toFixed(0)), `xp["${user.id}"].xp`);
+        };
+        message.reply(lang.assets.remove.res);
+        // =xp remove <lvl | xp> <number> <user>
         break;
       };
       case "on": {
