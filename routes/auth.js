@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const CheckAuth = require('../middlewares/CheckAuth');
 const btoa = require('btoa');
-const fetch = import("node-fetch");
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 module.exports.Router = class Auth extends Router {

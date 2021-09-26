@@ -32,7 +32,7 @@
             },
             {
               "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
-              "url": "https://discord.gg/RYrJDNgF9m"
+              "url": "https://discord.gg/cnJq9UzP2s"
             }
           ],
           "type": 1
@@ -104,13 +104,7 @@
       "desc": "Une commande pour m'ajouter à ton serveur pardi !",
       "use": "Aucun argument requis.",
       "assets": {
-        "embeds": [{
-         "color": "#5865F2",
-         "footer": { "text": "©️ Lana - 2021" },
-         "thumbnail": { "url": "https://cdn.discordapp.com/avatars/858766319506554899/5a33a31391217fc72e9d4bf8ef180b91.png?size=2048" },
-         "title": "Invite moi dès maintenant avec le lien de ton choix !",
-         "description": ">>> **Permissions personnalisables : [clique ici](https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=-1&scope=applications.commands%20bot)**\n**Permissions administrateurs : [clique ici](https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot)**\n**Aucune permission : [clique ici](https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=0&scope=applications.commands%20bot)**"
-        }]
+        "content": "**Mais quel bonne idée de m'ajouter sur ton serveur, je t'apprécie déjà !**\n\n> M'inviter est très simple, il te suffit de cliquer sur ce lien :\n> **https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot**\n\nUne fois que tu m'as ajoutée, tu n'a rien d'autre a faire de spécial, je suis déjà prête !\n\n> Des questions, idées ou un problème ?\nTu peux rejoindre le serveur où j'ai été imaginée et créée, voici l'invitation :\n\n**https://discord.gg/cnJq9UzP2s **\n\nA la prochaine !"
       }
     },
     "serv": {
@@ -153,7 +147,7 @@
               },
               {
                 "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
-                "url": "https://discord.gg/RYrJDNgF9m"
+                "url": "https://discord.gg/cnJq9UzP2s"
               },
               {
                 "disabled": false, "emoji": null, "label": "Mon dashboard", "style": 5, "type": 2,
@@ -191,7 +185,7 @@
               },
               {
                 "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
-                "url": "https://discord.gg/RYrJDNgF9m"
+                "url": "https://discord.gg/cnJq9UzP2s"
               }
               ], "type": 1
             }
@@ -348,7 +342,7 @@
           "components": [
               {
                 "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
-                "url": "https://discord.gg/RYrJDNgF9m"
+                "url": "https://discord.gg/cnJq9UzP2s"
               }
             ], "type": 1
           }
@@ -505,10 +499,116 @@
       }
     },
     "automod": {
+      "desc": "Cette commande te permet de gérer l'auto modérateur.",
+      "use": "En cours de développement.",
       "assets": {
         "automodDisable": { "embeds": [{ "color": "#ED4245", "description": "> **Le système d'expérience n'est pas activé !**" }] },
-        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quoi faire, veuillez donner un de ces arguments :**\n```md\n- msg\n- add\n- remove\n- on\n- test\n- nochannel\n- norole\n- nouser```" }] },
-        "invalidArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quoi faire, veuillez donner un de ces arguments :**\n```md\n- msg\n- add\n- remove\n- on\n- test\n- nochannel\n- norole\n- nouser```" }] }
+        "invalidArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quoi faire, veuillez donner un de ces arguments :**\n```wouhou```" }] }
+      }
+    },
+    "play": {
+      "desc": "Cette commande te permet d'écouter de la musique comme tu l'entend !",
+      "use": "{prefix}play <musique>",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quelle musique jouer !**" }] },
+        "noVideoFound": { "embeds": [{ "color": "#ED4245", "description": ">>> **Oups, je n'ai pas trouvé la vidéo...**\nReessaie avec un lien !" }] },
+        "noVoiceChannel": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans un salon vocal !**" }] },
+        "err": { "embeds": [{ "color": "#ED4245", "description": "> **Une erreur est survenue.**" }] },
+        "queue": { "embeds": [{ "color": "#5865F2", "description": "> **La musique a été ajoutée a la queue !**" }] },
+        "cantAddMoreMusic": { "embeds": [{ "color": "#ED4245", "description": ">>> **Tu as atteint la limite de musiques qui est de 7000 musiques dans la queue !**\nLa limitation est purement technique." }] }
+      }
+    },
+    "skip": {
+      "desc": "Cette commande te permet de passer une musique !",
+      "use": "{prefix}skip",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quelle musique jouer !**" }] },
+        "noMusic": { "embeds": [{ "color": "#ED4245", "description": "> **Aucune musique est en train d'être jouée.**" }] },
+        "nop": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans le vocal où la musique est jouée.**" }] }
+      }
+    },
+    "volume": {
+      "desc": "Cette commande te permet de passer une musique !",
+      "use": "{prefix}volume <volume en pourcentage>",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quel seras le nouveau pourcentage !**" }] },
+        "invalidVol": { "embeds": [{ "color": "#ED4245", "description": "> **Le volume doit être compris entre 1% et 1000% !**" }] },
+        "noMusic": { "embeds": [{ "color": "#ED4245", "description": "> **Aucune musique est en train d'être jouée.**" }] },
+        "nop": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans le vocal où la musique est jouée.**" }] },
+        "success": "> **Le volume de la musique est désormais a {percent}%**"
+      }
+    },
+    "nowplaying": {
+      "desc": "Cette commande te permet de voir la musique en cours !",
+      "use": "{prefix}nowplaying",
+      "assets": {
+        "noMusic": { "embeds": [{ "color": "#ED4245", "description": "> **Aucune musique est en train d'être jouée.**" }] },
+        "nop": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans le vocal où la musique est jouée.**" }] },
+        "noInfo": { "embeds": [{ "color": "#ED4245", "description": "> **Je n'ai pas réussi a trouver les informations de la musique en cours.**" }] }
+      }
+    },
+    "loop": {
+      "desc": "Cette commande te permet de mettre une musique en boucle !",
+      "use": "{prefix}loop",
+      "assets": {
+        "noMusic": { "embeds": [{ "color": "#ED4245", "description": "> **Aucune musique est en train d'être jouée.**" }] },
+        "nop": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans le vocal où la musique est jouée.**" }] },
+        "on": "> **Je jouerais désormais la musique en boucle !**",
+        "off": "> **Je ne jouerais plus la musique en boucle !**"
+      }
+    },
+    "pause": {
+      "desc": "Cette commande te permet de mettre une musique en pause !",
+      "use": "{prefix}pause",
+      "assets": {
+        "noMusic": { "embeds": [{ "color": "#ED4245", "description": "> **Aucune musique est en train d'être jouée.**" }] },
+        "nop": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans le vocal où la musique est jouée.**" }] },
+        "success": "> **La musique est désormais en pause !**"
+      }
+    },
+    "unpause": {
+      "desc": "Cette commande te permet de relancer la musique en pause !",
+      "use": "{prefix}unpause",
+      "assets": {
+        "noMusic": { "embeds": [{ "color": "#ED4245", "description": "> **Aucune musique est en train d'être jouée.**" }] },
+        "nop": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans le vocal où la musique est jouée.**" }] },
+        "success": "> **La musique n'est plus en pause !**"
+      }
+    },
+    "clearqueue": {
+      "desc": "Cette commande te permet de nettoyer la queue des musiques !",
+      "use": "{prefix}clearqueue",
+      "assets": {
+        "noMusic": { "embeds": [{ "color": "#ED4245", "description": "> **Aucune musique est en train d'être jouée.**" }] },
+        "nop": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans le vocal où la musique est jouée.**" }] },
+        "noMoreMusic": { "embeds": [{ "color": "#ED4245", "description": "> **Il n'y a aucune musique dans la queue.**" }] },
+        "success": "> **La queue a été nettoyée avec succès !**"
+      }
+    },
+    "queue": {
+      "desc": "Cette commande te permet de nettoyer la queue des musiques !",
+      "use": "{prefix}queue",
+      "assets": {
+        "noMusic": { "embeds": [{ "color": "#ED4245", "description": "> **Aucune musique est en train d'être jouée.**" }] },
+        "nop": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans le vocal où la musique est jouée.**" }] },
+        "noQueue": { "embeds": [{ "color": "#ED4245", "description": "> **Il n'y a aucune musique dans la queue.**" }] }
+      }
+    },
+    "stop": {
+      "desc": "Cette commande te permet de stopper la musique en cours !",
+      "use": "{prefix}stop",
+      "assets": {
+        "noMusic": { "embeds": [{ "color": "#ED4245", "description": "> **Aucune musique est en train d'être jouée.**" }] },
+        "nop": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans le vocal où la musique est jouée.**" }] },
+        "success": "> **La musique a été arretée !**"
+      }
+    },
+    "leave": {
+      "desc": "Cette commande te permet de faire quitter Lana du salon !",
+      "use": "{prefix}leave",
+      "assets": {
+        "nop": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans le vocal où la musique est jouée.**" }] },
+        "success": "> **J'ai quitté le vocal !**"
       }
     }
   }

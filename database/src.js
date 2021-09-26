@@ -1,5 +1,4 @@
 const raven = require("ravendb")
-const Err = require("./error")
 
 function getGoodKeyPath(str) {
   return str.match(/(\[("|'|`))?\w+(("|'|`)\])?/gm).map(e => e.match(/\[.+\]/g) ? e.slice(2, e.length-2) : e );

@@ -1,3 +1,3 @@
 *node_modules/*
-boot.json
-src.js
+database/src.js
+exe/_storage/_config/boot.json

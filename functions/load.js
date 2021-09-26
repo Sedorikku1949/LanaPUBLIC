@@ -14,7 +14,7 @@ module.exports = async() => {
         
         require("./proto/prototype")
         
-        console.log = function(data) { typeof data == "string" ? process.stdout.write(color(data)+"\n") : process.stdout.write(require("util").inspect(data)+"\n") }
+        console.log = async function(data) { typeof data == "string" ? process.stdout.write(color(data)+"\n") : process.stdout.write(require("util").inspect(data)+"\n") }
 
         f.forEach(e => deleteCache(require.resolve(e)))
         deleteCache(require.resolve("./proto/prototype"))

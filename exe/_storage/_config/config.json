@@ -1,5 +1,5 @@
 {
-    "dev": { "devID": ["782164174821523467", "550041732893376542", "709815588016357429", "608650149975293962"], "errorChannel": "870648949755748352", "newServerChannel": "870377742544277554" },
+    "dev": { "devID": ["782164174821523467", "550041732893376542", "709815588016357429", "608650149975293962"], "errorChannel": "889094615754481775", "newServerChannel": "889094462230396979" },
       "reload": false,
       "maintenance": false,
       "defaultProfileCardBackgroundPath": "exe/_storage/img/profileCardDefaultBackground.jpg",
@@ -45,6 +45,24 @@
           "messages": [], "xp": {}, "money": {}, "ticket": {}, "invite": {},
           "prefix": "",
           "id": ""
+        },
+        "stats": {
+          "guilds": {
+            "join": 0,
+            "leave": 0,
+            "aciveGuilds": {
+              "score": 0,
+              "guilds": {}
+            }
+          },
+          "commands": {
+            "cmd": {},
+            "users": {}
+          },
+          "music": {
+            "music": 0,
+            "queueLength": 0
+          }
         }
       }
 }

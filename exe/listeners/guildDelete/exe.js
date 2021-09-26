@@ -14,6 +14,7 @@ module.exports = function(guild){
                 { name: "Quelques infos :", value: `Membres : \`${guild.memberCount}\`\nBots : \`${guild.members.cache.filter(e => e.user.bot).size}\`\nSalons : \`${guild.channels.cache.size}\``, inline: false },
                 { name: "Date de création :", value: getDate(guild.createdTimestamp, "[DD]/[MM]/[YYYY]")}
             ],
+            footer: { text: `Je suis maintenant sur ${client.guilds.cache.size} serveurs...` },
             timestamp: Date.now(),
         }]
     }).then(e => e.react("💔"))

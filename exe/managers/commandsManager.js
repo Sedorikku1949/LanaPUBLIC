@@ -1,6 +1,8 @@
 const { readdirSync } = require("fs")
 const Discord = require("discord.js")
 
+const commandCooldown = {}
+
 function getArgs(message, prefix) {
   if (!prefix || typeof prefix !== "string" || !message || !(message instanceof Discord.Message)) return { prefix: null, command: null, args: null }
   const content = message.content.trim().toLowerCase();
@@ -70,10 +72,25 @@ module.exports = {
     if ((await database.db.get("guild/"+message.guild.id)) && (await database.db.get("guild/"+message.guild.id))?.config?.ignoreCommand && (await database.db.get("guild/"+message.guild.id))["_config"].ignoreCommand.includes(message.channel.id)) return;
     if ((await database.db.get("guild/"+message.guild.id)) && (await database.db.get("guild/"+message.guild.id))?.config?.ignoreUser && (await database.db.get("guild/"+message.guild.id))["_config"].ignoreUser.includes(message.channel.id)) return;
 
-    try { cmd.exe.bind({}, message, prefix, command, args, lang.commands[cmd.config.name])(); console.log(`{ COMMAND EXECUTOR } {yellow}< ${getDate(Date.now(), `[DD]/[MM]/[YYYY] à [hh]:[mm] et [ss]:[ms]`)} | ${Date.now()} >{stop} command "${cmd.config.name}" executed by {cyan}${message.author.tag} / ${message.author.id}{stop} in {blue}( #${message.channel.name} | ${message.channel.id} ){stop}`); await database.db.inc("user/"+message.author.id, "score") }
-      catch(err) {
+    if (commandCooldown[message.author.id]) return;
+    try {
+      commandCooldown[message.author.id] = true;
+      await (cmd.exe.bind({}, message, prefix, command, args, lang.commands[cmd.config.name])());
+      console.log(`{ COMMAND EXECUTOR } {yellow}< ${getDate(Date.now(), `[DD]/[MM]/[YYYY] à [hh]:[mm] et [ss]:[ms]`)} | ${Date.now()} >{stop} command "${cmd.config.name}" executed by {cyan}${message.author.tag} / ${message.author.id}{stop} in {blue}( #${message.channel.name} | ${message.channel.id} ){stop}`); await database.db.inc("user/"+message.author.id, "score")
+      delete commandCooldown[message.author.id];
+    } catch(err) {
+        delete commandCooldown[message.author.id];
         message.reply(lang.misc.handler.error)
-        client.channels.cache.get(config.dev.errorChannel).send({ embed: { color: "#ED4245", fields: [{name: "Path :", value: "```\n"+cmd.path+"```"}, {name: "Executor :", value: "```\n"+message.author.tag+" / "+message.author.id+"```"}, {name: "Guild :", value: "```\n"+message.guild.name+" / "+message.guild.id+"```"}], title: "Une erreur est survenue !", description: "```js\n"+require("util").inspect(err).slice(0,1900).replace("`", "`\u200b")+"```" } })
+        client.channels.cache.get(config.dev.errorChannel).send({ embeds: [{
+          color: "#ED4245",
+          fields: [
+            {name: "Path :", value: "```\n"+cmd.path+"```"},
+            {name: "Executor :", value: "```\n"+message.author.tag+" / "+message.author.id+"```"},
+            {name: "Guild :", value: "```\n"+message.guild.name+" / "+message.guild.id+"```"}
+          ],
+          title: "Une erreur est survenue !",
+          description: "```js\n"+require("util").inspect(err).slice(0,1900).replace("`", "`\u200b")+"```" 
+        }] })
       }
   }
 }
