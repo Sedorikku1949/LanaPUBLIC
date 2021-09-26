@@ -1,2 +1,3 @@
 *node_modules/*
-exe/_storage/_config/boot.json
+*exe/_storage/_config/boot.json*
+*database/src.js*
