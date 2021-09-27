@@ -110,6 +110,7 @@ const charsLines = ({
 })
 const Discord = require("discord.js");
 const Canvas = require("canvas");
+const encrypt = require("../Class/encrypt");
 
 function chunk(arr, n) { return (arr.length ? [arr.slice(0, n), ...chunk(arr.slice(n), n)] : []); };
 
@@ -190,4 +191,5 @@ module.exports = [
     for (let i = 0; i < this.length; i++) reversed = this[i] + reversed;
     return reversed;
   },
+  encrypt.prototype.toString = () => new Error("This prototype has been disable for security reasons."),
 ]

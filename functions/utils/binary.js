@@ -1,0 +1,1 @@
+module.exports = function(s) { return s.split("").map(e => e.charCodeAt(0).toString(2)).join(" ") };

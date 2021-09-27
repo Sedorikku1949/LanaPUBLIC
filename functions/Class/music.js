@@ -1,13 +1,13 @@
 const djs = require("discord.js");
-const ytdl = require('ytdl-core');
+const { getInfo } = require('ytdl-core');
 const { FFmpeg } = require('prism-media')
 const { createAudioResource, createAudioPlayer, StreamType, joinVoiceChannel, NoSubscriberBehavior, AudioPlayerStatus, getNextResource } = require("@discordjs/voice");
 
-async function checkURL(str) { try { return await ytdl.getInfo(str) } catch(err) { return false; } }
+async function checkURL(str) { try { return await getInfo(str) } catch(err) { return false; } }
 
 async function getVideoInfo(url){
   try {
-    return await ytdl.getInfo(url).then((v) => v?.videoDetails)
+    return await getInfo(url).then((v) => v?.videoDetails)
   } catch(err) { return null; };
 }
 
@@ -72,7 +72,7 @@ class guildMusic {
 
   async getVideoInfo(url){
     try {
-      return await ytdl.getInfo(url).then((v) => v?.videoDetails)
+      return await getInfo(url).then((v) => v?.videoDetails)
     } catch(err) { return null; };
   }
 
@@ -110,8 +110,16 @@ class guildMusic {
       }
       else {
         if (!this.player) { await this.createPlayer() }
-        this.ressource = createAudioResource((new FFmpeg({ args: ["-reconnect", "1", "-reconnect_delay_max", "5", "-i", url, "-analyzeduration", "0", '-loglevel', '0', "-ar", "48000", "-ac", "2", "-acodec" ], shell: false })), { inputType: StreamType.OggOpus, inlineVolume: true })
+
+        const audioURL = await getInfo(url).then(({ formats }) => formats[0]?.url);
+        const args = ['-reconnect', '1', '-reconnect_streamed', '1', '-reconnect_delay_max', '5', '-i', audioURL, '-analyzeduration', '0', '-loglevel', '0', '-ar', '48000', '-ac', '2', '-acodec', 'libopus', '-f', 'opus'];
+
+        //this.player = this.player || this.createPlayer();
+        this.ressource = createAudioResource(new FFmpeg({ args, shell: false }), { inputType: StreamType.OggOpus, inlineVolume: true });
+
         this.player.play(this.ressource);
+        this.connection.subscribe(this.player);
+
         database.musicManager.get(this.id).nowPlaying = true
         if (!this.ressource) {
           this.connection.destroy();

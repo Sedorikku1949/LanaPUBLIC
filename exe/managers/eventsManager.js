@@ -5,6 +5,20 @@ async function wait(ms) {
     return new Promise((resolve, _) => { setTimeout(() => resolve(true), ms) });
 };
 
+class secureDatabase{
+  constructor(){
+    this.db = new (require("../../database/src"))({ url: "http://127.0.0.1:8080", name: process.platform=="win32"?"sayoTest":"lanaPUBLIC"});
+    this.language = {};
+    this.config = global["config"];
+    this.xpCooldown = {};
+    this.musicManager = new music.musicManager();
+    this.crypto = (new encrypt());
+    this.commands = require("./commandsManager").init();
+  }
+}
+
+const secureDb = new secureDatabase();
+
 module.exports = class eventManager {
   static loadEvent = async function(){
     return new Promise(async function(resolve,_){
@@ -24,16 +38,17 @@ module.exports = class eventManager {
 
 
   // TEMPORARY
-  static bdd = async function(id){
+  static bdd = async function(){
     return new Promise(async function(resolve,_){
       global["database"] = {
-        db: new (require("../../database/src"))({ url: "http://127.0.0.1:8080", name: id=="806438484159102996"?"sayoTest":"lanaPUBLIC"}),
-        language: {},
-        config: global["config"],
-        xpCooldown: {},
-        musicManager: new music.musicManager()
-      }
-      global["database"].commands = require("./commandsManager").init();
+        get db(){ return secureDb.db },
+        get language(){ return secureDb.language },
+        get config(){ return secureDb.config },
+        get xpCooldown(){ return secureDb.xpCooldown },
+        get musicManager(){ return secureDb.musicManager },
+        get crypto(){ return secureDb.crypto },
+        get commands(){ return secureDb.commands },
+      };
       resolve(true)
     })
   }

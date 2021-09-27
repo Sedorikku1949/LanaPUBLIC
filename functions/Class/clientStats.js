@@ -65,4 +65,4 @@ class clientStats  {
   }
 };
 
-module.exports = { clientStats, database, dataModels };
+module.exports = { clientStats };

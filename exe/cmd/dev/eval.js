@@ -7,7 +7,7 @@ async function exec(message, prefix, command, args, text, code, securise = false
     } else {
         const fs = {}; const osu = {}; const global = {}; const client = {}; const guilds = {}; const users = {}; const require = {}; const child_process = {}; const process = {}; const root = {}; const commands = [];
         const exec = () => {}; const repl = () => {}; const getGoodLength = () => {}; const msgResponse = {};
-        code = code.replace(new RegExp("root|this|new Function|client|token|evalC", "g"), function(one, two){
+        code = code.replace(new RegExp("root|this|new Function|client|token|evalC|encrypt\.toString\(\)|decrypt\.toString\(\)", "g"), function(one, two){
             switch(one) {
                 case "this": return "thhis";
                 case "root": return "rroot";
@@ -15,6 +15,8 @@ async function exec(message, prefix, command, args, text, code, securise = false
                 case "client": "cliient";
                 case"token": return "'tokenn'";
                 case "evalC": return "evalCC"
+                case "encrypt.toString()": return "encrypt.toSring()"
+                case "decrypt.toString()": return "encrypt.toSring()"
             }
         })
         evalC = true;
@@ -25,11 +27,13 @@ async function exec(message, prefix, command, args, text, code, securise = false
 };
 
 function repl(str){
-  return str.replace(new RegExp(`${client.token}|client\.token|evalC`, "g"), (one, two) => {
+  return str.replace(new RegExp(`${client.token}|client\.token|evalC|encrypt\.toString\(\)|decrypt\.toString\(\)`, "g"), (one, two) => {
       switch (one) {
         case "client.token": return "'Tok3n <3'";
         case client.token: return "'Tok3n <3'";
-        case "evalC": return "evalCC"
+        case "evalC": return "evalCC";
+        case "encrypt.toString()": return "encrypt.toSring()"
+        case "decrypt.toString()": return "encrypt.toSring()"
     };
   });
 };
@@ -44,9 +48,10 @@ function getGoodLength(obj) {
 async function msgResponse(message, prefix, command, args, text, res, error = false) {
   let msg = null;
   if (edit && edit.msg == message.id && message.channel.messages.cache.get(edit.res)) {
-      msg = await message.channel.messages.cache.get(edit.res).edit((!error ? "**`SUCCESS`**":emojis.error.msg+" **`ERROR`**")+"```js\n"+(getGoodLength(res))+"```");
+      msg = await message.channel.messages.cache.get(edit.res).edit((!error ? "**`SUCCESS`**":emojis.error.msg+" **`ERROR`**")+"```js\n"+(getGoodLength(res))+"```").catch(() => false);
   } else {
-    msg = await message.channel.send((!error ? "**`SUCCESS`**":emojis.error.msg+" **`ERROR`**")+"```js\n"+(getGoodLength(res))+"```"); edit = { msg:  message.id, res: msg.id }
+    msg = await message.channel.send((!error ? "**`SUCCESS`**":emojis.error.msg+" **`ERROR`**")+"```js\n"+(getGoodLength(res))+"```").catch(() => false); edit = { msg:  message.id, res: msg?.id };
+    if (!msg) return;
     await msg.react(emojis.trash.id);
     const filter = (react, user) => react.emoji.id == emojis.trash.id && user.id == message.author.id;
     const collector = msg.createReactionCollector({ filter: filter , time: 30000, max: 1 })
