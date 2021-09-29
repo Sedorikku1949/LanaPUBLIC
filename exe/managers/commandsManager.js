@@ -59,7 +59,8 @@ module.exports = {
     const PREFIX = await getPrefix(message);
     const { prefix, command, args } = getArgs(message, PREFIX);
     if (!prefix || !command || prefix !== PREFIX) return;
-    const lang = clone(await database.db.get("user/"+message.author.id) ? (database.language[await database.db.get("user/"+message.author.id).lang] || database.language.fr) : database.language.fr );
+    const data = await database.db.get("user/"+message.author.id);
+    const lang = clone(data ? (database.language[data.lang] || database.language.fr) : database.language.fr );
 
     const cmd = database.commands.find((cmd) => cmd.config.name == command || (cmd.config.aliases.length > 0 && cmd.config.aliases.includes(command)));
     if (!cmd) return;
@@ -75,10 +76,13 @@ module.exports = {
     if (commandCooldown[message.author.id]) return;
     try {
       commandCooldown[message.author.id] = true;
-      await (cmd.exe.bind({}, message, prefix, command, args, lang.commands[cmd.config.name])());
       console.log(`{ COMMAND EXECUTOR } {yellow}< ${getDate(Date.now(), `[DD]/[MM]/[YYYY] à [hh]:[mm] et [ss]:[ms]`)} | ${Date.now()} >{stop} command "${cmd.config.name}" executed by {cyan}${message.author.tag} / ${message.author.id}{stop} in {blue}( #${message.channel.name} | ${message.channel.id} ){stop}`); await database.db.inc("user/"+message.author.id, "score")
+      database.clientStats.cmdExecuted(cmd, message);
+      
+      (cmd.exe.bind({}, message, prefix, command, args, lang.commands[cmd.config.name])());
       delete commandCooldown[message.author.id];
     } catch(err) {
+        console.log(err)
         delete commandCooldown[message.author.id];
         message.reply(lang.misc.handler.error)
         client.channels.cache.get(config.dev.errorChannel).send({ embeds: [{

@@ -111,8 +111,8 @@ class guildMusic {
       else {
         if (!this.player) { await this.createPlayer() }
 
-        const audioURL = await getInfo(url).then(({ formats }) => formats[0]?.url);
-        const args = ['-reconnect', '1', '-reconnect_streamed', '1', '-reconnect_delay_max', '5', '-i', audioURL, '-analyzeduration', '0', '-loglevel', '0', '-ar', '48000', '-ac', '2', '-acodec', 'libopus', '-f', 'opus'];
+        const audioURL = await getInfo(url).then(({ formats }) => (formats.filter((f) => f.audioBitrate && f.audioBitrate > 0).sort((a,b) => Number(b.audioBitrate) - Number(a.audioBitrate)).find((format) => !format.bitrate) || formats[0]));
+        const args = ['-reconnect', '1', '-reconnect_streamed', '1', '-reconnect_delay_max', '5', '-i', audioURL.url, '-analyzeduration', '0', '-loglevel', '0', '-ar', '48000', '-ac', '2', '-acodec', 'libopus', '-f', 'opus'];
 
         //this.player = this.player || this.createPlayer();
         this.ressource = createAudioResource(new FFmpeg({ args, shell: false }), { inputType: StreamType.OggOpus, inlineVolume: true });

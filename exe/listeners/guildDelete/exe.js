@@ -1,5 +1,5 @@
-module.exports = function(guild){
-
+module.exports = async function(guild){
+    await database.clientStats.guildDelete(guild);
     database.db.delete(guild.id)
 
     // leave logs

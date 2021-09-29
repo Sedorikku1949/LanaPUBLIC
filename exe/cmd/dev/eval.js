@@ -1,7 +1,7 @@
 async function exec(message, prefix, command, args, text, code, securise = false){
     if (!securise) {
       evalC = true;
-      const res = await eval(code);
+      const res = eval(code);
       evalC = false;
       return res;
     } else {

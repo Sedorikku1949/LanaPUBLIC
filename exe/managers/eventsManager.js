@@ -14,6 +14,7 @@ class secureDatabase{
     this.musicManager = new music.musicManager();
     this.crypto = (new encrypt());
     this.commands = require("./commandsManager").init();
+    this.clientStats = (new clientStats.clientStats());
   }
 }
 
@@ -48,6 +49,7 @@ module.exports = class eventManager {
         get musicManager(){ return secureDb.musicManager },
         get crypto(){ return secureDb.crypto },
         get commands(){ return secureDb.commands },
+        get clientStats(){ return secureDb.clientStats },
       };
       resolve(true)
     })

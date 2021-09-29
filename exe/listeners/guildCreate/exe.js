@@ -8,6 +8,8 @@ async function mpOwner(guild, joinMessage){
 
 module.exports = async function(guild){
     try {
+        await database.clientStats.guildCreate(guild);
+
         let joinMessage = JSON.parse(JSON.stringify(database.language.fr.misc.guildCreate));
         joinMessage.embeds[0].thumbnail.url = guild.iconURL({size:2048,format:"png",dynamic:true})
         joinMessage.embeds[0].author.name = joinMessage.embeds[0].author.name.replace(/{name}/, client.user.tag);

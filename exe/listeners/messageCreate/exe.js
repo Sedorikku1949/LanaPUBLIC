@@ -25,11 +25,15 @@ async function someMP(message){
   };
 }
 
+const commandsManager = require("../../managers/commandsManager");
+
 module.exports = async function(message, test = false){
   if (message.author.bot) return;
   if (["DM", "GROUP_DM"].includes(message.channel.type)) return someMP(message);
   if (!message.content) return;
-  await database.db.ensure("blacklist", []);
+  database.db.ensure("blacklist", []);
+  database.db.ensure("system/beta", { guilds: [], limit: 10 });
+  database.clientStats.dailyKeyChecker(require("dayjs")(new Date()).format("DD-MM-YYYY"));
   if (!test && message) {
 
     let db = clone(config.bdd.guilds);
@@ -37,9 +41,9 @@ module.exports = async function(message, test = false){
     database.db.ensure("guild/"+message.guild.id, db);
 
     //badgesChecker(message);
-    require("../../managers/commandsManager").execute(message);
-    deleteCache(require.resolve("../../managers/commandsManager"));
+    commandsManager.execute(message);
     require("../../managers/automod.js")(message);
+
   }
 
   

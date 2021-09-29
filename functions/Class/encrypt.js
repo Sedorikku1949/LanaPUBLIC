@@ -4,7 +4,6 @@ const accessKey = JSON.parse(require("fs").readFileSync("exe/_storage/_config/bo
 const secretKey = "vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3";
 const algorithm = "aes-256-ctr";
 const iv = require("fs").readFileSync("randomBytes");
-deleteCache(require.resolve("../../exe/_storage/_config/boot.json"));
 
 function accessKeyCheck(c){
   if (c === accessKey) return true;

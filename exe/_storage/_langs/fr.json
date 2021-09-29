@@ -610,6 +610,31 @@
         "nop": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans le vocal où la musique est jouée.**" }] },
         "success": "> **J'ai quitté le vocal !**"
       }
+    },
+    "beta": {
+      "desc": "Cette commande te permet de rejoindre le programme beta de Lana",
+      "use": "{prefix}beta join\n{prefix}beta leave",
+      "assets": {
+        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quel action effectué !**\n```md\n- join\n- leave\n```" }] },
+        "join": {
+          "serverLimitReach": {
+            "content": "**Désolé, la limite de serveurs beta a été atteinte, vous serez avertis sur le serveur centrale quand je serais des places seront ouvertes !**",
+            "components": [ { "components": [{ "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2, "url": "https://discord.gg/cnJq9UzP2s" }], "type": 1 } ]
+          },
+          "otherServerInBeta": "**Aïe, un de tes serveurs est déjà dans la beta, tu ne peux avoir que un seul serveur avec la beta !**",
+          "serverAlreadyInBeta": { "embeds": [{ "color": "#ED4245", "description": "> **Ce serveur est déjà dans la beta !**" }] },
+          "thanks": {
+            "content": null,
+            "embeds": [{ "thumbnail": {"url": "https://cdn.discordapp.com/avatars/858766319506554899/6b185fe8a35bc9928b321aafdcf3fe38.png?size=2048"}, "title": "Merci !", "description": "> Ton inscription au programmer beta testeur a été enregistrée avec succès !\n\n**Merci de nous aider à rendre Lana meilleure, chaque retour sur les nouveautés permet de corriger des petites choses, ou au contraire, d'opéré de grand changements avant la sortie de cette nouveauté !**\n\n> Nous t'invitons à rejoindre le serveur pour les beta testeurs, il te suffit de cliquer sur le bouton en dessous.", "color": 5793266, "footer": { "text": "L'équipe de développement." } }],
+            "components": [ { "components": [{ "disabled": false, "emoji": null, "label": "Serveur Beta", "style": 5, "type": 2, "url": "https://discord.gg/RazrEv9m5S" }], "type": 1 } ]
+          },
+          "oups": "> **Mince, je ne peux pas t'envoyer de messages privés, désolé mais ton serveur as été retiré de la beta, on ne peux te donner le serveur communautaire de la beta que par message privé.**"
+        },
+        "leave": {
+          "noInBeta": "> **Ton serveur n'est pas dans la beta !**",
+          "success": { "embeds": [{ "color": "#57F287", "description": "> **Ton serveur n'est plus dans la beta !**" }] }
+        }
+      }
     }
   }
 }
