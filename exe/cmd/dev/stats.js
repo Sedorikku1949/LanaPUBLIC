@@ -7,11 +7,11 @@ module.exports = {
     const today = allData[(require("dayjs"))(new Date()).format("DD-MM-YYYY")];
     if (!today) return;
     const chartCallBack = (chartJS) => {};
-    const canvas = new chartJS.CanvasRenderService(width, height, chartCallBack);
+    const canvas = new chartJS.CanvasRenderService(500, 500, chartCallBack);
     const configuration = {
       type: 'line',
       data: {
-        labels: date,
+        labels: [2,3,4,8,3,7],
         datasets: [
           {
             borderColor: '#A6D4FF',
