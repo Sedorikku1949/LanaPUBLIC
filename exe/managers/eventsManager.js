@@ -15,6 +15,8 @@ class secureDatabase{
     this.crypto = (new encrypt());
     this.commands = require("./commandsManager").init();
     this.clientStats = (new clientStats.clientStats());
+    this.guilds = new guilds();
+    this.games = new games();
   }
 }
 
@@ -50,6 +52,8 @@ module.exports = class eventManager {
         get crypto(){ return secureDb.crypto },
         get commands(){ return secureDb.commands },
         get clientStats(){ return secureDb.clientStats },
+        get guilds(){ return securedDb.guilds },
+        get games(){ return securedDb.games }
       };
       resolve(true)
     })

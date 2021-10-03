@@ -14,12 +14,15 @@ module.exports = {
     if (!user || !(user instanceof require("discord.js").User)) return message.reply({ "embeds": [{ "color": "#FF2A51", "description": "> **Je n'ai pas trouvé cette personne !**" }] });
     const userData = await database.db.get("guild/"+message.guild.id, `xp["${user.id}"]`);
     if (!userData) return message.reply({ "embeds": [{ "color": "#FF2A51", "description": "> **Une erreur est survenue en chargeant la base de donnée.**" }] });
+    const oldLevel = (userData.lvl-1) > 0 ? (userData.lvl-1) : 0
+    let oldSection = ((5 / 6) * oldLevel * (2 * oldLevel * oldLevel + 27 * oldLevel + 91) + 100)
+    if (oldSection < 0) oldSection = 0;
     const embeds = { embeds: [{
       color: "#5865F2",
       footer: { text: "Cette commande arrive prochainement en image avec un profile personnalisé !" },
       author: { name: user.tag, icon_url: user.displayAvatarURL({ dynamic: true }) },
       fields: [
-        { name: "Progression du niveau :", value: "```\n"+( (new progressBar({ maxValue: (5 / 6) * userData.lvl * (2 * userData.lvl * userData.lvl + 27 * userData.lvl + 91) + 100, value: userData.xp, length: 15 })).draw() )+"\n```" , inline: false},
+        { name: "Progression du niveau :", value: "```\n"+( (new progressBar({ maxValue: ((5 / 6) * (oldLevel + 1) * (2 * (oldLevel + 1) * (oldLevel + 1) + 27 * (oldLevel + 1) + 91) + 100) - oldSection, value: (userData.xp - oldSection) > 0 ? (userData.xp-oldSection) : userData.xp, length: 15 })).draw() )+"\n```" , inline: false},
         { name: "Niveau :", value: String(userData.lvl), inline: true },
         { name: "Points d'xp :", value: String((userData.xp).shortNumber()), inline: true },
       ]

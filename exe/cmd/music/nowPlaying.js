@@ -1,7 +1,7 @@
 module.exports = {
   exe: async function(message, prefix, command, args, lang){
     if (!database.musicManager.get(message.guild.id)?.nowPlaying) return message.reply(lang.assets.noMusic);
-    if (!message.member.voice?.channel || database.musicManager.get(message.guild.id).channel.id !== message.member.voice.channel?.id) return message.reply(lang.assets.nop);
+    if (!message.member.voice?.channel || message.guild.members.cache.get(client.user.id)?.voice?.channel?.id !== message.member.voice.channel?.id) return message.reply(lang.assets.nop);
     const music = database.musicManager.get(message.guild.id).queue[0];
     if (!music) return message.reply(lang.assets.noMusic);
     await message.react(emojis.check.id).catch(() => false)

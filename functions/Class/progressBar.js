@@ -23,10 +23,10 @@ class progressBar {
       this.dock = options.dock;
     else this.dock = "[ {progression} ] {percent}%";
     if (options.value && typeof options.value == "number")
-      this.value = options.value;
+      this.value = options.value >= 0 ? options.value : 0;
     else this.value = 0;
-    if (options.maxValue && typeof options.maxValue)
-      this.maxValue = options.maxValue;
+    if (options.maxValue && typeof options.maxValue == "number")
+      this.maxValue = options.maxValue >= 0 ? options.maxValue : 0 ;
     else this.maxValue = 100;
     if (options.length && typeof options.length == "number")
       this.length = options.length;
@@ -52,19 +52,20 @@ class progressBar {
         }
       });
 
+    let percent = ((this.value / this.maxValue) * 100).toFixed(0);
     return this.dock.replace(/{(progression|percent)}/g, (a, b) => {
       switch (a) {
         case "{progression}":
           return (
-            this.getBar(this.full, (progress * this.length).toFixed(0)) +
+            this.getBar(this.full, ((progress>=0?progress:0) * this.length).toFixed(0)) +
             "" +
             this.getBar(
               this.empty,
-              this.length - (progress * this.length).toFixed(0)
+              this.length - ((progress>=0?progress:0) * this.length).toFixed(0)
             )
           );
         case "{percent}":
-          return ((this.value / this.maxValue) * 100).toFixed(0);
+          return (percent > 0 ? percent : 0);
         default:
           return a;
       }

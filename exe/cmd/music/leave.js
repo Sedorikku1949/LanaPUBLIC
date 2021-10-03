@@ -1,6 +1,6 @@
 module.exports = {
   exe: async function(message, prefix, command, args, lang){
-    if (!message.member.voice?.channel || database.musicManager.get(message.guild.id).channel.id !== message.member.voice.channel?.id) return message.reply(lang.assets.nop);
+    if (!message.member.voice?.channel || message.guild.members.cache.get(client.user.id)?.voice?.channel?.id !== message.member.voice.channel?.id) return message.reply(lang.assets.nop);
     await database.musicManager.get(message.guild.id).player.stop();
     await database.musicManager.get(message.guild.id).connection.destroy();
     database.musicManager.remove(message.guild)

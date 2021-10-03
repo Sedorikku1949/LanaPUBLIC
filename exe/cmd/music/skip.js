@@ -6,7 +6,7 @@ module.exports = {
     cooldown[message.author.id] = true;
     message.react(emojis.check.id).catch(() => false)
     if (!database.musicManager.get(message.guild.id)?.nowPlaying) return message.reply(lang.assets.noMusic) && delete cooldown[message.author.id];
-    if (!message.member.voice?.channel || database.musicManager.get(message.guild.id).channel.id !== message.member.voice.channel?.id) return message.reply(lang.assets.nop) && delete cooldown[message.author.id];
+    if (!message.member.voice?.channel || message.guild.members.cache.get(client.user.id)?.voice?.channel?.id !== message.member.voice.channel?.id) return message.reply(lang.assets.nop) && delete cooldown[message.author.id];
 
     await database.musicManager.get(message.guild.id).skip(database.musicManager.get(message.guild.id).id, true);
 
