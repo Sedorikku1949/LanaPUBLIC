@@ -365,3 +365,4 @@ class MiaDB extends Map {
 };
 
 module.exports = MiaDB;
+

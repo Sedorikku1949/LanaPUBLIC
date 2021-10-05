@@ -1,1 +1,6 @@
-module.exports = function(data){ return JSON.parse(JSON.stringify(data)); };
+module.exports = function(source) {
+  const target = {};
+  for (const key in source)
+    target[key] = source[key];
+  return target;
+}
