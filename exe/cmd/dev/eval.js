@@ -39,9 +39,9 @@ function repl(str){
 };
 
 function getGoodLength(obj) {
-    const str = (typeof obj !== "string" ? repl(require("util").inspect(obj, true, 0)) : obj);
+    const str = repl(require("util").inspect(obj, true, 0));
     if (str.length < 1) return "\u200b"
-    else if (str.length >= 1960) { return (typeof obj !== "string" ? repl(require("util").inspect(obj, true, 0)).slice(0,1960) : repl(obj).slice(0,1960)); }
+    else if (str.length >= 1960) { return str.slice(0,1960) }
     else return repl(str);
 };
 

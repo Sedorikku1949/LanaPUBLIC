@@ -10,12 +10,20 @@ module.exports = async function(guild){
     try {
         await database.clientStats.guildCreate(guild);
 
-        let joinMessage = JSON.parse(JSON.stringify(database.language.fr.misc.guildCreate));
-        joinMessage.embeds[0].thumbnail.url = guild.iconURL({size:2048,format:"png",dynamic:true})
-        joinMessage.embeds[0].author.name = joinMessage.embeds[0].author.name.replace(/{name}/, client.user.tag);
-        joinMessage.embeds[0].author.icon_url = client.user.displayAvatarURL({size:2048,format:"png"});
-        joinMessage.embeds[0].description = joinMessage.embeds[0].description.replace(/{guildName}/, guild.name.slice(0,200))
-        joinMessage.embeds[0].footer.text = joinMessage.embeds[0].footer.text.replace(/{prefix}/, client.prefix);
+        let joinMessage = { embeds: [{
+            color: "#5865F2",
+            thumbnail: { url: guild.iconURL({size:2048,format:"png",dynamic:true}) },
+            author: { name: client.user.tag, icon_url: client.user.displayAvatarURL({size:2048,format:"png"}) },
+            description: "🇫🇷 **Merci de m'avoir ajoutée à votre serveur !**\n\n> Le dashboard arrive prochainement ainsi que un tas de nouvelles fonctionnalités !\n\n**Suivez mon actualitée sur le serveur support :wink:**\n\n\n🇬🇧 **Thanks for adding me to your server!**\n\n> The dashboard is coming soon as well as a bunch of new features!\n\n**Follow my news on the support server**😉",
+            footer: { text: `Pour m'activer, écrivez "${client.prefix}}enable" !`}
+          }],
+          components: [{
+              components: [
+                {disabled:false,emoji:null,label:"Invite moi !",style:5,type:2,url:"https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot"},
+                {disabled: false,emoji:null,label:"Mon support",style:5,type:2,url: "https://discord.gg/cnJq9UzP2s"}
+              ], type: 1
+          }]
+        };
 
         // database
         let db = config.bdd.guilds;

@@ -42,7 +42,7 @@ module.exports = {
         if (dir.match(/\.js/g) && dir.endsWith(".js")) {
           try {
             const c = require(`../../${path}/${dir}`); if (!c.exe || !c.config) throw new Error("exe or config Object/function is needed for the commande");
-            c.path = `${path}/${dir}`; c.lang = `this.commands["${c.config.name}"]`;
+            c.path = `${path}/${dir}`; c.lang = `commands["${c.config.name}"]`;
             cmd.push(c); deleteCache(require.resolve(`../../${path}/${dir}`));
           }
             catch(err) { console.log(`{red}{ ERROR }  >>  An error as occured when loading the command "${dir}" at the path "${path}/${dir}"`); error.push({ error: err, path: `${path}/${dir}`, file: dir}); };

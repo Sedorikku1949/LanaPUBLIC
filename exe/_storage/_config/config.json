@@ -1,68 +1,97 @@
 {
-    "dev": { "devID": ["782164174821523467", "550041732893376542", "709815588016357429", "608650149975293962"], "errorChannel": "889094615754481775", "newServerChannel": "889094462230396979" },
-      "reload": false,
-      "maintenance": false,
-      "defaultProfileCardBackgroundPath": "exe/_storage/img/profileCardDefaultBackground.jpg",
-      "pathToProfileCardFont": "exe/_storage/font/roboto.ttf",
-      "profileCardTemplate": "exe/_storage/img/Profile-card-C.png",
-      "profileCardWithNoBanner": "exe/_storage/img/Profile-card-C-BG.png",
-      "badgesIMG": {
-        "DEV": "exe/_storage/img/badges/dev.png",
-        "INVITATION": "exe/_storage/img/badges/invitation.png",
-        "SUPPORT": "exe/_storage/img/badges/support.png",
-        "PREMIUM": "exe/_storage/img/badges/premium.png",
-        "SCORE": "exe/_storage/img/badges/score.png"
+  "dev": {
+    "devID": [
+      "782164174821523467",
+      "550041732893376542",
+      "709815588016357429",
+      "608650149975293962"
+    ],
+    "errorChannel": "889094615754481775",
+    "newServerChannel": "889094462230396979"
+  },
+  "API": {
+    "discordbotlist": { "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0IjoxLCJpZCI6Ijg1ODc2NjMxOTUwNjU1NDg5OSIsImlhdCI6MTYzMzUyMTI2N30.d_pcpCV8C_Fj1ONjZ3XB7oVoOIcJvGglXq_3JUKHGhc" }
+  },
+  "reload": false,
+  "maintenance": false,
+  "defaultProfileCardBackgroundPath": "exe/_storage/img/profileCardDefaultBackground.jpg",
+  "pathToProfileCardFont": "exe/_storage/font/roboto.ttf",
+  "profileCardTemplate": "exe/_storage/img/Profile-card-C.png",
+  "profileCardWithNoBanner": "exe/_storage/img/Profile-card-C-BG.png",
+  "badgesIMG": {
+    "DEV": "exe/_storage/img/badges/dev.png",
+    "INVITATION": "exe/_storage/img/badges/invitation.png",
+    "SUPPORT": "exe/_storage/img/badges/support.png",
+    "PREMIUM": "exe/_storage/img/badges/premium.png",
+    "SCORE": "exe/_storage/img/badges/score.png"
+  },
+  "bdd": {
+    "users": {
+      "profile": { "bio": null, "marryID": null, "badges": [], "banner": null },
+      "score": 0,
+      "lang": "fr",
+      "id": null
+    },
+    "guilds": {
+      "_config": {
+        "enable": false,
+        "staffRoles": [],
+        "ignoreChannel": [],
+        "ignoreCategory": [],
+        "ignoreCommand": [],
+        "ignoreUser": [],
+        "commandException": [],
+        "xp": false,
+        "money": false,
+        "invite": false,
+        "xpConfig": { "noChannel": [], "noRole": [], "noUser": [] }
       },
-      "bdd": {
-        "users": {
-          "profile": { "bio": null, "marryID": null, "badges": [], "banner": null },
-          "score": 0, "lang": "fr", "id": null
+      "logs": [],
+      "moderation": {
+        "automod": false,
+        "automodConfig": {
+          "whitelists": { "users": [], "channels": [], "roles": [] },
+          "spamLevel": 1,
+          "spam": false,
+          "spawmAction": 3,
+          "badword": false,
+          "badwordAction": 0,
+          "invite": false,
+          "inviteAction": 0
         },
-        "guilds": {
-          "_config": {
-            "enable": false,
-            "staffRoles": [], "ignoreChannel": [], "ignoreCategory": [], "ignoreCommand": [], "ignoreUser": [],
-            "commandException": [],
-            "xp": false, "money": false, "invite": false,
-            "xpConfig": { "noChannel": [], "noRole": [], "noUser": [] }
-          },
-          "logs": [],
-          "moderation": {
-            "automod": false,
-            "automodConfig": {
-              "whitelists": { "users": [], "channels": [], "roles": [] },
-              "spamLevel": 1,
-              "spam": false,
-              "spawmAction": 3,
-              "badword": false,
-              "badwordAction": 0,
-              "invite": false,
-              "inviteAction": 0
-            },
-            "ban": [], "kick": [], "warn": [], "notes": [],
-            "raidmode": false, "autoRaidMode": false
-          },
-          "messages": [], "xp": {}, "money": {}, "ticket": {}, "invite": {},
-          "prefix": "",
-          "id": ""
-        },
-        "stats": {
-          "guilds": {
-            "join": 0,
-            "leave": 0,
-            "aciveGuilds": {
-              "score": 0,
-              "guilds": {}
-            }
-          },
-          "commands": {
-            "cmd": {},
-            "users": {}
-          },
-          "music": {
-            "music": 0,
-            "queueLength": 0
-          }
+        "ban": [],
+        "kick": [],
+        "warn": [],
+        "notes": [],
+        "raidmode": false,
+        "autoRaidMode": false
+      },
+      "messages": [],
+      "xp": {},
+      "money": {},
+      "ticket": {},
+      "invite": {},
+      "prefix": "",
+      "lang": "fr",
+      "id": ""
+    },
+    "stats": {
+      "guilds": {
+        "join": 0,
+        "leave": 0,
+        "aciveGuilds": {
+          "score": 0,
+          "guilds": {}
         }
+      },
+      "commands": {
+        "cmd": {},
+        "users": {}
+      },
+      "music": {
+        "music": 0,
+        "queueLength": 0
       }
+    }
+  }
 }

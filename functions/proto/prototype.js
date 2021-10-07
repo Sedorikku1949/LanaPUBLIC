@@ -192,15 +192,21 @@ module.exports = [
     return reversed;
   },
   encrypt.prototype.toString = () => new Error("This prototype has been disable for security reasons."),
-  Discord.Guild.translate = async function(path, ...args){
+  Discord.Guild.prototype.translate = async function(path, ...args){
     if (!path || typeof path !== "string") throw new Error("invalid path was provided");
-    const data = await database.db.get("user/"+message.author.id);
-    const lang = clone(data ? (database.language[data.lang] || database.language.fr) : database.language.fr );
+    const data = await database.db.get("guild/"+this.id);
+    const lang = clone(data ? (database.language[data.lang] ?? database.language["newfr"]) : database.language["newfr"]);
     if (path.startsWith("#")) {
       // this
-      const returnData = lang[lang.systemLanguageName]
+      let returnData = lang;
+      try {
+        getObjPath(path).forEach((e) => returnData = returnData[e]);
+        if (typeof returnData === "string") return returnData.replace(/\$([1-9])/g, (a,_) => args[Number(a.replace(/\$/g, "")) - 1]);
+        else return returnData;
+      } catch(err) { return "ERROR" }
     } else {
-      return lang[lang.systemLanguageName] ?? undefined
+      const returnData = lang[path] ?? undefined;
+      return returnData
     }
   }
 ]
