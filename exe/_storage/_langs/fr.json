@@ -2,6 +2,8 @@
   "languageName": "Français",
   "languageIndicator": "FR-fr",
   "systemLanguageName": "fr",
+  "newLanguageSelected": "> 🇫🇷 **Je parlerais désormais Français !",
+  "languageAlreadySelected": "> 🇫🇷 **Aïe, je suis déjà sélectionner en francais !",
   "color": {
     "mainColor": "#5865F2",
     "success": "#57F287",
@@ -24,24 +26,52 @@
     "components": [
       {
         "components": [
-          {
-            "disabled": false, "emoji": null, "label": "Invite moi !", "style": 5, "type": 2,
-            "url": "https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot"
-          },
-          {
-            "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
-            "url": "https://discord.gg/cnJq9UzP2s"
-          }
-        ],
-        "type": 1
-      }
-    ]
-  },
+            {
+              "disabled": false, "emoji": null, "label": "Invite moi !", "style": 5, "type": 2,
+              "url": "https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot"
+            },
+            {
+              "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
+              "url": "https://discord.gg/cnJq9UzP2s"
+            }
+          ],
+          "type": 1
+        }
+      ]
+    },
     "automod": {
       "badwords": { "embeds": [{ "color": "#c40808", "description": "$1, tu es prié d'utiliser un vocabulaire correct !" }] },
       "link": { "embeds": [{ "color": "#c40808", "description": "$1, il est interdit d'envoyer des liens." }] },
       "mentions": { "embeds": [{ "color": "#c40808", "description": "$1, il est interdit de mentionner trop d'utilisateurs dans un message." }] },
       "antispam": { "embeds": [{ "color": "#c40808", "description": "$1, parlait trop vite.. Il a été softban"}] }
+    },
+    "languageSelectMenu": {
+      "components": [
+        {
+          "type": "SELECT_MENU",
+          "customId": "language",
+          "placeholder": "What language do you want me to speak ?",
+          "minValues": null,
+          "maxValues": null,
+          "options": [
+            {
+              "label": "Francais",
+              "value": "fr",
+              "description": "Je parlerais francais.",
+              "emoji": "🇫🇷",
+              "default": false
+            },
+            {
+              "label": "English",
+              "value": "en",
+              "description": "I will speak Englisg.",
+              "emoji": "🇬🇧",
+              "default": false
+            }
+          ],
+          "disabled": false
+        }
+      ],"type": "ACTION_ROW"
     }
   },
   "commands": {

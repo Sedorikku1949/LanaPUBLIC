@@ -96,7 +96,7 @@ class MiaDB extends Map {
    * @param {*} path - the path in the key, it's optionnal
    * @returns {Boolean|*}
    */
-   async get(key, path = null) {
+   get(key, path = null) {
     if (typeof key !== "string") throw new Error("key is not optionnal !");
     if (!this.store) throw new Error("An error as occured !");
     const load = super.get(key);

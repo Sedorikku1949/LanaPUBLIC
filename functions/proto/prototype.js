@@ -192,9 +192,9 @@ module.exports = [
     return reversed;
   },
   encrypt.prototype.toString = () => new Error("This prototype has been disable for security reasons."),
-  Discord.Guild.prototype.translate = async function(path, ...args){
+  Discord.Guild.prototype.translate = function(path, ...args){
     if (!path || typeof path !== "string") throw new Error("invalid path was provided");
-    const data = await database.db.get("guild/"+this.id);
+    const data = database.db.get("guild/"+this.id);
     const lang = clone(data ? (database.language[data.lang] ?? database.language["newfr"]) : database.language["newfr"]);
     if (path.startsWith("#")) {
       // this
