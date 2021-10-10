@@ -18,6 +18,7 @@ module.exports = async() => {
         getFunctions("functions")
         
         require("./proto/prototype")
+        require("./proto/defineProperty")()
         
         global["fetch"] = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
         console.log = async function(data) { typeof data == "string" ? process.stdout.write(color(data)+"\n") : process.stdout.write(require("util").inspect(data)+"\n") }

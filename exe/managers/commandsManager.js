@@ -42,7 +42,7 @@ module.exports = {
         if (dir.match(/\.js/g) && dir.endsWith(".js")) {
           try {
             const c = require(`../../${path}/${dir}`); if (!c.exe || !c.config) throw new Error("exe or config Object/function is needed for the commande");
-            c.path = `${path}/${dir}`; c.lang = `commands["${c.config.name}"]`;
+            c.path = `${path}/${dir}`; c.lang = `#commands["${c.config.name}"]`;
             cmd.push(c); deleteCache(require.resolve(`../../${path}/${dir}`));
           }
             catch(err) { console.log(`{red}{ ERROR }  >>  An error as occured when loading the command "${dir}" at the path "${path}/${dir}"`); error.push({ error: err, path: `${path}/${dir}`, file: dir}); };
@@ -79,7 +79,7 @@ module.exports = {
       console.log(`{ COMMAND EXECUTOR } {yellow}< ${getDate(Date.now(), `[DD]/[MM]/[YYYY] à [hh]:[mm] et [ss]:[ms]`)} | ${Date.now()} >{stop} command "${cmd.config.name}" executed by {cyan}${message.author.tag} / ${message.author.id}{stop} in {blue}( #${message.channel.name} | ${message.channel.id} ){stop}`); await database.db.inc("user/"+message.author.id, "score")
       database.clientStats.cmdExecuted(cmd, message);
       
-      (cmd.exe.bind({}, message, prefix, command, args, lang.commands[cmd.config.name])());
+      (cmd.exe.bind({}, message, prefix, command, args, cmd.lang ?? "commands")());
       delete commandCooldown[message.author.id];
     } catch(err) {
         console.log(err)

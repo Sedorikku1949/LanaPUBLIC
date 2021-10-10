@@ -15,9 +15,9 @@ module.exports = async function(interaction){
 
   // select Menu
   if (interaction.isSelectMenu()){
-    if (interaction.customId){
-      if (!interaction.member || !interaction.guild || !(interaction.guild instanceof Discord.Guild) ) return;
-      if (database.db.get("guild/"+interaction.guild.id).lang == interaction.values) return ""
+    if (interaction.customId == 'language'){
+      if (!interaction.member || !interaction.guild || !(interaction.guild instanceof Discord.Guild) || !interaction.member.isStaff() ) return;
+      if (database.db.get("guild/"+interaction.guild.id).lang == interaction.values) return interaction.reply({ content: interaction.guild.translate("languageAlreadySelected"), ephemeral: true })
       await database.db.set("guild/"+interaction.guild.id, interaction.values, "lang")
       interaction.reply({ content: interaction.guild.translate("newLanguageSelected"), ephemeral: true });
     }

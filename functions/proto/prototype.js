@@ -195,7 +195,7 @@ module.exports = [
   Discord.Guild.prototype.translate = function(path, ...args){
     if (!path || typeof path !== "string") throw new Error("invalid path was provided");
     const data = database.db.get("guild/"+this.id);
-    const lang = clone(data ? (database.language[data.lang] ?? database.language["newfr"]) : database.language["newfr"]);
+    const lang = clone(data ? (database.language[data.lang] ?? database.language["fr"]) : database.language["fr"]);
     if (path.startsWith("#")) {
       // this
       let returnData = lang;
@@ -208,5 +208,29 @@ module.exports = [
       const returnData = lang[path] ?? undefined;
       return returnData
     }
+  },
+  Discord.Guild.prototype.colors = function(path, ...args){
+    if (!path || typeof path !== "string") throw new Error("invalid path was provided");
+    const data = database.db.get("guild/"+this.id);
+    const lang = clone(data ? (database.language[data.lang] ?? database.language["fr"]) : database.language["fr"]);
+    if (path.startsWith("#")) {
+      // this
+      let returnData = lang;
+      try {
+        getObjPath("color."+path).forEach((e) => returnData = returnData[e]);
+        if (typeof returnData === "string") return returnData.replace(/\$([1-9])/g, (a,_) => args[Number(a.replace(/\$/g, "")) - 1]);
+        else return returnData;
+      } catch(err) { return "ERROR" }
+    } else {
+      const returnData = lang?.color[path] ?? undefined;
+      return returnData
+    }
+  },
+  Discord.GuildMember.prototype.isStaff = function () {
+    return database.db.get(`guild/${this.guild.id}`, "['_config'].staffRoles").length > 0
+      ? database.db
+        .get(`guild/${this.id}`, "['_config'].staffRoles")
+        .some(r => this.roles.cache.has(r))
+      : this.permissions.has("MANAGE_MESSAGES");
   }
 ]

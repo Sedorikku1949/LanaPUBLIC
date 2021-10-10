@@ -1,9 +1,9 @@
 function checkPing(ping) {
-    if (ping < 150) return "excellent";
-    else if (ping < 250) return "correcte";
-    else if (ping < 400) return "médiocre";
-    else if (ping < 1000) return "limite";
-    else return "horrible !";
+    if (ping < 150) return 1;
+    else if (ping < 250) return 2;
+    else if (ping < 400) return 3;
+    else if (ping < 1000) return 4;
+    else return 5;
 }
 
 module.exports = {
@@ -11,8 +11,15 @@ module.exports = {
     let i = Date.now();
     await message.channel.send({ embeds: [{ color: "#2c2f33", title: "Récupération de données..."}] }).then((msg) => { msg.delete() })
     i = Date.now() - i
-    let embed = JSON.parse(JSON.stringify(lang.assets)); embed.embeds[0].thumbnail.url = client.user.displayAvatarURL({ size: 2048, format: "png" }); embed.embeds[0].fields[0].value  = embed.embeds[0].fields[0].value.replace(/{i}/, i).replace(/{ICheckPing}/, checkPing(i)); embed.embeds[0].fields[1].value  = embed.embeds[0].fields[1].value.replace(/{ping}/, client.ws.ping).replace(/{PingCheckPing}/, checkPing(client.ws.ping))
-    message.reply(embed);
+    message.reply({ embeds: [{
+      color: message.guild.colors("success"),
+      footer: { text: "©️ Lana - 2021" },
+      thumbnail: { url: client.user.displayAvatarURL({ size: 2048, format: "png"}) },
+      fields: [
+        {name: "Discord :", value: message.guild.translate(lang+"assets.discordPing", i, message.guild.translate(lang+`misc['${checkPing(i)}']`)) },
+        {name: "Lana :", value: message.guild.translate(lang+"assets.clientPing", client.ws.ping, message.guild.translate(lang+`misc['${checkPing(client.ws.ping)}']`)) }
+      ]
+    }]});
   },
   interaction: async function(interaction, lang){
     let embed = JSON.parse(JSON.stringify(lang.assets)); embed.embeds[0].thumbnail.url = client.user.displayAvatarURL({ size: 2048, format: "png" }); embed.embeds[0].fields.splice(0,1); embed.embeds[0].description = "**"+embed.embeds[0].fields[0].name+"**\n"+embed.embeds[0].fields[0].value.replace(/{ping}/, client.ws.ping).replace(/{PingCheckPing}/, checkPing(client.ws.ping)); delete embed.embeds[0].fields;

@@ -2,8 +2,9 @@
   "languageName": "Français",
   "languageIndicator": "FR-fr",
   "systemLanguageName": "fr",
-  "newLanguageSelected": "> 🇫🇷 **Je parlerais désormais Français !",
-  "languageAlreadySelected": "> 🇫🇷 **Aïe, je suis déjà sélectionner en francais !",
+  "newLanguageSelected": "> 🇫🇷 ** ** **Je parlerais désormais Français !**",
+  "languageAlreadySelected": "> 🇫🇷 ** ** **Aïe, je suis déjà sélectionner en francais !**",
+  "chooseLanguage": "> 🇫🇷 ** ** **Quelle langue voulez-vous que je parle ?**\n\n> 🇬🇧 ** ** **What language do you want me to speak ?**\n** **",
   "color": {
     "mainColor": "#5865F2",
     "success": "#57F287",
@@ -80,7 +81,15 @@
       "use": "Aucun argument requis.",
       "assets": {
         "discordPingAnalyse": "**Laissez moi calculer le temps de réponse de discord...**",
-        "clientPing": "J'ai actuellement un ping de $1ms"
+        "clientPing": "```\nJ'ai actuellement un ping de $1ms, c'est $2.```",
+        "discordPing": "```\nDiscord met $1ms pour me répondre, c'est $2.```"
+      },
+      "misc": {
+        "1": "excellent",
+        "2": "correcte",
+        "3": "médiocre",
+        "4": "limite",
+        "5": "horrible !"
       }
     }
   }

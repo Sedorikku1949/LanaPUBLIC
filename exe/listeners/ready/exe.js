@@ -23,7 +23,7 @@ module.exports = async() => {
     console.log(`{cyan}The application "${client.user.tag}" has been started successfully in ${Date.now() - start}ms !`);
     slashCommands.loadAll();
     await client.user.setStatus("dnd");
-    await client.user.setActivity("#LanaForEver ♥️",{ type: "WATCHING"})
+    await client.user.setActivity("🎃 Trick or treat !",{ type: "WATCHING"})
     //statut();
     // save + system
     interval(30000);
