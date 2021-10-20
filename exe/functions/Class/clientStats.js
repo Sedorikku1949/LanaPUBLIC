@@ -54,4 +54,4 @@ class clientStats  {
   };
 };
 
-module.exports = { clientStats };
+module.exports = clientStats;

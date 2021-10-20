@@ -31,28 +31,32 @@ async function getPrefix(message){
   })
 };
 
+const { clone, getDate, getDuration } = Utils;
+
 module.exports = {
   init: function(){
-    const cmd = [];
-    let error = [];
-    function searchAllFiles(path) {
-      readdirSync(path).forEach( (dir) => {
-        if (!dir.match(/\./g)) searchAllFiles(`${path}/${dir}`); // dossier
-        if (dir.match(/\.json/g) || !dir.match(/\.js/g) || path.match(/sub/g) || !dir.endsWith(".js")) return; // other file
-        if (dir.match(/\.js/g) && dir.endsWith(".js")) {
-          try {
-            const c = require(`../../${path}/${dir}`); if (!c.exe || !c.config) throw new Error("exe or config Object/function is needed for the commande");
-            c.path = `${path}/${dir}`; c.lang = `#commands["${c.config.name}"]`;
-            cmd.push(c); deleteCache(require.resolve(`../../${path}/${dir}`));
-          }
-            catch(err) { console.log(`{red}{ ERROR }  >>  An error as occured when loading the command "${dir}" at the path "${path}/${dir}"`); error.push({ error: err, path: `${path}/${dir}`, file: dir}); };
-        }; // js file
-      });
-    };
-    searchAllFiles("exe/cmd")
-    if (error.length > 0) console.log(`{red}Some error has occured when loading commands :\n\n${require("util").inspect(error)}`)
-    console.log(`{green}${cmd.length} commands has been loaded successfully{stop}\n{cyan}{bold}${cmd.length} commands has been removed from the cache !`)
-    return cmd
+    /*return new Promise((resolve,_) => {*/
+      let [cmd, error] = [[], []];
+      function searchAllFiles(path) {
+        readdirSync(path).forEach( (dir) => {
+          if (!dir.match(/\./g)) searchAllFiles(`${path}/${dir}`); // dossier
+          if (dir.match(/\.json/g) || !dir.match(/\.js/g) || path.match(/sub/g) || !dir.endsWith(".js")) return; // other file
+          if (dir.match(/\.js/g) && dir.endsWith(".js")) {
+            try {
+              const c = require(`../../${path}/${dir}`); if (!c.exe || !c.config) throw new Error("exe or config Object/function is needed for the commande");
+              c.path = `${path}/${dir}`; c.lang = `#commands["${c.config.name}"]`;
+              cmd.push(c); deleteCache(require.resolve(`../../${path}/${dir}`));
+            }
+              catch(err) { console.log(`{red}{ ERROR }  >>  An error as occured when loading the command "${dir}" at the path "${path}/${dir}"`); error.push({ error: err, path: `${path}/${dir}`, file: dir}); };
+          }; // js file
+        });
+      };
+      searchAllFiles("exe/cmd")
+      if (error.length > 0) console.log(`{red}Some error has occured when loading commands :\n\n${require("util").inspect(error)}`)
+      console.log(`{green}${cmd.length} commands has been loaded successfully{stop}\n{cyan}{bold}${cmd.length} commands has been removed from the cache !`)
+      return cmd;
+      /*resolve(cmd);
+    });*/
   },
   execute: async function(message){
     if (!(message instanceof Discord.Message) || !message.guild || !message.author || typeof message.guild.id !== "string") return;
@@ -84,7 +88,7 @@ module.exports = {
     } catch(err) {
         console.log(err)
         delete commandCooldown[message.author.id];
-        message.reply(lang.misc.handler.error)
+        message.reply(message.guild.translate("ERROR"))
         client.channels.cache.get(config.dev.errorChannel).send({ embeds: [{
           color: "#ED4245",
           fields: [

@@ -2,21 +2,30 @@ function getCategoryBar(list){ return list.map((e) => { return list.map(l => { i
 function findAllCategories(list){ let res = []; list.forEach(cmd => { if (!res.includes(cmd.config.category)) { res.push(cmd.config.category) } else return; }); return res; }
 function specificGrade(cmd, title){
   if (cmd.config.system.devCommand) return `${emojis.dev.msg}** ** ** **${title}`;
-  else return title
+  else return title;
 }
 
-async function sendSpecificCommandHelp(msg, cmd, message, lang){
-    const l = clone(await database.db.get("user/"+message.author.id) ? (database.language[await database.db.get("user/"+message.author.id).lang] || database.language.fr) : database.language.fr );
-    const embed = JSON.parse(JSON.stringify(lang.assets.specificCommand));
-    embed.embeds[0].title = specificGrade(cmd, embed.embeds[0].title.replace(/{name}/, cmd.config.name));
-    embed.embeds[0].author = { name: client.user.tag, icon_url: client.user.displayAvatarURL({ size: 2048, format: "png" }) };
-    embed.embeds[0].fields[0].value = embed.embeds[0].fields[0].value.replace(/{category}/, (l.misc.category[cmd.config.category] || cmd.config.category) )
-    embed.embeds[0].fields[1].value = embed.embeds[0].fields[1].value.replace(/{aliase}/, (cmd.config.aliases.length > 0 ? cmd.config.aliases.join(" / ") : lang.misc.noAliase) )
-    embed.embeds[0].fields[2].value = embed.embeds[0].fields[2].value.replace(/{desc}/, (Object.entries(l.commands).find(e => e[0] == cmd.config.name) ? Object.entries(l.commands).find(e => e[0] == cmd.config.name)[1].desc : undefined || "...") )
-    embed.embeds[0].fields[3].value = embed.embeds[0].fields[3].value.replace(/{use}/, (Object.entries(l.commands).find(e => e[0] == cmd.config.name) ? Object.entries(l.commands).find(e => e[0] == cmd.config.name)[1].use : undefined || "...") ).replace(/{prefix}/g, (await database.db.get("guild/"+message.guild.id) ? (await database.db.get("guild/"+message.guild.id).prefix || client.prefix) : client.prefix))
-    if (!msg) message.reply(embed)
-    else msg.edit(embed)
-}
+async function sendSpecificCommandHelp(msg, cmd, message, lang, prefix){
+  const embed = {
+    embeds: [{
+      color: message.guild.colors("mainColor"),
+      author: { name: client.user.tag, icon_url: client.user.displayAvatarURL({ size: 2048, format: "png" }) },
+      title: specificGrade(cmd, message.guild.translate(lang+"assets.CMD_TITLE", cmd.config.name)),
+      footer: { text:"© Lana - 2021" },
+      fields: [
+        { name: message.guild.translate(lang+"assets.CMD_FIELDS_CTG_NAME"), value: "```\n"+(message.guild.translate(`#misc.category["${cmd.config.category}"]`) ?? cmd.config.category)+"```", inline: true },
+        { name: message.guild.translate(lang+"assets.CMD_FIELDS_ALIASE_NAME"), value: "```\n"+(cmd.config.aliases.length > 0 ? cmd.config.aliases.join(" / ") : message.guild.translate(lang+"misc.noAliase"))+"```", inline: true },
+        { name: message.guild.translate(lang+"assets.CMD_FIELDS_DESC_NAME"), value: "```\n"+(message.guild.translate(`#commands["${cmd.config.name}"].desc`) ?? "...")+"```", inline: false },
+        { name: message.guild.translate(lang+"assets.CMD_FIELDS_USE_NAME"), value:"```\n"+ (message.guild.translate(`#commands["${cmd.config.name}"].use`, prefix ?? client.prefix) ?? '...')+"```", inline: false },
+      ]
+    }],
+    components: [...message.guild.translate(lang+"assets.CMD_COMPONENTS")]
+  };
+  if (!msg) message.reply(embed);
+  else msg.edit(embed);
+};
+
+const { increase, decrease } = Utils;
 
 module.exports = {
   exe: async function(message, prefix, command, args, lang){
@@ -26,8 +35,18 @@ module.exports = {
       categoryList.forEach(ctg => {
         const index = categoryList.findIndex(e => e == ctg);
         const i = embedList.length;
-        embedList[i] = JSON.parse(JSON.stringify(lang.misc.commandsList)); embedList[i].embeds[0].author.icon_url = client.user.displayAvatarURL({size:2048, format: "png"})
-        embedList[i].embeds[0].thumbnail.url = client.user.displayAvatarURL({ size: 2048, format: "png" }) ; embedList[i].embeds[0].description = embedList[i].embeds[0].description.replace(/{position}/, categoryPagePosition[index]).replace(/{commands}/, (database.commands.filter(e => e.config.category == ctg).map(e => e.config.name).join("\n➯ ")));
+        embedList[i] = {
+          embeds: [{
+            color: message.guild.colors("mainColor"),
+            author: { name: message.guild.translate(lang+"misc.LIST_AUTHOR_NAME"), icon_url: client.user.displayAvatarURL({ size: 2048, format: "png" }) },
+            description: message.guild.translate(
+              lang+"misc.LIST_DESC",
+              categoryPagePosition[index] /* positon */,
+              (database.commands.filter(e => e.config.category == ctg).map(e => e.config.name).join("\n➯ ")) /* commands */
+            ),
+            footer: { text:"© Lana - 2021" },
+          }]
+        }
       });
 
       let [x, msg] = [0, await message.reply(embedList[0])]
@@ -36,15 +55,14 @@ module.exports = {
       collector.on("collect", async function(react){
         switch(react.emoji.id){
           case emojis.search.id:{ /* search */ 
-            await msg.reactions.removeAll(); await msg.edit(lang.assets.searchCommand)
+            await msg.reactions.removeAll(); await msg.edit(message.guild.translate(lang+"assets.SEARCH"))
             const c = message.channel.createMessageCollector({ filter: (m) => m.author.id == message.author.id, time: 60000 })
             c.on("collect", async function(m){
               const cmd = database.commands.find((cmd) => cmd.config.name == m.content.toLowerCase() || (cmd.config.aliases.length > 0 && cmd.config.aliases.includes(m.content.toLowerCase())));
               if (!cmd) {
-                const embed = lang.assets.noCommandsFound; embed.embeds[0].description = embed.embeds[0].description.replace(/{search}/, emojis.search.msg);
-                msg.edit(embed);
+                msg.edit({ embeds: [{ color: message.guild.colors("mainColor"), description: message.guild.translate(lang+"assets.NO_COMMANDS_FOUND") }] });
               }
-              else sendSpecificCommandHelp(msg, cmd, message, lang);
+              else sendSpecificCommandHelp(msg, cmd, message, lang, prefix);
               m.delete().catch(() => {}) && c.stop();
             })
             c.on("end", function(){});
@@ -60,11 +78,8 @@ module.exports = {
 
     } else {
       const cmd = database.commands.find((cmd) => cmd.config.name == message.content.slice(prefix.length+command.length+1).toLowerCase() || (cmd.config.aliases.length > 0 && cmd.config.aliases.includes(message.content.slice(prefix.length+command.length+1).toLowerCase())));
-      if (!cmd) {
-        const embed = lang.assets.noCommandsFound; embed.embeds[0].description = embed.embeds[0].description.replace(/{search}/, emojis.search.msg);
-        message.channel.send(embed);
-      }
-      else sendSpecificCommandHelp(null, cmd, message, lang)
+      if (!cmd) { message.channel.send({ embeds: [{ color: message.guild.colors("mainColor"), description: message.guild.translate(lang+"assets.NO_COMMANDS_FOUND") }] }); }
+      else sendSpecificCommandHelp(null, cmd, message, lang, prefix)
     }
   },
   interaction: async function(interaction, lang){

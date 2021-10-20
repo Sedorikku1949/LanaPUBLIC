@@ -22,8 +22,14 @@ module.exports = {
     }]});
   },
   interaction: async function(interaction, lang){
-    let embed = JSON.parse(JSON.stringify(lang.assets)); embed.embeds[0].thumbnail.url = client.user.displayAvatarURL({ size: 2048, format: "png" }); embed.embeds[0].fields.splice(0,1); embed.embeds[0].description = "**"+embed.embeds[0].fields[0].name+"**\n"+embed.embeds[0].fields[0].value.replace(/{ping}/, client.ws.ping).replace(/{PingCheckPing}/, checkPing(client.ws.ping)); delete embed.embeds[0].fields;
-    interaction.reply(embed);
+    interaction.reply({ embeds: [{
+      color: interaction.guild.colors("success"),
+      footer: { text: "©️ Lana - 2021" },
+      thumbnail: { url: client.user.displayAvatarURL({ size: 2048, format: "png"}) },
+      fields: [
+        {name: "Lana :", value: interaction.guild.translate(lang+"assets.clientPing", client.ws.ping, interaction.guild.translate(lang+`misc['${checkPing(client.ws.ping)}']`)) }
+      ]
+    }]});
   },
   config: { name: "ping", aliases: [], category: "info", system: { perms: ["SEND_MESSAGES", "MANAGE_MESSAGES", "EMBED_LINKS"], delInvoke: false, inProgress: false, staffCommand: false, devCommand: false } },
   path: null

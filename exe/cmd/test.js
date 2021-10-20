@@ -1,6 +1,6 @@
 module.exports = {
     exe: function (message, prefix, command, args, text) {
-      message.channel.send("hello there");
+      message.channel.send("a");
     },
     config: {
       name: "test",

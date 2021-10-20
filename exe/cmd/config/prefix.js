@@ -4,8 +4,9 @@ module.exports = {
         if (!args[0]) return message.reply(lang.assets.noArgs)
         if (!message.member.permissions.has("ADMINISTRATOR")) return message.reply(lang.assets.notAdmin);
         if (args[0].match(/[0-9]/g, "")) return message.reply(lang.assets.invalidArgs)
-        let question = JSON.parse(JSON.stringify(lang.assets.question)); question.embeds[0].description = question.embeds[0].description.replace(/{prefix}/, args[0].replace(/[0-9]/g, ""));
-        const msg = await message.reply(question)
+        let question = JSON.parse(JSON.stringify(lang.assets.question));
+        question.embeds[0].description = question.embeds[0].description.replace(/{prefix}/, args[0].replace(/[0-9]/g, ""));
+        const msg = await message.reply({})
         await Promise.all([emojis.check.id, emojis.close.id].map((e) => msg.react(e)))
         const collector = msg.createReactionCollector({ time: 30000, filter: (react, user) => [emojis.check.id, emojis.close.id].includes(react.emoji.id) && user.id == message.author.id });
         collector.on("collect", async(react) => {

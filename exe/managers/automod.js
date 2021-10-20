@@ -26,6 +26,8 @@ try {
 
 const users = new Map();
 
+const { clone } = Utils;
+
 /**
  * @param {Message} message
  */

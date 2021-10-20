@@ -2,6 +2,8 @@ module.exports = async function(guild){
     await database.clientStats.guildDelete(guild);
     database.db.delete(guild.id)
 
+    discordbotlist();
+
     // leave logs
     client.channels.cache.get(config.dev.newServerChannel).send({
         embeds: [{

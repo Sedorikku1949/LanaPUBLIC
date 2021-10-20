@@ -11,7 +11,7 @@ class Website {
 			? `${this.config.bot.url}/auth/login`
 			: `${this.config.bot.url}:${this.config.app.port}/auth/login`;
 		this.bot = require('./exe/managers/eventsManager');
-		this.bot = this.bot.start();
+		this.bot = new this.bot();
 		try {
 			this._setup();
 			this._loadRoutes();

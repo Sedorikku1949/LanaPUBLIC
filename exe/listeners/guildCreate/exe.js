@@ -1,4 +1,4 @@
-const slashCommands = require("../../../functions/Class/slashCommands");
+const { slashCommands, discordbotlist } = Client;
 
 const chatChannelNames = ["discussion", "general", "général", "géneral", "genéral", "chat"];
 
@@ -23,7 +23,7 @@ module.exports = async function(guild){
             ]
         };
 
-        console.log(joinMessage)
+        discordbotlist();
 
         // database
         let db = config.bdd.guilds;

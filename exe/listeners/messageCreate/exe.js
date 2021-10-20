@@ -27,6 +27,8 @@ async function someMP(message){
 
 const commandsManager = require("../../managers/commandsManager");
 
+const { clone } = Utils;
+
 module.exports = async function(message, test = false){
   if (message.author.bot) return;
   if (["DM", "GROUP_DM"].includes(message.channel.type)) return someMP(message);

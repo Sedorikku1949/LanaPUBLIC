@@ -42,7 +42,7 @@
     "commandsList": { "embeds": [{
         "color":"#5865F2",
         "description": "```\n{position}```\n```\n➯ {commands}```",
-        "footer": { "text": "© Lana - 2021" },
+        "footer": { "text": "© Kady - 2021" },
         "author": { "name": "Liste des commandes.", "icon_url": "{url}"},
         "thumbnail": { "url": "{url}" }
       }]
@@ -86,16 +86,16 @@
       }
     },
     "ping": {
-      "desc": "Cette commande permet d'obtenir des informations sur la latence de Lana et du bot.",
+      "desc": "Cette commande permet d'obtenir des informations sur la latence de Kady et du bot.",
       "use": "Aucun argument requis.",
       "assets": {
         "embeds": [{
           "color": "#5865F2",
-          "footer": { "text": "©️ Lana - 2021" },
+          "footer": { "text": "©️ Kady - 2021" },
           "thumbnail": { "url": "{url}" },
           "fields": [
            { "name": "Discord :", "value": "```\n{i}ms, c'est {ICheckPing}```", "inline": true },
-           { "name": "Lana :", "value": "```\n{ping}ms, c'est {PingCheckPing}```" }
+           { "name": "Kady :", "value": "```\n{ping}ms, c'est {PingCheckPing}```" }
           ]
         }]
       }
@@ -114,7 +114,7 @@
         "embeds": [{
           "color": "2f3136",
           "title": "Informations sur {guildName} :",
-          "footer": { "text": "© Lana - 2021" }, "thumbnail": { "url": "{url" },
+          "footer": { "text": "© Kady - 2021" }, "thumbnail": { "url": "{url" },
           "fields": [
             { "name": "Propriétaire :", "value": "** <@{ownerMention}> / {ownerTag}**", "inline": false },
             { "name": "Date de création :", "value": "```\n{creationDate}\nIl y a {creationDuration}```", "inline": false },
@@ -134,7 +134,7 @@
         "commandsList": { "embeds": [{
           "color":"#5865F2",
           "description": "```\n{position}```\n```\n➯ {commands}```",
-          "footer": { "text": "© Lana - 2021" },
+          "footer": { "text": "© Kady - 2021" },
           "author": { "name": "Liste des commandes.", "icon_url": "{url}"},
           "thumbnail": { "url": "{url}" }
         }],
@@ -156,7 +156,7 @@
             ], "type": 1
           }
         ]
-      },
+        },
         "noAliase": "Aucun aliase.",
         "interactionField": { "name": "• {category} :", "value": "```\n{list}```", "inline": false }
       },
@@ -165,7 +165,7 @@
         "specificCommand": { "embeds": [{
             "color":"#5865F2",
             "title": "Page d'aide de la commande \"{name}\" :",
-            "footer": { "text":"© Lana - 2021" },
+              "footer": { "text":"© Kady - 2021" },
             "author": { "icon_url": "{url}", "name": "" },
             "fields": [
               { "name": "Catégorie :", "value": "```\n{category}```", "inline": true }, { "name": "Aliase(s) :", "value": "```\n{aliase}```", "inline": true },
@@ -175,7 +175,14 @@
         },
         "searchCommand": { "embeds": [{ "color":"#5865F2", "description": "> **Quel commande veux-tu chercher ?**" }], "components": [] },
         "interaction": {
-          "embeds": [{ "color": "#5865F2", "description": "> Pour voir la version optimale, effectuer \"=help\" dans ce salon.", "title": "Liste de mes commandes :", "footer": { "text":"© Lana - 2021" }, "fields": [], "thumbnail": { "url": "{url}" } }],
+          "embeds": [{
+              "color": "#5865F2",
+              "description": "> Pour voir la version optimale, effectuer \"=help\" dans ce salon.",
+              "title": "Liste de mes commandes :",
+              "footer": { "text":"© Kady - 2021" },
+              "fields": [],
+              "thumbnail": { "url": "{url}" }
+            }],
           "components": [
             {
             "components": [
@@ -202,14 +209,14 @@
             "color":"2f3136",
             "author": { "name": "{name}", "icon_url": "{url}" },
             "description": "> **• Pseudonyme:** `{tag}`\n> **• Identifiant:** `{id}`\n\n> **{calender} • Création du compte :** Le {creationDate} ( <t:{userDuration}:R> )\n\n **>> [Avatar]({avatar})**",
-            "footer": { "text": "© Lana - 2021" }
+            "footer": { "text": "© Kady - 2021" }
           }]
         },
         "member": { "embeds": [{
             "color":"2f3136",
             "author": { "name": "{name}", "icon_url": "{url}" },
             "description": "> **• Pseudonyme:** `{tag}`\n> **• Identifiant:** `{id}`\n\n> **{calender} • Création du compte :** Le {creationDate} ( <t:{userDuration}:R> )\n> **{emojisPlus} • Membre depuis :** Le {memberDate} ( <t:{memberDuration}:R> )\n\n **>> [Avatar]({avatar})**",
-            "footer": { "text": "© Lana - 2021" }
+            "footer": { "text": "© Kady - 2021" }
           }]
         }
       }
@@ -260,7 +267,7 @@
       }
     },
     "bot": {
-      "desc": "Cette commande donne des infos sur Lana :D",
+      "desc": "Cette commande donne des infos sur Kady :D",
       "use": "Aucun argument requis.",
       "assets": { "embeds": [{
         "color": "2f3136",
@@ -604,7 +611,7 @@
       }
     },
     "leave": {
-      "desc": "Cette commande te permet de faire quitter Lana du salon !",
+      "desc": "Cette commande te permet de faire quitter Kady du salon !",
       "use": "{prefix}leave",
       "assets": {
         "nop": { "embeds": [{ "color": "#ED4245", "description": "> **Tu dois être dans le vocal où la musique est jouée.**" }] },
@@ -612,7 +619,7 @@
       }
     },
     "beta": {
-      "desc": "Cette commande te permet de rejoindre le programme beta de Lana",
+      "desc": "Cette commande te permet de rejoindre le programme beta de Kady",
       "use": "{prefix}beta join\n{prefix}beta leave",
       "assets": {
         "noArgs": { "embeds": [{ "color": "#ED4245", "description": "> **Je ne sais pas quel action effectué !**\n```md\n- join\n- leave\n```" }] },
@@ -625,7 +632,7 @@
           "serverAlreadyInBeta": { "embeds": [{ "color": "#ED4245", "description": "> **Ce serveur est déjà dans la beta !**" }] },
           "thanks": {
             "content": null,
-            "embeds": [{ "thumbnail": {"url": "https://cdn.discordapp.com/avatars/858766319506554899/6b185fe8a35bc9928b321aafdcf3fe38.png?size=2048"}, "title": "Merci !", "description": "> Ton inscription au programmer beta testeur a été enregistrée avec succès !\n\n**Merci de nous aider à rendre Lana meilleure, chaque retour sur les nouveautés permet de corriger des petites choses, ou au contraire, d'opéré de grand changements avant la sortie de cette nouveauté !**\n\n> Nous t'invitons à rejoindre le serveur pour les beta testeurs, il te suffit de cliquer sur le bouton en dessous.", "color": 5793266, "footer": { "text": "L'équipe de développement." } }],
+            "embeds": [{ "thumbnail": {"url": "https://cdn.discordapp.com/avatars/858766319506554899/6b185fe8a35bc9928b321aafdcf3fe38.png?size=2048"}, "title": "Merci !", "description": "> Ton inscription au programmer beta testeur a été enregistrée avec succès !\n\n**Merci de nous aider à rendre Kady meilleure, chaque retour sur les nouveautés permet de corriger des petites choses, ou au contraire, d'opéré de grand changements avant la sortie de cette nouveauté !**\n\n> Nous t'invitons à rejoindre le serveur pour les beta testeurs, il te suffit de cliquer sur le bouton en dessous.", "color": 5793266, "footer": { "text": "L'équipe de développement." } }],
             "components": [ { "components": [{ "disabled": false, "emoji": null, "label": "Serveur Beta", "style": 5, "type": 2, "url": "https://discord.gg/RazrEv9m5S" }], "type": 1 } ]
           },
           "oups": "> **Mince, je ne peux pas t'envoyer de messages privés, désolé mais ton serveur as été retiré de la beta, on ne peux te donner le serveur communautaire de la beta que par message privé.**"
