@@ -73,6 +73,7 @@ module.exports = class Kady {
         this.commands = require("./commandsManager").init();
         this.clientStats = new (require("../functions/Class/clientStats.js"))();
         this.interval = [];
+        this.commandCooldown = {};
       }
     })()
   }
@@ -172,10 +173,9 @@ module.exports = class Kady {
     };
   };
   async reloadCommands(){
-    if (!this.database?.commands) return null;
     try {
+      console.log(this.database.commands.map((cmd) => { return delete require.cache[require.resolve(`../../${cmd.path}`)] }) );
       this.database.commands = [];
-      this.database.commands.forEach(({ path }) => { deleteCache(require.resolve(`../../${path}`)) });
       this.database.commands = await require("./commandsManager").init();
       return true;
     } catch(err) {

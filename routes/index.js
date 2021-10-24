@@ -13,4 +13,4 @@ module.exports.Router = class Home extends Router {
 	}
 };
 
-module.exports.name = '/';
+module.exports.name = '/index';

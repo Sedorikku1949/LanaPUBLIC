@@ -41,14 +41,13 @@ module.exports = async function(message, test = false){
     let db = clone(config.bdd.guilds);
     db.id = message.guild.id;
     database.db.ensure("guild/"+message.guild.id, db);
+    database.db.ensure("blacklist", []);
 
     //badgesChecker(message);
     commandsManager.execute(message);
     require("../../managers/automod.js")(message);
 
   }
-
-  
 
   // xp
   if ((await database.db.get("guild/"+message.guild.id))?._config?.xp) {

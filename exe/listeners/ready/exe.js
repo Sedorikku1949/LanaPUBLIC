@@ -16,21 +16,25 @@ async function interval(ms) {
         files: [{ name: `database_${lastSave}.json`, attachment: res }],
       })
     }
-  }, ms))
+  }, ms));
+
+  database.interval.push(setInterval(async function(){
+    Object.entries(database.commandCooldown).forEach((data) => { if ((data[1] + 120_000) <= Date.now()) { delete database.commandCooldown[data[0]]; } });
+  }, 2*ms))
 }
 
 const { slashCommands, discordbotlist, statut } = Client;
 
 module.exports = async() => {
-    await Promise.all(client.guilds.cache.map(e => e.members.fetch()));
-    await Promise.all(client.guilds.cache.map(guild => slashCommands.loadGuild(guild)));
-    console.log(`{cyan}The application "${client.user.tag}" has been started successfully in ${(performance.now() - start).toFixed(2)}ms !`);
-    slashCommands.loadAll();
-    await client.user.setStatus("dnd");
-    await client.user.setActivity("🎃 Trick or treat !",{ type: "WATCHING"})
+  await Promise.all(client.guilds.cache.map(e => e.members.fetch()));
+  await Promise.all(client.guilds.cache.map(guild => slashCommands.loadGuild(guild)));
+  console.log(`{cyan}The application "${client.user.tag}" has been started successfully in ${(performance.now() - start).toFixed(2)}ms !`);
+  slashCommands.loadAll();
+  await client.user.setStatus("dnd");
+  await client.user.setActivity("🎃 Trick or treat !", { type: "WATCHING"})
 
-    discordbotlist();
-    //statut();
-    // save + system
-    interval(30000);
+  discordbotlist();
+  //statut();
+  // save + system
+  interval(30000); 
 };

@@ -139,8 +139,8 @@ module.exports = [
   },
   Discord.GuildMemberManager.prototype.selectMember = function(args, options = { fetch: false, bot: false, user: false }){
     if (typeof args !== "string" || typeof options !== "object" || Array.isArray(options)) return null;
-    const guild = this.cache.find((m) => (options.bot ? true : !m.user.bot) && (m.id == args.replace(/\D+/g, '') || m.user.tag.match(new RegExp(args.replace(/\D+/g, '').toLowerCase(), 'g')) || m.displayName.match(new RegExp(args.replace(/\D+/g, '').toLowerCase(), 'g')) || m.user.discriminator.match(new RegExp(args.replace(/\D+/g, ''), "g"))));
-    const callback = (m) => (options.bot ? true : !m.bot) && (m.id == args.replace(/\D+/g, '') || m.tag.match(new RegExp(args.replace(/\D+/g, '').toLowerCase(), 'g')) || m.discriminator.match(new RegExp(args.replace(/\D+/g, ''), "g")))
+    const guild = this.cache.find((m) => (options.bot ? true : !m.user.bot) && (m.id == args.replace(/\D+/g, '') || m.user.username.match(new RegExp(args.toLowerCase(), 'g')) || m.displayName.match(new RegExp(args.toLowerCase(), 'g')) || m.user.discriminator.match(new RegExp(args.toLowerCase(), ''), "g")));
+    const callback = (m) => (options.bot ? true : !m.bot) && (m.id == args.replace(/\D+/g, '') || m.username.match(new RegExp(args.toLowerCase(), 'g')) || m.discriminator.match(new RegExp(args.toLowerCase(), "g")))
     return (options.fetch ?
       (options.user ? (guild?.user || this.client.users.cache.find(callback) || this.client.users.fetch(args.replace(/\D+/g, '')).catch(() => null) ) : (guild || this.client.users.cache.find(callback) || this.client.users.fetch(args.replace(/\D+/g, '')).catch(() => null) ))
       : (options.user ? guild?.user : guild))
@@ -155,40 +155,7 @@ module.exports = [
     const chl = options.channel ? client.channels.cache.get(options.channel) : null;
     if (options.channel) return ( await this.channel.messages.fetch(args).catch(() => false)) || (chl ? await chl.messages.fetch(args).catch(() => null) : null);
     else return this.channel.messages.fetch(args).catch(() => null);
-  },/*
-  Canvas.CanvasRenderingContext2D.prototype.circleImage = function(image, x, y, radius, startAngle = 0, endAngle = 2 * Math.PI) {
-    this.beginPath();
-    this.arc(x, y, radius, startAngle, endAngle);
-    this.closePath();
-    this.fill();
-    this.clip();
-    this.drawImage(image, x - radius, y - radius, radius * 2, radius * 2);
   },
-  Canvas.CanvasRenderingContext2D.prototype.fillTextMultiline = function(text, maxWidth, limitLine, x, y, y1, y2 = 0, p = 0) {
-    const splitedtext = text.split(/\s+/);
-    const res = [];
-    let line = 0;
-    let i = 0;
-    while (i < splitedtext.length || res.length != 0) {
-      if (this.measureText(res.join(' ')).width + this.measureText(splitedtext[i]).width <= maxWidth) res.push(splitedtext[i++]);
-      else {
-        this.fillText(res.join(' '), x, y + line * y1 + p * y2) || (res.length = 0);
-        if (++line >= limitLine) break;
-      }
-    }
-  },
-  Canvas.CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
-    if (w < 2 * r) r = w / 2;
-    if (h < 2 * r) r = h / 2;
-    this.beginPath();
-    this.moveTo(x+r, y);
-    this.arcTo(x+w, y,   x+w, y+h, r);
-    this.arcTo(x+w, y+h, x,   y+h, r);
-    this.arcTo(x,   y+h, x,   y,   r);
-    this.arcTo(x,   y,   x+w, y,   r);
-    this.closePath();
-    return this;
-  },*/
   String.prototype.reverse = function reverse() {
     let reversed = ''  
     for (let i = 0; i < this.length; i++) reversed = this[i] + reversed;
@@ -239,11 +206,31 @@ module.exports = [
     }
   },
   Discord.GuildMember.prototype.isStaff = function () {
-    return database.db.get(`guild/${this.guild.id}`, "['_config'].staffRoles").length > 0
+    return database.db.get(`guild/${this.guild.id}`)?.moderation?.staffRoles?.length > 0
       ? database.db
-        .get(`guild/${this.id}`, "['_config'].staffRoles")
+        .get(`guild/${this.id}`, "moderation.staffRoles")
         .some(r => this.roles.cache.has(r))
       : this.permissions.has("MANAGE_MESSAGES");
+  },
+  Discord.Message.prototype.isIgnored = function() {
+    if (!Array.isArray(database.db.get(`guild/${this.guild.id}`)?.ignore)) return null;
+    return (database.db.get(`guild/${this.guild.id}`)?.ignore.some((data) => {
+      switch(data.type) {
+        case "role": { return this.member.roles.cache.has(data.id); };
+        case "user": { return this.member.id == data.id; };
+        case "channel": { return this.channel.id == data.id; };
+        default: return false
+      };
+    }));
+  },
+  Discord.Message.prototype.getPrefix = function(){ return database.db.get(`guild/${this.guild.id}`, "prefix")?.length > 0 ? database.db.get(`guild/${this.guild.id}`, "prefix") : this.client.prefix },
+  Discord.Message.prototype.getArgs = function() {
+    if (typeof this.getPrefix() !== "string") return { prefix: null, command: null, args: null }
+    return {
+      prefix: this.content.trim().toLowerCase().slice(0, this.getPrefix().length),
+      command: this.content.trim().toLowerCase().slice(this.getPrefix().length).trim().split(/\s+/g)[0],
+      args: this.content.trim().toLowerCase().slice(this.getPrefix().length).trim().split(/\s+/g).slice(1)
+    };
   },
   Array.prototype.filterMap = function filterMap(callback, thisArg = this) {
     const res = [];

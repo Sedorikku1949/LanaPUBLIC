@@ -1,0 +1,48 @@
+
+/*
+          copy everywhere !
+*/
+:root {
+  /* background / ENV */
+  --primary-color: #2C2F33;
+  --dark-grey: #14171B;
+  --dark-blue: #0F151D;
+  --grey: #686E75;
+  --light-dark: #4B4F55;
+  /* theme */
+  --theme-main: #F43568;
+  --theme-second: #F43535;
+  --theme-third: #5B35F4;
+  /* policy */
+  --policy-main: #D5D5D5;
+  --policy-secondary: #A7A7A7;
+  --policy-third: #676767;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+/* WEB PAGE */
+
+* {
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--primary-color);
+  font-family: 'Poppins', sans-serif;
+  color: var(--policy-secondary);
+}
+
+.navbar {}
+
+.navbar .client img {
+  height: 75px;
+  width: auto;
+  border-radius: 50%;
+  border-width: 10px;
+}
+
+.navbar .client h2 {
+  top: 50%;
+  display: flex;  
+  flex-flow: row wrap;
+  margin-left: 10px;
+}

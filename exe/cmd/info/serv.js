@@ -16,6 +16,9 @@ function verificationLevel(str) {
   }
 }
 
+const { getDate } = Utils;
+const { date } = Client;
+
 module.exports = {
   exe: async function (message, prefix, command, args, lang) {
     switch(args[0]){
@@ -39,7 +42,7 @@ module.exports = {
       default: {
         message.reply({ embeds: [{
           color: message.guild.colors("mainColor"),
-          title: message.guild.translate(lang+"assets.TITLE"),
+          title: message.guild.translate(lang+"assets.TITLE", message.guild.name),
           thumbnail: { url: message.guild.iconURL({ size: 2048, dyanmic: true, format: "png" }) || "https://upload.wikimedia.org/wikipedia/fr/thumb/4/4f/Discord_Logo_sans_texte.svg/1818px-Discord_Logo_sans_texte.svg.png" },
           fields: [
             { name: message.guild.translate(lang+"assets.OWNER_NAME"), value: message.guild.translate(lang+"assets.OWNER_VALUE", (client.users.cache.get(message.guild.ownerId)?.tag ?? message.guild.ownerId), message.guild.ownerId), inline: false },

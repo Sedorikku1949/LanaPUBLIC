@@ -6,10 +6,15 @@ module.exports = async function(interaction){
     const lang = Object.assign({}, (database.db.get("user/"+interaction.user.id) ? (database.language[database.db.get("user/"+interaction.user.id).lang] || database.language.fr) : database.language.fr ));
 
     if ((await database.db.get("blacklist")).some(e => e.id == interaction.user.id)) return interaction.reply(lang.misc.blacklistedUser);
-    if (interaction.commandName == "ping") return database.commands.find(e => e.config.name == "ping")?.interaction(interaction, database.commands.find(e => e.config.name == "ping")?.lang ?? "commands");
-    if (interaction.commandName == "invite") return database.commands.find(e => e.config.name == "invite")?.interaction(interaction, database.commands.find(e => e.config.name == "invite")?.lang ?? "commands");
-    if (interaction.commandName == "help") return database.commands.find(e => e.config.name == "help")?.interaction(interaction, database.commands.find(e => e.config.name == "help")?.lang ?? "commands");
-    if (interaction.commandName == "support") return database.commands.find(e => e.config.name == "support")?.interaction(interaction, database.commands.find(e => e.config.name == "support")?.lang ?? "commands");
+    const cmd = database.commands.find(e => typeof e.interaction == "function" && e.config.name == interaction.commandName);
+    if (!cmd) return interaction.reply("❌ **An error as occured !**");
+    try {
+      console.log(`{blue}{ INTERACTION_COMMAND } >> "${interaction.user?.username ?? interaction.user?.id}"" as utiliser la commande "${cmd.config.name}" dans #${interaction.channel?.name}`)
+      cmd.interaction(interaction, cmd.lang ?? "commands")
+    } catch(err) {
+      console.log(err);
+      interaction.reply("❌ **An error as occured !**");
+    }
   }
 
 
@@ -18,7 +23,7 @@ module.exports = async function(interaction){
     if (interaction.customId == 'language'){
       if (!interaction.member || !interaction.guild || !(interaction.guild instanceof Discord.Guild) || !interaction.member.isStaff() ) return;
       if (database.db.get("guild/"+interaction.guild.id).lang == interaction.values) return interaction.reply({ content: interaction.guild.translate("languageAlreadySelected"), ephemeral: true })
-      await database.db.set("guild/"+interaction.guild.id, interaction.values, "lang")
+      await database.db.set("guild/"+interaction.guild.id, interaction.values[0], "lang")
       interaction.reply({ content: interaction.guild.translate("newLanguageSelected"), ephemeral: true });
     }
   }

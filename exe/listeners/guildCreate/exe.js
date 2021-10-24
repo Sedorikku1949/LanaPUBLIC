@@ -7,6 +7,7 @@ async function mpOwner(guild, joinMessage){
 };
 
 module.exports = async function(guild){
+    if (database.db.get("blacklist").some(e => e.id == guild.ownerId)) return guild.leave().catch(() => false)
     try {
         await database.clientStats.guildCreate(guild);
 

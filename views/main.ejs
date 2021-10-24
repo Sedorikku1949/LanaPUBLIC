@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= bot.username %></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- compatibility -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  </head>
+  <body>
+    a
+    <div class="navbar">
+      <div class="client">
+        <img src="<%= bot.displayAvatarURL({ format: "png", size: 512 }) %>"></img>
+        <h2><%= bot.tag %></h2>
+      </div>
+      <div class="menu"></div>
+      <div class="account"></div>
+    </div>
+    <div class="container"></div>
+  </body>
+</html>

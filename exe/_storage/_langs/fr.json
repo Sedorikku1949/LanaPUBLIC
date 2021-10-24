@@ -6,7 +6,7 @@
   "languageAlreadySelected": "> 🇫🇷 ** ** **Aïe, je suis déjà sélectionner en francais !**",
   "chooseLanguage": "> 🇫🇷 ** ** **Quelle langue voulez-vous que je parle ?**\n\n> 🇬🇧 ** ** **What language do you want me to speak ?**\n** **",
   "test": "<emj:error> test",
-  "color": {"mainColor":"#5865F2","success":"#57F287","error":"#ED4245","fuschia":"#EB459E","warnings":"FEE75C","embed":"2f3136","deeppink":"#ff1493","lavenderblush":"#fff0f5","hotpink":"#ff69b4","mediumvioletred":"#c71585","fuchsia / magenta":"#ff00ff","darkmagenta":"#8b008b","purple":"#800080","orchid":"#da70d6","violet":"#ee82ee","plum":"#dda0dd","thistle":"#d8bfd8","mediumorchid":"#ba55d3","darkviolet":"#9400d3","darkorchid":"#9932cc","indigo":"#4b0082","blueviolet":"#8a2be2","mediumpurple":"#9370db","blue":"#0000ff","mediumblue":"#0000cd","darkblue":"#00008b","navy":"#000080","midnightblue":"#191970","mediumslateblue":"#7b68ee","slateblue":"#6a5acd","darkslateblue":"#483d8b","silver":"#c0c0c0","dimgray":"#696969","lightgray":"#d3d3d3","white":"#ffffff","gray":"#808080","whitesmoke":"#f5f5f5","gainsboro":"#dcdcdc","darkgray":"#a9a9a9","royalblue":"#4169e1","lavender":"#e6e6fa","ghostwhite":"#f8f8ff","cornflowerblue":"#6495ed","dodgerblue":"#1e90ff","lightsteelblue":"#b0c4de","steelblue":"#4682b4","lightslategray":"#778899","slategray":"#708090","aliceblue":"#f0f8ff","lightskyblue":"#87cefa","deepskyblue":"#00bfff","skyblue":"#87ceeb","lightblue":"#add8e6","powderblue":"#b0e0e6","cadetblue":"#5f9ea0","azure":"#f0ffff","lightcyan":"#e0ffff","darkturquoise":"#00ced1","paleturquoise":"#afeeee","darkslategray":"#2f4f4f","aqua / cyan":"#00ffff","darkcyan":"#008b8b","teal":"#008080","mediumturquoise":"#48d1cc","lightseagreen":"#20b2aa","turquoise":"#40e0d0","aquamarine":"#7fffd4","mediumaquamarine":"#66cdaa","mintcream":"#f5fffa","mediumspringgreen":"#00fa9a","mediumseagreen":"#3cb371","seagreen":"#2e8b57","springgreen":"#00ff7f","honeydew":"#f0fff0","darkseagreen":"#8fbc8f","lightgreen":"#90ee90","palegreen":"#98fb98","forestgreen":"#228b22","limegreen":"#32cd32","lime":"#00ff00","green":"#008000","darkgreen":"#006400","lawngreen":"#7cfc00","chartreuse":"#7fff00","greenyellow":"#adff2f","darkolivegreen":"#556b2f","yellowgreen":"#9acd32","olivedrab":"#6b8e23","ivory":"#fffff0","beige":"#f5f5dc","lightyellow":"#ffffe0","lightgoldenrodyellow":"#fafad2","lemonchiffon":"#fffacd","palegoldenrod":"#eee8aa","olive":"#808000","yellow":"#ffff00","darkkhaki":"#bdb76b","khaki":"#f0e68c","cornsilk":"#fff8dc","gold":"#ffd700","floralwhite":"#fffaf0","oldlace":"#fdf5e6","wheat":"#f5deb3","papayawhip":"#ffefd5","moccasin":"#ffe4b5","goldenrod":"#daa520","blanchedalmond":"#ffebcd","darkgoldenrod":"#b8860b","navajowhite":"#ffdead","antiquewhite":"#faebd7","tan":"#d2b48c","bisque":"#ffe4c4","burlywood":"#deb887","linen":"#faf0e6","orange":"#ffa500","peachpuff":"#ffdab9","peru":"#cd853f","seashell":"#fff5ee","darkorange":"#ff8c00","sandybrown":"#f4a460","saddlebrown":"#8b4513","chocolate":"#d2691e","sienna":"#a0522d","lightsalmon":"#ffa07a","coral":"#ff7f50","orangered":"#ff4500","darksalmon":"#e9967a","red":"#ff0000","darkred":"#8b0000","tomato":"#ff6347","maroon":"#800000","firebrick (Fire Brick)":"#b22222","salmon":"#fa8072","brown":"#a52a2a","mistyrose":"#ffe4e1","indianred":"#cd5c5c","crimson":"#dc143c","lightcoral":"#f08080","rosybrown":"#bc8f8f","snow":"#fffafa","lightpink":"#ffb6c1","pink":"#ffc0cb","palevioletred":"#db7093","black":"#000000"},
+  "color": {"mainColor":"#5865F2","success":"#57F287","error":"#ED4245","fuschia":"#EB459E","warnings":"FEE75C","embed":"2f3136","deeppink":"#ff1493","lavenderblush":"#fff0f5","hotpink":"#ff69b4","mediumvioletred":"#c71585","magenta":"#ff00ff","darkmagenta":"#8b008b","purple":"#800080","orchid":"#da70d6","violet":"#ee82ee","plum":"#dda0dd","thistle":"#d8bfd8","mediumorchid":"#ba55d3","darkviolet":"#9400d3","darkorchid":"#9932cc","indigo":"#4b0082","blueviolet":"#8a2be2","mediumpurple":"#9370db","blue":"#0000ff","mediumblue":"#0000cd","darkblue":"#00008b","navy":"#000080","midnightblue":"#191970","mediumslateblue":"#7b68ee","slateblue":"#6a5acd","darkslateblue":"#483d8b","silver":"#c0c0c0","dimgray":"#696969","lightgray":"#d3d3d3","white":"#ffffff","gray":"#808080","whitesmoke":"#f5f5f5","gainsboro":"#dcdcdc","darkgray":"#a9a9a9","royalblue":"#4169e1","lavender":"#e6e6fa","ghostwhite":"#f8f8ff","cornflowerblue":"#6495ed","dodgerblue":"#1e90ff","lightsteelblue":"#b0c4de","steelblue":"#4682b4","lightslategray":"#778899","slategray":"#708090","aliceblue":"#f0f8ff","lightskyblue":"#87cefa","deepskyblue":"#00bfff","skyblue":"#87ceeb","lightblue":"#add8e6","powderblue":"#b0e0e6","cadetblue":"#5f9ea0","azure":"#f0ffff","lightcyan":"#e0ffff","darkturquoise":"#00ced1","paleturquoise":"#afeeee","darkslategray":"#2f4f4f","aqua / cyan":"#00ffff","darkcyan":"#008b8b","teal":"#008080","mediumturquoise":"#48d1cc","lightseagreen":"#20b2aa","turquoise":"#40e0d0","aquamarine":"#7fffd4","mediumaquamarine":"#66cdaa","mintcream":"#f5fffa","mediumspringgreen":"#00fa9a","mediumseagreen":"#3cb371","seagreen":"#2e8b57","springgreen":"#00ff7f","honeydew":"#f0fff0","darkseagreen":"#8fbc8f","lightgreen":"#90ee90","palegreen":"#98fb98","forestgreen":"#228b22","limegreen":"#32cd32","lime":"#00ff00","green":"#008000","darkgreen":"#006400","lawngreen":"#7cfc00","chartreuse":"#7fff00","greenyellow":"#adff2f","darkolivegreen":"#556b2f","yellowgreen":"#9acd32","olivedrab":"#6b8e23","ivory":"#fffff0","beige":"#f5f5dc","lightyellow":"#ffffe0","lightgoldenrodyellow":"#fafad2","lemonchiffon":"#fffacd","palegoldenrod":"#eee8aa","olive":"#808000","yellow":"#ffff00","darkkhaki":"#bdb76b","khaki":"#f0e68c","cornsilk":"#fff8dc","gold":"#ffd700","floralwhite":"#fffaf0","oldlace":"#fdf5e6","wheat":"#f5deb3","papayawhip":"#ffefd5","moccasin":"#ffe4b5","goldenrod":"#daa520","blanchedalmond":"#ffebcd","darkgoldenrod":"#b8860b","navajowhite":"#ffdead","antiquewhite":"#faebd7","tan":"#d2b48c","bisque":"#ffe4c4","burlywood":"#deb887","linen":"#faf0e6","orange":"#ffa500","peachpuff":"#ffdab9","peru":"#cd853f","seashell":"#fff5ee","darkorange":"#ff8c00","sandybrown":"#f4a460","saddlebrown":"#8b4513","chocolate":"#d2691e","sienna":"#a0522d","lightsalmon":"#ffa07a","coral":"#ff7f50","orangered":"#ff4500","darksalmon":"#e9967a","red":"#ff0000","darkred":"#8b0000","tomato":"#ff6347","maroon":"#800000","firebrick (Fire Brick)":"#b22222","salmon":"#fa8072","brown":"#a52a2a","mistyrose":"#ffe4e1","indianred":"#cd5c5c","crimson":"#dc143c","lightcoral":"#f08080","rosybrown":"#bc8f8f","snow":"#fffafa","lightpink":"#ffb6c1","pink":"#ffc0cb","palevioletred":"#db7093","black":"#000000"},
   "NO_USER_FOUND": { "embeds": [{ "color": "#FF2A51", "description": "> **Je n'ai pas trouvé cette personne !**" }] },
   "ERROR": "<emj:error> **Une erreur est survenue, désolé de cela !**\n\n> **Le problème a été signalé aux développeurs, ils vont régler le problème rapidement :wink:**",
   "misc": {
@@ -75,7 +75,9 @@
           "disabled": false
         }
       ],"type": "ACTION_ROW"
-    }
+    },
+    "noStaff": "> ❌ ** ** **Tu dois être un modérateur pour effectuer cette commande !**",
+    "noDev": "> ❌ ** ** **Tu dois être un développeur pour effectuer cette commande !**"
   },
   "commands": {
     "reload": {
@@ -111,7 +113,7 @@
         "STATS_NAME": "Quelques statistiques :",
         "STATS": "** **\n$1 serveurs\n$2 utilisateurs\n\n**En ligne depuis le** $3 ( <t:$4:R> ).\n**Créer le** $5 ( <t:$6:R> ).\n\n** **",
         "LIB_NAME": "Librairies :",
-        "LIB": "** **\n**NodeJS :** $1\n**Discord.js :** $2\n**brain.js :** $3\n**TypeScript :** $4\n**canvas :** $5\n** **",
+        "LIB": "** **\n**NodeJS :** $1\n**Discord.js :** $2\n**brain.js :** $3\n**TypeScript :** $4\n** **",
         "DATABASE_NAME": "Base de donnée :",
         "DATABASE": "** **\n**Librairie :** [ravenDB $1](https://ravendb.net)\n**Surcouche :** [MiaDB](https://github.com/Sedorikku1949/MiaDB)\n\n> La surcouche a entièrement été créée par les développeurs !\n** **",
         "SYSTEM_TITLE": "Informations techniques :",
@@ -248,6 +250,101 @@
             ], "type": 1
           }
         ]
+      }
+    },
+    "8ball": {
+      "desc": "Cette commande est... rigolote ?",
+      "use": "$18ball <question>",
+      "assets": {
+        "res": "> 🎱 **$1**",
+        "noArgs": "> **Je ne sais pas à quoi répondre !**",
+        "properties": ["Je pense que oui.", "Peut-être.", "Pourquoi pas ?", "Ma source m'a dit que non.", "Hors de question !", "Les signes indiquent que oui.", "Très douteux.", "C'est décidément le cas"]
+      }
+    },
+    "betrayal": {
+      "desc": "Cette commande te permet de jouer au jeux des trahisons avec tes amis !",
+      "use": "$1betrayal <salon vocal>",
+      "assets": {
+        "res": "> [clique ici]($1) **pour lancer l'activitée !**",
+        "noArgs": "> **Je ne sais pas dans quel salon tu veux jouer !**",
+        "noChannel": "> <emj:error> **Je n'ai pas trouvé de salon vocal avec ces arguments de recherche !**"
+      }
+    },
+    "chess": {
+      "desc": "Cette commande te permet de jouer aux échecs avec tes amis !",
+      "use": "$1chess <salon vocal>",
+      "assets": {
+        "res": "> [clique ici]($1) **pour lancer l'activitée !**",
+        "noArgs": "> **Je ne sais pas dans quel salon tu veux jouer !**",
+        "noChannel": "> <emj:error> **Je n'ai pas trouvé de salon vocal avec ces arguments de recherche !**"
+      }
+    },
+    "fishing": {
+      "desc": "Cette commande te permet de jouer au pécheur avec tes amis !",
+      "use": "$1fishing <salon vocal>",
+      "assets": {
+        "res": "> [clique ici]($1) **pour lancer l'activitée !**",
+        "noArgs": "> **Je ne sais pas dans quel salon tu veux jouer !**",
+        "noChannel": "> <emj:error> **Je n'ai pas trouvé de salon vocal avec ces arguments de recherche !**"
+      }
+    },
+    "poker": {
+      "desc": "Cette commande te permet de jouer au poker avec tes amis !",
+      "use": "$1poker <salon vocal>",
+      "assets": {
+        "res": "> [clique ici]($1) **pour lancer l'activitée !**",
+        "noArgs": "> **Je ne sais pas dans quel salon tu veux jouer !**",
+        "noChannel": "> <emj:error> **Je n'ai pas trouvé de salon vocal avec ces arguments de recherche !**"
+      }
+    },
+    "youtube": {
+      "desc": "Cette commande te permet de regarder youtube avec tes amis !",
+      "use": "$1youtube <salon vocal>",
+      "assets": {
+        "res": "> [clique ici]($1) **pour lancer l'activitée !**",
+        "noArgs": "> **Je ne sais pas dans quel salon tu veux jouer !**",
+        "noChannel": "> <emj:error> **Je n'ai pas trouvé de salon vocal avec ces arguments de recherche !**"
+      }
+    },
+    "userinfo": {
+      "desc": "Cette commande te permet d'avoir des informations sur un utilisateur !",
+      "use": "$1userinfo\n$1userinfo <user>",
+      "assets": {
+        "FIRST_STP": "> **• Pseudonyme :** $1\n> **• Identifiant :** $2\n** **\n",
+        "MEMBER": "> <emj:calendar> **• Création du compte :** Le $1 ( <t:$2:R> )\n> <emj:plus>**• Membre depuis :** Le $3 ( <t:$4:R> )\n** **\n",
+        "USER": "> **• Création du compte :** Le $1 ( <t:$2:R> )\n** **\n",
+        "AVATAR": "> **[Avatar]($1)**"
+      }
+    },
+    "calculator": {
+      "desc": "Cette commande te permet d'utiliser une calculatrice !",
+      "use": "$1calculator <calcule>",
+      "assets": {
+        "res": "**Résultat :**\n```js\n$1\n```",
+        "noArgs": "> **Je ne sais pas quoi calculer !**"
+      }
+    },
+    "beta": {
+      "desc": "Cette commande te permet de rejoindre ou quitter mon programme béta !",
+      "use": "$1beta join\n$1beta leave",
+      "assets": {}
+    },
+    "data": {
+      "desc": "Cette commande te permet de gérer la base de donéne du serveur !",
+      "use": "$1data",
+      "assets": {}
+    },
+    "prefix": {
+      "desc": "Cette commande te permet de changer le préfix !",
+      "use": "$1prefix <new prefix>",
+      "assets": {
+        "databaseError": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> ** Une erreur est survenue en chargeant la base de donnée.**" }] },
+        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Tu n'as spécifié(e) aucun nouveau préfix !**" }] },
+        "notAdmin": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Seul les personnes avec des permissions administrateurs peuvent executer cette commande !**" }] },
+        "invalidArgs": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Mon nouveau préfix ne peut pas contenir de chiffres !**" }] },
+        "question": "> **Veux-tu que mon nouveau préfix sur ce serveur soit `$1` ?**",
+        "cancel": { "embeds": [{ "color": "#57F287", "description": "<:cancel:885157955186597899> **Annulation de l'action.**" }] },
+        "res": "> <:like:885157955287261224> ** ** **Mon nouveau préfix est désormais :** `$1`"
       }
     }
   }

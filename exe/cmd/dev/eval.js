@@ -73,6 +73,6 @@ module.exports = {
       msgResponse(message, prefix, command, args, text, String(err).split("\n")[0], true)
     }
   },
-  config: { name: "eval", aliases: ["e"], category: "dev", system: { perms: ["SEND_MESSAGES"], delInvoke: false, inProgress: false, staffCommand: false, devCommand: true } },
+  config: { name: "eval", aliases: ["e"], options: [], category: "dev", system: { perms: ["SEND_MESSAGES"], delInvoke: false, inProgress: false, staffCommand: false, devCommand: true } },
   path: null
 }

@@ -33,44 +33,6 @@
       "id": null
     },
     "guilds": {
-      "_config": {
-        "enable": false,
-        "staffRoles": [],
-        "ignoreChannel": [],
-        "ignoreCategory": [],
-        "ignoreCommand": [],
-        "ignoreUser": [],
-        "commandException": [],
-        "xp": false,
-        "money": false,
-        "invite": false,
-        "xpConfig": { "noChannel": [], "noRole": [], "noUser": [] }
-      },
-      "logs": [],
-      "moderation": {
-        "automod": false,
-        "automodConfig": {
-          "whitelists": { "users": [], "channels": [], "roles": [] },
-          "spamLevel": 1,
-          "spam": false,
-          "spawmAction": 3,
-          "badword": false,
-          "badwordAction": 0,
-          "invite": false,
-          "inviteAction": 0
-        },
-        "ban": [],
-        "kick": [],
-        "warn": [],
-        "notes": [],
-        "raidmode": false,
-        "autoRaidMode": false
-      },
-      "messages": [],
-      "xp": {},
-      "money": {},
-      "ticket": {},
-      "invite": {},
       "prefix": "",
       "lang": "fr",
       "id": ""

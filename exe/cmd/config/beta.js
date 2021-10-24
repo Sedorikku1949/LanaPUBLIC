@@ -56,6 +56,6 @@ module.exports = {
       default: message.reply(lang.assets.noArgs)
     }
   },
-  config: { name: "beta", aliases: [], category: "config", system: { perms: ["SEND_MESSAGES", "EMBED_LINKS", "ADD_REACTIONS"], delInvoke: false, inProgress: false, staffCommand: true, devCommand: false } },
+  config: { name: "beta", aliases: [], category: "config", system: { perms: ["SEND_MESSAGES", "EMBED_LINKS", "ADD_REACTIONS"], delInvoke: false, inProgress: true, staffCommand: true, devCommand: false } },
   path: null
 }

@@ -48,7 +48,7 @@ module.exports = {
             { name: message.guild.translate(lang+"assets.HEBERG_NAME"), value: message.guild.translate(lang+"assets.HEBERG"), inline: true },
             { name: message.guild.translate(lang+"assets.DESIGN_NAME"), value: message.guild.translate(lang+"assets.DESIGN"), inline: true },
             { name: message.guild.translate(lang+"assets.STATS_NAME"), value: message.guild.translate(lang+"assets.STATS", client.guilds.cache.size, client.guilds.cache.reduce((a,b)=>a+=b.memberCount,0), dayjs(client.readyTimestamp).format("DD/MM/YYYY à HH:MM"), Math.trunc(client.readyTimestamp/1000), dayjs(client.user.createdTimestamp).format("DD/MM/YYYY à HH:MM"), Math.trunc(client.user.createdTimestamp/1000)), inline: false },
-            { name: message.guild.translate(lang+"assets.LIB_NAME"), value: message.guild.translate(lang+"assets.LIB", process.version, require("discord.js").version, require("../../../package.json").dependencies["brain.js"].replace(/\^/g, ""), require("../../../package.json").devDependencies.typescript.replace(/\^/g, ""), require("canvas").version), inline: false },
+            { name: message.guild.translate(lang+"assets.LIB_NAME"), value: message.guild.translate(lang+"assets.LIB", process.version, require("discord.js").version, require("../../../package.json").dependencies["brain.js"].replace(/\^/g, ""), require("../../../package.json").devDependencies.typescript.replace(/\^/g, "")), inline: false },
             { name: message.guild.translate(lang+"assets.DATABASE_NAME"), value: message.guild.translate(lang+"assets.DATABASE", require("../../../package.json").dependencies.ravendb.replace(/\^/g, "")), inline: false },
           ]
         }] })

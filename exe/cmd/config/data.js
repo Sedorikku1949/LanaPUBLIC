@@ -115,6 +115,6 @@ module.exports = {
     });
     c.on("end", function(){ msg.delete().catch(() => false) })
   },
-  config: { name: "data", aliases: [], category: "config", system: { perms: ["SEND_MESSAGES", "EMBED_LINKS", "ADD_REACTIONS"], delInvoke: false, inProgress: false, staffCommand: true, devCommand: false } },
+  config: { name: "data", aliases: [], category: "config", system: { perms: ["SEND_MESSAGES", "EMBED_LINKS", "ADD_REACTIONS"], delInvoke: false, inProgress: true, staffCommand: true, devCommand: false } },
   path: null
 }
