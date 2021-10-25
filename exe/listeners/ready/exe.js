@@ -37,4 +37,27 @@ module.exports = async() => {
   //statut();
   // save + system
   interval(30000); 
+
+  Object.entries(database.language).forEach((e) => {
+    const obj = { components: [
+      {
+        type: "SELECT_MENU",
+        customId: "language",
+        placeholder: "What language do you want me to speak ?",
+        minValues: null,
+        maxValues: null,
+        options: [...Object.values(database.language).map(lang => ({
+            label: lang.languageName ?? "ERROR",
+            value: lang.systemLanguageName ?? "ERROR",
+            description: lang.langDesc ?? `I will speak "${lang.languageName ?? "ERROR"}"`,
+            emoji: lang.langEmj ?? "🏳️",
+            default: false
+          })
+        )],
+        disabled: false
+      }
+    ],type: "ACTION_ROW" };
+    // update
+    if (database.language[e[0]] && database.language[e[0]].misc && database.language[e[0]].misc.languageSelectMenu) database.language[e[0]].misc.languageSelectMenu = obj;
+  })
 };
