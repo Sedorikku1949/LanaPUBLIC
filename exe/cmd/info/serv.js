@@ -53,7 +53,7 @@ module.exports = {
             { name: message.guild.translate(lang+"assets.CHANNEL_NAME"), value: message.guild.translate(lang+"assets.CHANNEL_VALUE", message.guild.channels.cache.filter((e) => e.type == "GUILD_CATEGORY").size, message.guild.channels.cache.filter((e) => e.type == "GUILD_TEXT").size, message.guild.channels.cache.filter((e) => e.type == "GUILD_VOICE").size, message.guild.channels.cache.filter((e) => e.type == "GUILD_NEWS").size), inline: false },
             { name: message.guild.translate(lang+"assets.OTHER_NAME"), value: message.guild.translate(lang+"assets.OTHER_VALUE", (message.guild.systemChannel ? message.guild.systemChannel.toString() : message.guild.translate(lang+"misc.NO_SYSTEM_CHANNEL")), message.guild.translate(lang+`misc.explicit["${expliciteFilter(message.guild.explicitContentFilter)}"]`), message.guild.rulesChannelId ? client.channels.cache.get(message.guild.rulesChannelId).toString() : message.guild.translate(lang+"misc.NO_RULE_CHANNEL"), message.guild.translate(lang+`misc.verif["${verificationLevel(message.guild.verificationLevel)}"]`)), inline: false }
           ],
-          footer: { text: "© Lana - 2021" }
+          footer: { text: "© Kady - 2021" }
         }] });
       };
     }

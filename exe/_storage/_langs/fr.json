@@ -2,6 +2,8 @@
   "languageName": "Français",
   "languageIndicator": "FR-fr",
   "systemLanguageName": "fr",
+  "langDesc": "Je parlerais francais.",
+  "langEmj": "🇫🇷",
   "newLanguageSelected": "> 🇫🇷 ** ** **Je parlerais désormais Français !**",
   "languageAlreadySelected": "> 🇫🇷 ** ** **Aïe, je suis déjà sélectionner en francais !**",
   "chooseLanguage": "> 🇫🇷 ** ** **Quelle langue voulez-vous que je parle ?**\n\n> 🇬🇧 ** ** **What language do you want me to speak ?**\n** **",
@@ -23,8 +25,7 @@
       "color": "#5865F2",
       "thumbnail": { "url": "$1" },
       "author": { "name": "$1", "icon_url": "$1" },
-      "description": "🇫🇷 **Merci de m'avoir ajoutée à votre serveur !**\n\n> Le dashboard arrive prochainement ainsi que un tas de nouvelles fonctionnalités !\n\n**Suivez mon actualitée sur le serveur support :wink:**\n\n\n🇬🇧 **Thanks for adding me to your server!**\n\n> The dashboard is coming soon as well as a bunch of new features!\n\n**Follow my news on the support server**😉",
-      "footer": { "text": "Pour m'activer, écrivez \"$1enable\" !"}
+      "description": "🇫🇷 **Merci de m'avoir ajoutée à votre serveur !**\n\n> Le dashboard arrive prochainement ainsi que un tas de nouvelles fonctionnalités !\n\n**Suivez mon actualitée sur le serveur support :wink:**\n\n\n🇬🇧 **Thanks for adding me to your server!**\n\n> The dashboard is coming soon as well as a bunch of new features!\n\n**Follow my news on the support server**😉"
     }],
     "components": [
       {
@@ -67,8 +68,15 @@
             {
               "label": "English",
               "value": "en",
-              "description": "I will speak Englisg.",
+              "description": "I will speak English.",
               "emoji": "🇬🇧",
+              "default": false
+            },
+            {
+              "label": "...",
+              "value": "ja",
+              "description": "",
+              "emoji": "",
               "default": false
             }
           ],
@@ -85,7 +93,7 @@
       "use": "$1reload functions\n$1reload commands\n$1reload prototypes\n$1reload events\n$1reload langs\n$1reload all"
     },
     "ping": {
-      "desc": "Cette commande permet d'obtenir des informations sur la latence de Lana et du bot.",
+      "desc": "Cette commande permet d'obtenir des informations sur la latence de Kady et du bot.",
       "use": "Aucun argument requis.",
       "assets": {
         "discordPingAnalyse": "**Laissez moi calculer le temps de réponse de discord...**",
@@ -101,7 +109,7 @@
       }
     },
     "bot": {
-      "desc": "Cette commande permet d'obtenir des informations sur Lana !",
+      "desc": "Cette commande permet d'obtenir des informations sur Kady !",
       "use": "$1bot\n$1bot icon\n$1bot system\n$1bot other",
       "assets": {
         "DEV_NAME": "Développeur :",

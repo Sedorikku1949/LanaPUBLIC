@@ -22,7 +22,7 @@ module.exports = {
               categoryPagePosition[index] /* positon */,
               (database.commands.filter(e => e.config.category == ctg).map(e => e.config.name).join("\n➯ ")) /* commands */
             ),
-            footer: { text:"© Lana - 2021" },
+            footer: { text:"© Kady - 2021" },
           }]
         }
       });

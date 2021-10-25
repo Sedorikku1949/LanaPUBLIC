@@ -13,21 +13,21 @@ module.exports = {
     i = Date.now() - i
     message.reply({ embeds: [{
       color: message.guild.colors("success"),
-      footer: { text: "©️ Lana - 2021" },
+      footer: { text: "©️ Kady - 2021" },
       thumbnail: { url: client.user.displayAvatarURL({ size: 2048, format: "png"}) },
       fields: [
         {name: "Discord :", value: message.guild.translate(lang+"assets.discordPing", i, message.guild.translate(lang+`misc['${checkPing(i)}']`)) },
-        {name: "Lana :", value: message.guild.translate(lang+"assets.clientPing", client.ws.ping, message.guild.translate(lang+`misc['${checkPing(client.ws.ping)}']`)) }
+        {name: "Kady :", value: message.guild.translate(lang+"assets.clientPing", client.ws.ping, message.guild.translate(lang+`misc['${checkPing(client.ws.ping)}']`)) }
       ]
     }]});
   },
   interaction: async function(interaction, lang){
     interaction.reply({ embeds: [{
       color: interaction.guild.colors("success"),
-      footer: { text: "©️ Lana - 2021" },
+      footer: { text: "©️ Kady - 2021" },
       thumbnail: { url: client.user.displayAvatarURL({ size: 2048, format: "png"}) },
       fields: [
-        {name: "Lana :", value: interaction.guild.translate(lang+"assets.clientPing", client.ws.ping, interaction.guild.translate(lang+`misc['${checkPing(client.ws.ping)}']`)) }
+        {name: "Kady :", value: interaction.guild.translate(lang+"assets.clientPing", client.ws.ping, interaction.guild.translate(lang+`misc['${checkPing(client.ws.ping)}']`)) }
       ]
     }]});
   },

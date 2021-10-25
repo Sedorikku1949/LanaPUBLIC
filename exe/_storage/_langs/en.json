@@ -1,1 +1,337 @@
-{}
+{
+  "languageName": "English",
+  "languageIndicator": "EN-en",
+  "systemLanguageName": "en",
+  "langDesc": "I will speak English",
+  "langEmj": "🇬🇧",
+  "newLanguageSelected": "> 🇬🇧 ** ** **I will speak now English !**",
+  "languageAlreadySelected": "> 🇬🇧 ** ** **Aïe, je suis déjà sélectionner en francais !**",
+  "chooseLanguage": "> 🇫🇷 ** ** **Quelle langue voulez-vous que je parle ?**\n\n> 🇬🇧 ** ** **What language do you want me to speak ?**\n** **",
+  "test": "<emj:error> test",
+  "color": {"mainColor":"#5865F2","success":"#57F287","error":"#ED4245","fuschia":"#EB459E","warnings":"FEE75C","embed":"2f3136","deeppink":"#ff1493","lavenderblush":"#fff0f5","hotpink":"#ff69b4","mediumvioletred":"#c71585","magenta":"#ff00ff","darkmagenta":"#8b008b","purple":"#800080","orchid":"#da70d6","violet":"#ee82ee","plum":"#dda0dd","thistle":"#d8bfd8","mediumorchid":"#ba55d3","darkviolet":"#9400d3","darkorchid":"#9932cc","indigo":"#4b0082","blueviolet":"#8a2be2","mediumpurple":"#9370db","blue":"#0000ff","mediumblue":"#0000cd","darkblue":"#00008b","navy":"#000080","midnightblue":"#191970","mediumslateblue":"#7b68ee","slateblue":"#6a5acd","darkslateblue":"#483d8b","silver":"#c0c0c0","dimgray":"#696969","lightgray":"#d3d3d3","white":"#ffffff","gray":"#808080","whitesmoke":"#f5f5f5","gainsboro":"#dcdcdc","darkgray":"#a9a9a9","royalblue":"#4169e1","lavender":"#e6e6fa","ghostwhite":"#f8f8ff","cornflowerblue":"#6495ed","dodgerblue":"#1e90ff","lightsteelblue":"#b0c4de","steelblue":"#4682b4","lightslategray":"#778899","slategray":"#708090","aliceblue":"#f0f8ff","lightskyblue":"#87cefa","deepskyblue":"#00bfff","skyblue":"#87ceeb","lightblue":"#add8e6","powderblue":"#b0e0e6","cadetblue":"#5f9ea0","azure":"#f0ffff","lightcyan":"#e0ffff","darkturquoise":"#00ced1","paleturquoise":"#afeeee","darkslategray":"#2f4f4f","aqua / cyan":"#00ffff","darkcyan":"#008b8b","teal":"#008080","mediumturquoise":"#48d1cc","lightseagreen":"#20b2aa","turquoise":"#40e0d0","aquamarine":"#7fffd4","mediumaquamarine":"#66cdaa","mintcream":"#f5fffa","mediumspringgreen":"#00fa9a","mediumseagreen":"#3cb371","seagreen":"#2e8b57","springgreen":"#00ff7f","honeydew":"#f0fff0","darkseagreen":"#8fbc8f","lightgreen":"#90ee90","palegreen":"#98fb98","forestgreen":"#228b22","limegreen":"#32cd32","lime":"#00ff00","green":"#008000","darkgreen":"#006400","lawngreen":"#7cfc00","chartreuse":"#7fff00","greenyellow":"#adff2f","darkolivegreen":"#556b2f","yellowgreen":"#9acd32","olivedrab":"#6b8e23","ivory":"#fffff0","beige":"#f5f5dc","lightyellow":"#ffffe0","lightgoldenrodyellow":"#fafad2","lemonchiffon":"#fffacd","palegoldenrod":"#eee8aa","olive":"#808000","yellow":"#ffff00","darkkhaki":"#bdb76b","khaki":"#f0e68c","cornsilk":"#fff8dc","gold":"#ffd700","floralwhite":"#fffaf0","oldlace":"#fdf5e6","wheat":"#f5deb3","papayawhip":"#ffefd5","moccasin":"#ffe4b5","goldenrod":"#daa520","blanchedalmond":"#ffebcd","darkgoldenrod":"#b8860b","navajowhite":"#ffdead","antiquewhite":"#faebd7","tan":"#d2b48c","bisque":"#ffe4c4","burlywood":"#deb887","linen":"#faf0e6","orange":"#ffa500","peachpuff":"#ffdab9","peru":"#cd853f","seashell":"#fff5ee","darkorange":"#ff8c00","sandybrown":"#f4a460","saddlebrown":"#8b4513","chocolate":"#d2691e","sienna":"#a0522d","lightsalmon":"#ffa07a","coral":"#ff7f50","orangered":"#ff4500","darksalmon":"#e9967a","red":"#ff0000","darkred":"#8b0000","tomato":"#ff6347","maroon":"#800000","firebrick (Fire Brick)":"#b22222","salmon":"#fa8072","brown":"#a52a2a","mistyrose":"#ffe4e1","indianred":"#cd5c5c","crimson":"#dc143c","lightcoral":"#f08080","rosybrown":"#bc8f8f","snow":"#fffafa","lightpink":"#ffb6c1","pink":"#ffc0cb","palevioletred":"#db7093","black":"#000000"},
+  "NO_USER_FOUND": { "embeds": [{ "color": "#FF2A51", "description": "> **Je n'ai pas trouvé cette personne !**" }] },
+  "ERROR": "<emj:error> **An error has occurred, sorry about that!**\n\n> **The problem has been reported to the developers, they will fix it soon :wink:**",
+  "misc": {
+    "buttonHelp": {
+      "title": "Help :",
+      "fields": [
+        { "name": "Using the commands :", "value": "** **\n> Looking at the use of a command, you might wonder what those symbols are, here's a little guide :\n```\n() = mandatory in a specific form always specified.\n<> = required.\n[] = optional.\n\n/!\\ The prefix will always be specified as well as the basic command.```", "inline": false }
+      ]
+    },
+    "category": { "dev": "Development", "info": "Information", "config": "Configuration", "utility": "Utility", "music": "Musique", "game": "Games" },
+    "defaultXpMessage": "** **\n> **Congratulations `{userTag}`, you go to the level `{lvl}` !**\n** **",
+    "blacklistedUser": { "embeds": [{"color":"#ED4245", "description": "> **You are blacklisted, you can't use my commands !**"}]},
+    "guildCreate": { "embeds": [{
+      "color": "#5865F2",
+      "thumbnail": { "url": "$1" },
+      "author": { "name": "$1", "icon_url": "$1" },
+      "description": "🇫🇷 **Merci de m'avoir ajoutée à votre serveur !**\n\n> Le dashboard arrive prochainement ainsi que un tas de nouvelles fonctionnalités !\n\n**Suivez mon actualitée sur le serveur support :wink:**\n\n\n🇬🇧 **Thanks for adding me to your server!**\n\n> The dashboard is coming soon as well as a bunch of new features!\n\n**Follow my news on the support server**😉"
+    }],
+    "components": [
+      {
+        "components": [
+            {
+              "disabled": false, "emoji": null, "label": "Invite moi !", "style": 5, "type": 2,
+              "url": "https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot"
+            },
+            {
+              "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
+              "url": "https://discord.gg/cnJq9UzP2s"
+            }
+          ],
+          "type": 1
+        }
+      ]
+    },
+    "automod": {
+      "badwords": { "embeds": [{ "color": "#c40808", "description": "$1, please use correct vocabulary !" }] },
+      "link": { "embeds": [{ "color": "#c40808", "description": "$1, it is forbidden to send links." }] },
+      "mentions": { "embeds": [{ "color": "#c40808", "description": "$1, it is forbidden to mention too many users in a message." }] },
+      "antispam": { "embeds": [{ "color": "#c40808", "description": "$1, spoke too quickly. He was softban"}] }
+    },
+    "languageSelectMenu": {
+      "components": [
+        {
+          "type": "SELECT_MENU",
+          "customId": "language",
+          "placeholder": "What language do you want me to speak ?",
+          "minValues": null,
+          "maxValues": null,
+          "options": [],
+          "disabled": false
+        }
+      ],"type": "ACTION_ROW"
+    },
+    "noStaff": "> ❌ ** ** **You must be a moderator to make this command !**",
+    "noDev": "> ❌ ** ** **You have to be a developer to do this command !**"
+  },
+  "commands": {
+    "reload": {
+      "desc": "This command allows to reload a part of the bot or the whole bot !",
+      "use": "$1reload functions\n$1reload commands\n$1reload prototypes\n$1reload events\n$1reload langs\n$1reload all"
+    },
+    "ping": {
+      "desc": "This command provides information on the latency of Kady and the bot.",
+      "use": "No argument required.",
+      "assets": {
+        "discordPingAnalyse": "**Let me calculate the response time of discord...**",
+        "clientPing": "```\nI currently have a ping of de $1ms, it's $2.```",
+        "discordPing": "```\nDiscord takes $1ms to reply, it's $2.```"
+      },
+      "misc": {
+        "1": "excellent",
+        "2": "good",
+        "3": "mediocre",
+        "4": "limit",
+        "5": "terrible !"
+      }
+    },
+    "bot": {
+      "desc": "This command provides information about Kady !",
+      "use": "$1bot\n$1bot icon\n$1bot system\n$1bot other",
+      "assets": {
+        "DEV_NAME": "Developer :",
+        "DEV": "$1\n** **",
+        "HEBERG_NAME": "Host :",
+        "HEBERG": "Little Evil Thing",
+        "DESIGN_NAME": "Graphic designer :",
+        "DESIGN": "Milix",
+        "STATS_NAME": "Some stats :",
+        "STATS": "** **\n$1 guilds\n$2 users\n\n**Online since** $3 ||UTF + 2h|| ( <t:$4:R> ) .\n**Create the** $5 ||UTF + 2h|| ( <t:$6:R> ).\n\n** **",
+        "LIB_NAME": "Libraries :",
+        "LIB": "** **\n**NodeJS :** $1\n**Discord.js :** $2\n**brain.js :** $3\n**TypeScript :** $4\n** **",
+        "DATABASE_NAME": "Database :",
+        "DATABASE": "** **\n**Librarie :** [ravenDB $1](https://ravendb.net)\n**Overlay :** [MiaDB](https://github.com/Sedorikku1949/MiaDB)\n\n> The overlay was created entirely by the developers!\n** **",
+        "SYSTEM_TITLE": "Informations techniques :",
+        "SYSTEM_DESC": "** **\n**Distribution :** $1\n**OS :** Raspberry Pi OS\n**NodeJS :** $2\n**NPM :** $3\n\n**Material :** Raspberry Pi 3B+\n** **",
+        "OTHER_TITLE": "Some additional information :",
+        "OTHER_DESC": "`💖` **Guilds :**\n> `$1` guilds.\n> `$2` servers with more than 1k members.\n> `$3` servers with over 200 members.\n> `$4` servers today.\n\n`👥` **Users :**\n> `$5` users.\n> `$6` users on beta servers.\n\n`📣` **channels & roles :**\n> `$7` roles.\n> `$8` categories.\n> `$9` textuels channels.\n> `$10` vocal channels.\n> `$11` threads\n** **"
+      }
+    },
+    "help": {
+      "desc": "You already use this command!",
+      "use": "$1help\n$1help <cmd>",
+      "assets": {
+        "COMPONENTS": [{
+          "components": [
+              {"disabled": false,"emoji": null,"label": "Invite me !","style": 5,"type": 2,"url": "https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot"},
+              { "disabled": false, "emoji": null, "label": "My support", "style": 5, "type": 2,"url": "https://discord.gg/cnJq9UzP2s" },
+              { "disabled": false, "emoji": null, "label": "My dashboard", "style": 5, "type": 2, "url": "http://localhost:3000/home" }
+            ], "type": 1
+        }],
+        "CMD_COMPONENTS": [{
+          "components": [
+            { "disabled": false, "emoji": "❓", "label": "Help", "style": 2, "type": 2, "custom_id": "HELP_BUTTON" }
+          ], "type": 1
+        }],
+        "NO_COMMANDS_FOUND": "> <emj:search> **I did not find the command !**",
+        "CMD_TITLE": "Help page of the command \"$1\" :",
+        "CMD_FIELDS_CTG_NAME": "Category :",
+        "CMD_FIELDS_DESC_NAME": "Description :",
+        "CMD_FIELDS_ALIASE_NAME": "Aliase(s) :",
+        "CMD_FIELDS_USE_NAME": "Use :",
+        "CMD_FIELDS_VALUE": "```\n$1```",
+        "SEARCH": { "embeds": [{ "color":"#5865F2", "description": "> **Which command do you want to look for?**" }] },
+        "INTERACTION_TITLE": "List of orders :",
+        "INTERACTION_DESC": "> To see the optimal version, perform \"=help\" in this channel."
+      },
+      "misc": {
+        "noAliase": "No aliase.",
+        "INTERACTION_NAME": "• $1 :",
+        "INTERACTION_VALUE": "```\n$1```",
+        "LIST_AUTHOR_NAME": "List of commands.",
+        "LIST_DESC": "```\n$1```\n```\n➯ $2```"
+      }
+    },
+    "invite": {
+      "desc": "An order to add me to your server!",
+      "use": "No argument required.",
+      "assets": {
+        "content": "**What a great idea to add me on your server, I like you already!**\n\n> Inviting me is very simple, just click on this link:\n> **https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot**\n\nOnce you've added me, you don't have to do anything special, I'm already ready!\n\n> Questions, ideas or a problem?\nYou can join my support server, here is the invitation:\n\n**https://discord.gg/cnJq9UzP2s **\n\nSee you next time!"
+      }
+    },
+    "pp": {
+      "desc": "This command allows you to have the profile image of a bot or someone!",
+      "use": "$1pp <user>",
+      "assets": "**[ [ 🔗 Link ]($1) ]**"
+    },
+    "profile": {
+      "desc": "This command allows you to have information about your xp!",
+      "use": "$1rank\n$1rank <user>",
+      "assets": {
+        "USER_PROGRESS": "Progression of the level :",
+        "LVL": "Level :",
+        "XP_PTS": "XP points :"
+      }
+    },
+    "roleinfo": {
+      "desc": "This command gives you information on roles!",
+      "use": "$1roleinfo <role>\n\n/!\\ It is possible to use an identifier, a reference or a name (partly/fully)",
+      "assets": {
+        "NO_ROLE": "> <emj:cancel> **I didn't find the role!**",
+        "NO_ARGS": "> <emj:cancel> **An argument is required!**",
+        "TITLE": "Information on \"$1\" :",
+        "NO_PERMISSION": "No permission.",
+        "NAME_FIELD": "Name :",
+        "ID_FIELD": "ID :",
+        "CREATED_FIELD": "Creation date :",
+        "CREATED_FIELD_VALUE": "$1 ( <t:$2:R> )",
+        "MEMBERS_FIELD": "Members with this role :",
+        "PERMS_FIELD": "Permissions :",
+        "PERMS_FIELD_VALUE": "```js\n$1```",
+        "OTHER_FIELD": "Other information :",
+        "OTHER_FIELD_VALUE": "** **\n>>> **Hoist :** $1\n**Mentionnable :** $2\n**Color :** $3"
+      }
+    },
+    "serv": {
+      "desc": "This command allows you to get information about the server!",
+      "use": "$1serv\n$1serv icon\n$1serv banner",
+      "assets": {
+        "TITLE": "Information about $1 :",
+        "OWNER_NAME": "Owner :",
+        "OWNER_VALUE": "$1 / <@$2>",
+        "CREATED_NAME": "Creation date :",
+        "CREATED_VALUE": "$1 ( <t:$2:R> )",
+        "AFK_VALUE": "```\nAFK channel : $1\nTime to AFK : $2```",
+        "BOOST_VALUE": "```\nNumber of boosts : $1\nBoost level : $2```",
+        "COMMU_NAME": "Community :",
+        "COMMU_VALUE": "```\n➤ Humains : $1\n➤ Bots : $2\n➤ Total : $3\n```",
+        "CHANNEL_NAME": "Channels :",
+        "CHANNEL_VALUE": "<emj:category> **Categories :** $1\n<emj:textuel> **textuals channels :** $2\n<emj:vocal> **Vocals channels :** $3\n<emj:annonce> **News channels :** $4\n**\u200b​**",
+        "OTHER_NAME": "Other :",
+        "OTHER_VALUE": "**Announcement channel :** $1\n**Explicit filter :** $2\n**Level of verification :** $3\n**Rules channel :** $4",
+        "NO_BANNER": "> <emj:error> **No banner has been assigned to the server!**",
+        "LINK": "**[ [ 🔗 Link ]($1) ]**"
+      },
+      "misc": {
+        "NO_AFK_CHANNEL": "```\nNo AFK channel.```",
+        "NO_BOOST": "```\nNo boost on this server.```",
+        "NO_SYSTEM_CHANNEL": "No system channel.",
+        "NO_RULE_CHANNEL": "No.",
+        "explicit": {
+          "0": "Disable.",
+          "1": "Members without roles.",
+          "2": "All the people."
+        },
+        "verif": {
+          "0": "No restrictions.",
+          "1": "Requires a verified email address.",
+          "2": "Must be registered on discord for 5m.",
+          "3": "Must be a member of the server for 10m.",
+          "4": "Must have a verified telephone number."
+        }
+      }
+    },
+    "support": {
+      "desc": "This command gives you the invitation link to my support server !",
+      "use": "No argument required.",
+      "assets": {
+        "content": "> **Click on the button to access my support server :**",
+        "components": [{
+          "components": [
+              {
+                "disabled": false, "emoji": null, "label": "My support", "style": 5, "type": 2,
+                "url": "https://discord.gg/cnJq9UzP2s"
+              }
+            ], "type": 1
+          }
+        ]
+      }
+    },
+    "8ball": {
+      "desc": "This command is... funny?",
+      "use": "$18ball <question>",
+      "assets": {
+        "res": "> 🎱 **$1**",
+        "noArgs": "> **I don't know what to say !**",
+        "properties": ["I think so.", "Maybe.", "Why not?", "My source told me not.", "No way!", "Signs point to yes.", "Very doubtful.", "That's definitely the case"]
+      }
+    },
+    "betrayal": {
+      "desc": "This command allows you to play the betrayal game with your friends!",
+      "use": "$1betrayal <vocal>",
+      "assets": {
+        "res": "> [click here]($1) **to start the activity!**",
+        "noArgs": "> **I don't know which channel you want to play in!**",
+        "noChannel": "> <emj:error> **I haven't found a voice lounge with these search arguments!**"
+      }
+    },
+    "chess": {
+      "desc": "This command allows you to play chess with your friends!",
+      "use": "$1chess <vocal>",
+      "assets": {
+        "res": "> [click here]($1) **to start the activity!**",
+        "noArgs": "> **I don't know which channel you want to play in!**",
+        "noChannel": "> <emj:error> **I haven't found a voice lounge with these search arguments!**"
+      }
+    },
+    "fishing": {
+      "desc": "This command allows you to play fisherman with your friends!",
+      "use": "$1fishing <vocal>",
+      "assets": {
+        "res": "> [click here]($1) **to start the activity!**",
+        "noArgs": "> **I don't know which channel you want to play in!**",
+        "noChannel": "> <emj:error> **I haven't found a voice lounge with these search arguments!**"
+      }
+    },
+    "poker": {
+      "desc": "This command allows you to play poker with your friends!",
+      "use": "$1poker <vocal>",
+      "assets": {
+        "res": "> [click here]($1) **to start the activity!**",
+        "noArgs": "> **I don't know which channel you want to play in!**",
+        "noChannel": "> <emj:error> **I haven't found a voice lounge with these search arguments!**"
+      }
+    },
+    "youtube": {
+      "desc": "This command allows you to watch youtube with your friends!",
+      "use": "$1youtube <vocal>",
+      "assets": {
+        "res": "> [click here]($1) **to start the activity!**",
+        "noArgs": "> **I don't know which channel you want to play in!**",
+        "noChannel": "> <emj:error> **I haven't found a voice lounge with these search arguments!**"
+      }
+    },
+    "userinfo": {
+      "desc": "This command gives you information about a user!",
+      "use": "$1userinfo\n$1userinfo <user>",
+      "assets": {
+        "FIRST_STP": "> **• Pseudonym :** $1\n> **• ID :** $2\n** **\n",
+        "MEMBER": "> <emj:calendar> **• Account creation :** The $1 ( <t:$2:R> )\n> <emj:plus>**• Member since :** The $3 ( <t:$4:R> )\n** **\n",
+        "USER": "> **• Account creation :** The $1 ( <t:$2:R> )\n** **\n",
+        "AVATAR": "> **[Avatar]($1)**"
+      }
+    },
+    "calculator": {
+      "desc": "This command allows you to use a calculator !",
+      "use": "$1calculator <calcule>",
+      "assets": {
+        "res": "**Result :**\n```js\n$1\n```",
+        "noArgs": "> **I don't know what to calculate!**"
+      }
+    },
+    "beta": {
+      "desc": "This command allows you to join or leave my beta program!",
+      "use": "$1beta join\n$1beta leave",
+      "assets": {}
+    },
+    "data": {
+      "desc": "This command allows you to manage the server database!",
+      "use": "$1data",
+      "assets": {}
+    },
+    "prefix": {
+      "desc": "This command allows you to change the prefix!",
+      "use": "$1prefix <new prefix>",
+      "assets": {
+        "databaseError": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> ** An error occurred while loading the database.**" }] },
+        "noArgs": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **You have not specified any new prefixes !**" }] },
+        "notAdmin": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **Only people with administrator permissions can execute this command!**" }] },
+        "invalidArgs": { "embeds": [{ "color": "#ED4245", "description": "<:error:869237657480343572> **My new prefix cannot contain numbers!**" }] },
+        "question": "> **Do you want my new prefix on this server to be `$1`?**",
+        "cancel": { "embeds": [{ "color": "#57F287", "description": "<:cancel:885157955186597899> **Cancellation of the action.**" }] },
+        "res": "> <:like:885157955287261224> ** ** **My new prefix is now :** `$1`"
+      }
+    }
+  }
+}

@@ -56,6 +56,6 @@ module.exports = {
       }
     }
   },
-  config: { name: "bot", aliases: ["lana"], category: "info", system: { perms: ["SEND_MESSAGES", "EMBED_LINKS"], delInvoke: false, inProgress: false, staffCommand: false, devCommand: false } },
+  config: { name: "bot", aliases: ["kady"], category: "info", system: { perms: ["SEND_MESSAGES", "EMBED_LINKS"], delInvoke: false, inProgress: false, staffCommand: false, devCommand: false } },
   path: null
 }
