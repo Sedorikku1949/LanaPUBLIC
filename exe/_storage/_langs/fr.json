@@ -36,7 +36,7 @@
             },
             {
               "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
-              "url": "https://discord.gg/cnJq9UzP2s"
+              "url": "https://discord.gg/GegJXchAfN"
             }
           ],
           "type": 1
@@ -117,7 +117,7 @@
         "HEBERG_NAME": "Hébergeur :",
         "HEBERG": "Little Evil Thing",
         "DESIGN_NAME": "Graphiste :",
-        "DESIGN": "Milix",
+        "DESIGN": "Milix\nRufix's",
         "STATS_NAME": "Quelques statistiques :",
         "STATS": "** **\n$1 serveurs\n$2 utilisateurs\n\n**En ligne depuis le** $3 ( <t:$4:R> ).\n**Créer le** $5 ( <t:$6:R> ).\n\n** **",
         "LIB_NAME": "Librairies :",
@@ -137,7 +137,7 @@
         "COMPONENTS": [{
           "components": [
               {"disabled": false,"emoji": null,"label": "Invite moi !","style": 5,"type": 2,"url": "https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot"},
-              { "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,"url": "https://discord.gg/cnJq9UzP2s" },
+              { "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,"url": "https://discord.gg/GegJXchAfN" },
               { "disabled": false, "emoji": null, "label": "Mon dashboard", "style": 5, "type": 2, "url": "http://localhost:3000/home" }
             ], "type": 1
         }],
@@ -169,7 +169,7 @@
       "desc": "Une commande pour m'ajouter à ton serveur pardi !",
       "use": "Aucun argument requis.",
       "assets": {
-        "content": "**Mais quel bonne idée de m'ajouter sur ton serveur, je t'apprécie déjà !**\n\n> M'inviter est très simple, il te suffit de cliquer sur ce lien :\n> **https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot**\n\nUne fois que tu m'as ajoutée, tu n'a rien d'autre a faire de spécial, je suis déjà prête !\n\n> Des questions, idées ou un problème ?\nTu peux rejoindre le serveur où j'ai été imaginée et créée, voici l'invitation :\n\n**https://discord.gg/cnJq9UzP2s **\n\nA la prochaine !"
+        "content": "**Mais quel bonne idée de m'ajouter sur ton serveur, je t'apprécie déjà !**\n\n> M'inviter est très simple, il te suffit de cliquer sur ce lien :\n> **https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot**\n\nUne fois que tu m'as ajoutée, tu n'a rien d'autre a faire de spécial, je suis déjà prête !\n\n> Des questions, idées ou un problème ?\nTu peux rejoindre le serveur où j'ai été imaginée et créée, voici l'invitation :\n\n**https://discord.gg/GegJXchAfN **\n\nA la prochaine !"
       }
     },
     "pp": {
@@ -253,7 +253,7 @@
           "components": [
               {
                 "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
-                "url": "https://discord.gg/cnJq9UzP2s"
+                "url": "https://discord.gg/GegJXchAfN"
               }
             ], "type": 1
           }
@@ -354,6 +354,11 @@
         "cancel": { "embeds": [{ "color": "#57F287", "description": "<:cancel:885157955186597899> **Annulation de l'action.**" }] },
         "res": "> <:like:885157955287261224> ** ** **Mon nouveau préfix est désormais :** `$1`"
       }
+    },
+    "vote": {
+      "desc": "Cette commande te permet de voter pour Kady et de participer au projet !",
+      "use": "Aucun argument requis.",
+      "assets": "** **\n> **Merci de vouloir soutenir notre projet ! Tu peux voter sur ces sites et laissé un avis, ca nous aide beaucoup :wink:**\n\n**https://botlist.com/bots/lana/upvote**\n\n**https://wonderbotlist.com/fr/bot/858766319506554899/vote**\n\n**https://top.gg/bot/858766319506554899/vote**\n** **"
     }
   }
 }

@@ -1,9 +1,10 @@
+const { progressBar } = Client;
+
 module.exports = {
   exe: async function(message, prefix, command, args, lang){
     const user = args[0] ? message.guild.members.selectMember(args[0], { user: true }) : message.author
     if (!user || !(user instanceof require("discord.js").User)) return message.reply(message.guild.translate("NO_USER_FOUND"));
-    const userData = await database.db.get("guild/"+message.guild.id, `xp["${user.id}"]`);
-    if (!userData) return message.reply({ "embeds": [{ "color": "#FF2A51", "description": "> **Une erreur est survenue en chargeant la base de donnée.**" }] });
+    const userData = database.db.get("guild/"+message.guild.id, `xp["${user.id}"]`) ?? { xp: 0, lvl: 0, id: user.id};
     const oldLevel = (userData.lvl-1) > 0 ? (userData.lvl-1) : 0
     let oldSection = ((5 / 6) * oldLevel * (2 * oldLevel * oldLevel + 27 * oldLevel + 91) + 100)
     if (oldSection < 0) oldSection = 0;

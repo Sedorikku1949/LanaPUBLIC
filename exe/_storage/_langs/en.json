@@ -5,7 +5,7 @@
   "langDesc": "I will speak English",
   "langEmj": "🇬🇧",
   "newLanguageSelected": "> 🇬🇧 ** ** **I will speak now English !**",
-  "languageAlreadySelected": "> 🇬🇧 ** ** **Aïe, je suis déjà sélectionner en francais !**",
+  "languageAlreadySelected": "> 🇬🇧 ** ** **I'm already in English !**",
   "chooseLanguage": "> 🇫🇷 ** ** **Quelle langue voulez-vous que je parle ?**\n\n> 🇬🇧 ** ** **What language do you want me to speak ?**\n** **",
   "test": "<emj:error> test",
   "color": {"mainColor":"#5865F2","success":"#57F287","error":"#ED4245","fuschia":"#EB459E","warnings":"FEE75C","embed":"2f3136","deeppink":"#ff1493","lavenderblush":"#fff0f5","hotpink":"#ff69b4","mediumvioletred":"#c71585","magenta":"#ff00ff","darkmagenta":"#8b008b","purple":"#800080","orchid":"#da70d6","violet":"#ee82ee","plum":"#dda0dd","thistle":"#d8bfd8","mediumorchid":"#ba55d3","darkviolet":"#9400d3","darkorchid":"#9932cc","indigo":"#4b0082","blueviolet":"#8a2be2","mediumpurple":"#9370db","blue":"#0000ff","mediumblue":"#0000cd","darkblue":"#00008b","navy":"#000080","midnightblue":"#191970","mediumslateblue":"#7b68ee","slateblue":"#6a5acd","darkslateblue":"#483d8b","silver":"#c0c0c0","dimgray":"#696969","lightgray":"#d3d3d3","white":"#ffffff","gray":"#808080","whitesmoke":"#f5f5f5","gainsboro":"#dcdcdc","darkgray":"#a9a9a9","royalblue":"#4169e1","lavender":"#e6e6fa","ghostwhite":"#f8f8ff","cornflowerblue":"#6495ed","dodgerblue":"#1e90ff","lightsteelblue":"#b0c4de","steelblue":"#4682b4","lightslategray":"#778899","slategray":"#708090","aliceblue":"#f0f8ff","lightskyblue":"#87cefa","deepskyblue":"#00bfff","skyblue":"#87ceeb","lightblue":"#add8e6","powderblue":"#b0e0e6","cadetblue":"#5f9ea0","azure":"#f0ffff","lightcyan":"#e0ffff","darkturquoise":"#00ced1","paleturquoise":"#afeeee","darkslategray":"#2f4f4f","aqua / cyan":"#00ffff","darkcyan":"#008b8b","teal":"#008080","mediumturquoise":"#48d1cc","lightseagreen":"#20b2aa","turquoise":"#40e0d0","aquamarine":"#7fffd4","mediumaquamarine":"#66cdaa","mintcream":"#f5fffa","mediumspringgreen":"#00fa9a","mediumseagreen":"#3cb371","seagreen":"#2e8b57","springgreen":"#00ff7f","honeydew":"#f0fff0","darkseagreen":"#8fbc8f","lightgreen":"#90ee90","palegreen":"#98fb98","forestgreen":"#228b22","limegreen":"#32cd32","lime":"#00ff00","green":"#008000","darkgreen":"#006400","lawngreen":"#7cfc00","chartreuse":"#7fff00","greenyellow":"#adff2f","darkolivegreen":"#556b2f","yellowgreen":"#9acd32","olivedrab":"#6b8e23","ivory":"#fffff0","beige":"#f5f5dc","lightyellow":"#ffffe0","lightgoldenrodyellow":"#fafad2","lemonchiffon":"#fffacd","palegoldenrod":"#eee8aa","olive":"#808000","yellow":"#ffff00","darkkhaki":"#bdb76b","khaki":"#f0e68c","cornsilk":"#fff8dc","gold":"#ffd700","floralwhite":"#fffaf0","oldlace":"#fdf5e6","wheat":"#f5deb3","papayawhip":"#ffefd5","moccasin":"#ffe4b5","goldenrod":"#daa520","blanchedalmond":"#ffebcd","darkgoldenrod":"#b8860b","navajowhite":"#ffdead","antiquewhite":"#faebd7","tan":"#d2b48c","bisque":"#ffe4c4","burlywood":"#deb887","linen":"#faf0e6","orange":"#ffa500","peachpuff":"#ffdab9","peru":"#cd853f","seashell":"#fff5ee","darkorange":"#ff8c00","sandybrown":"#f4a460","saddlebrown":"#8b4513","chocolate":"#d2691e","sienna":"#a0522d","lightsalmon":"#ffa07a","coral":"#ff7f50","orangered":"#ff4500","darksalmon":"#e9967a","red":"#ff0000","darkred":"#8b0000","tomato":"#ff6347","maroon":"#800000","firebrick (Fire Brick)":"#b22222","salmon":"#fa8072","brown":"#a52a2a","mistyrose":"#ffe4e1","indianred":"#cd5c5c","crimson":"#dc143c","lightcoral":"#f08080","rosybrown":"#bc8f8f","snow":"#fffafa","lightpink":"#ffb6c1","pink":"#ffc0cb","palevioletred":"#db7093","black":"#000000"},
@@ -36,7 +36,7 @@
             },
             {
               "disabled": false, "emoji": null, "label": "Mon support", "style": 5, "type": 2,
-              "url": "https://discord.gg/cnJq9UzP2s"
+              "url": "https://discord.gg/GegJXchAfN"
             }
           ],
           "type": 1
@@ -95,7 +95,7 @@
         "HEBERG_NAME": "Host :",
         "HEBERG": "Little Evil Thing",
         "DESIGN_NAME": "Graphic designer :",
-        "DESIGN": "Milix",
+        "DESIGN": "Milix\nRufix's",
         "STATS_NAME": "Some stats :",
         "STATS": "** **\n$1 guilds\n$2 users\n\n**Online since** $3 ||UTF + 2h|| ( <t:$4:R> ) .\n**Create the** $5 ||UTF + 2h|| ( <t:$6:R> ).\n\n** **",
         "LIB_NAME": "Libraries :",
@@ -115,7 +115,7 @@
         "COMPONENTS": [{
           "components": [
               {"disabled": false,"emoji": null,"label": "Invite me !","style": 5,"type": 2,"url": "https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot"},
-              { "disabled": false, "emoji": null, "label": "My support", "style": 5, "type": 2,"url": "https://discord.gg/cnJq9UzP2s" },
+              { "disabled": false, "emoji": null, "label": "My support", "style": 5, "type": 2,"url": "https://discord.gg/GegJXchAfN" },
               { "disabled": false, "emoji": null, "label": "My dashboard", "style": 5, "type": 2, "url": "http://localhost:3000/home" }
             ], "type": 1
         }],
@@ -147,7 +147,7 @@
       "desc": "An order to add me to your server!",
       "use": "No argument required.",
       "assets": {
-        "content": "**What a great idea to add me on your server, I like you already!**\n\n> Inviting me is very simple, just click on this link:\n> **https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot**\n\nOnce you've added me, you don't have to do anything special, I'm already ready!\n\n> Questions, ideas or a problem?\nYou can join my support server, here is the invitation:\n\n**https://discord.gg/cnJq9UzP2s **\n\nSee you next time!"
+        "content": "**What a great idea to add me on your server, I like you already!**\n\n> Inviting me is very simple, just click on this link:\n> **https://discord.com/api/oauth2/authorize?client_id=858766319506554899&permissions=8&scope=applications.commands%20bot**\n\nOnce you've added me, you don't have to do anything special, I'm already ready!\n\n> Questions, ideas or a problem?\nYou can join my support server, here is the invitation:\n\n**https://discord.gg/GegJXchAfN **\n\nSee you next time!"
       }
     },
     "pp": {
@@ -231,7 +231,7 @@
           "components": [
               {
                 "disabled": false, "emoji": null, "label": "My support", "style": 5, "type": 2,
-                "url": "https://discord.gg/cnJq9UzP2s"
+                "url": "https://discord.gg/GegJXchAfN"
               }
             ], "type": 1
           }
@@ -332,6 +332,11 @@
         "cancel": { "embeds": [{ "color": "#57F287", "description": "<:cancel:885157955186597899> **Cancellation of the action.**" }] },
         "res": "> <:like:885157955287261224> ** ** **My new prefix is now :** `$1`"
       }
+    },
+    "vote": {
+      "desc": "This order gives you the opportunity to vote for Kady and to participate in the project!",
+      "use": "No argument required.",
+      "assets": "** **\n> **Thank you for supporting our project! You can vote on these sites and leave a comment, it helps us a lot :wink:**\n\n**https://discordbotlist.com/bots/lana/upvote**\n\n**https://wonderbotlist.com/fr/bot/858766319506554899/vote**\n\n**https://top.gg/bot/858766319506554899/vote**\n** **"
     }
   }
 }

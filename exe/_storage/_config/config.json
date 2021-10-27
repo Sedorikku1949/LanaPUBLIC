@@ -6,8 +6,8 @@
       "709815588016357429",
       "608650149975293962"
     ],
-    "errorChannel": "889094615754481775",
-    "newServerChannel": "889094462230396979"
+    "errorChannel": "899047593294856263",
+    "newServerChannel": "899047466257772705"
   },
   "API": {
     "discordbotlist": { "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0IjoxLCJpZCI6Ijg1ODc2NjMxOTUwNjU1NDg5OSIsImlhdCI6MTYzMzk0OTM0OH0.k58jBJNQG84U1omNE67icSLb4Qc16hrzhwWv0mG2mW8" }
@@ -40,19 +40,11 @@
     "stats": {
       "guilds": {
         "join": 0,
-        "leave": 0,
-        "aciveGuilds": {
-          "score": 0,
-          "guilds": {}
-        }
+        "leave": 0
       },
       "commands": {
         "cmd": {},
         "users": {}
-      },
-      "music": {
-        "music": 0,
-        "queueLength": 0
       }
     }
   }

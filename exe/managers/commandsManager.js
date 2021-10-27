@@ -42,6 +42,7 @@ module.exports = {
 
     if (database.db.get("blacklist").some(e => e.id == message.author.id)) return message.reply(lang.misc.blacklistedUser);
     if (cmd.config.system.staffCommand && !message.member.isStaff(message)) return message.reply(lang.misc.noStaff);
+    if (cmd.config.system.inProgress && !config.dev.devID.includes(message.author.id)) return message.reply({ embeds: [{ color: message.guild.colors("error"), description: "> **This command is in progress, only developper can use this command !**" }] })
     if (cmd.config.system.devCommand && !config.dev.devID.includes(message.author.id)) return message.reply(lang.misc.noDev);
     if (message.isIgnored()) return;
     if (Array.isArray(cmd.config.options) && commandsArgs(cmd, message, args)) return require("../functions/other/sendSpecificCommandHelp.js")(null, cmd, message, '#commands["help"]', prefix);
